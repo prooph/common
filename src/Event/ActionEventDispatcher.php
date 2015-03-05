@@ -42,8 +42,6 @@ interface ActionEventDispatcher
     /**
      * Attach a listener to an event
      *
-     * If a callable is passed as listener it should be wrapped with a proxy object implementing ActionEventListener
-     *
      * @param  string $event
      * @param  callable|ActionEventListener $listener
      * @param  int $priority Priority at which to register listener
