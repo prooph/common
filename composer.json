@@ -1,0 +1,32 @@
+{
+    "name": "prooph/common",
+    "description": "Common classes used accross prooph packages",
+    "type": "library",
+    "keywords": [
+        "prooph",
+        "common"
+    ],
+    "homepage": "https://github.com/prooph/common",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.5",
+        "zendframework/zend-stdlib" : "~2.3",
+        "zendframework/zend-servicemanager" : "~2.3",
+        "zendframework/zend-eventmanager" : "~2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7"
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Prooph\\Common\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ProophTest\\Common\\": "tests"
+        }
+    }
+}
