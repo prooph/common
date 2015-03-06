@@ -112,4 +112,15 @@ class Zf2ActionEventDispatcher extends EventManager implements ActionEventDispat
     {
         return new Zf2ActionEvent($event->getName(), $event->getTarget(), $event->getParams());
     }
-} 
+
+    /**
+     * @param null|string $name of the action event
+     * @param null|string|object $target of the action event
+     * @param null|array|\ArrayAccess $params with which the event is initialized
+     * @return ActionEvent that can be triggered by the ActionEventDispatcher
+     */
+    public function getNewActionEvent($name = null, $target = null, $params = null)
+    {
+        return new Zf2ActionEvent($name, $target, $params);
+    }
+}

@@ -23,6 +23,14 @@ namespace Prooph\Common\Event;
 interface ActionEventDispatcher 
 {
     /**
+     * @param null|string $name of the action event
+     * @param string|object $target of the action event
+     * @param null|array|\ArrayAccess $params with which the event is initialized
+     * @return ActionEvent that can be triggered by the ActionEventDispatcher
+     */
+    public function getNewActionEvent($name = null, $target = null, $params = null);
+
+    /**
      * Trigger an action event
      *
      * @param \Prooph\Common\Event\ActionEvent $event
