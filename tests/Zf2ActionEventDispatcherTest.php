@@ -46,7 +46,7 @@ class Zf2ActionEventDispatcherTest extends \PHPUnit_Framework_TestCase
             }
         };
 
-        $actionEvent = new Zf2ActionEvent("test", $this, ['payload' => true]);
+        $actionEvent = $this->zf2ActionEventDispatcher->getNewActionEvent("test", $this, ['payload' => true]);
 
         $this->zf2ActionEventDispatcher->attachListener("test", $listener1);
         $this->zf2ActionEventDispatcher->attachListener("test", $listener2);
@@ -69,7 +69,7 @@ class Zf2ActionEventDispatcherTest extends \PHPUnit_Framework_TestCase
             }
         };
 
-        $actionEvent = new Zf2ActionEvent("test", $this, ['payload' => true]);
+        $actionEvent = $this->zf2ActionEventDispatcher->getNewActionEvent("test", $this, ['payload' => true]);
 
         $handler = $this->zf2ActionEventDispatcher->attachListener("test", $listener1);
         $this->zf2ActionEventDispatcher->attachListener("test", $listener2);
@@ -95,7 +95,7 @@ class Zf2ActionEventDispatcherTest extends \PHPUnit_Framework_TestCase
             }
         };
 
-        $actionEvent = new Zf2ActionEvent("test", $this, ['payload' => true]);
+        $actionEvent = $this->zf2ActionEventDispatcher->getNewActionEvent("test", $this, ['payload' => true]);
 
         $this->zf2ActionEventDispatcher->attachListener("test", $listener1);
         $this->zf2ActionEventDispatcher->attachListener("test", $listener2);
@@ -123,7 +123,7 @@ class Zf2ActionEventDispatcherTest extends \PHPUnit_Framework_TestCase
             }
         };
 
-        $actionEvent = new Zf2ActionEvent("test", $this, ['payload' => true]);
+        $actionEvent = $this->zf2ActionEventDispatcher->getNewActionEvent("test", $this, ['payload' => true]);
 
         $this->zf2ActionEventDispatcher->attachListener("test", $listener1);
         $this->zf2ActionEventDispatcher->attachListener("test", $listener2);
@@ -143,7 +143,7 @@ class Zf2ActionEventDispatcherTest extends \PHPUnit_Framework_TestCase
         $listener1 = new ActionEventListenerMock();
         $listenerAggregate = new ActionListenerAggregateMock();
 
-        $actionEvent = new Zf2ActionEvent("test", $this, ['payload' => true]);
+        $actionEvent = $this->zf2ActionEventDispatcher->getNewActionEvent("test", $this, ['payload' => true]);
 
         $this->zf2ActionEventDispatcher->attachListener("test", $listener1);
         $this->zf2ActionEventDispatcher->attachListenerAggregate($listenerAggregate);
@@ -162,7 +162,7 @@ class Zf2ActionEventDispatcherTest extends \PHPUnit_Framework_TestCase
         $listener1 = new ActionEventListenerMock();
         $listenerAggregate = new ActionListenerAggregateMock();
 
-        $actionEvent = new Zf2ActionEvent("test", $this, ['payload' => true]);
+        $actionEvent = $this->zf2ActionEventDispatcher->getNewActionEvent("test", $this, ['payload' => true]);
 
         $this->zf2ActionEventDispatcher->attachListener("test", $listener1);
         $this->zf2ActionEventDispatcher->attachListenerAggregate($listenerAggregate);
