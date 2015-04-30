@@ -35,11 +35,24 @@ final class Zf2ServiceManagerProxy implements ServiceLocator
     {
         $config = new Config($config);
 
-        $self = new self();
+        return new self(new ServiceManager($config));
+    }
 
-        $self->zf2ServiceManager = new ServiceManager($config);
+    /**
+     * @param ServiceManager $serviceManager
+     * @return Zf2ServiceManagerProxy
+     */
+    public static function proxy(ServiceManager $serviceManager)
+    {
+        return new self($serviceManager);
+    }
 
-        return $self;
+    /**
+     * @param ServiceManager $serviceManager
+     */
+    private function __construct(ServiceManager $serviceManager)
+    {
+        $this->zf2ServiceManager = $serviceManager;
     }
 
     /**

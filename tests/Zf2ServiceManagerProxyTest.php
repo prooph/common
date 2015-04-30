@@ -11,6 +11,8 @@
 namespace ProophTest\Common;
 
 use Prooph\Common\ServiceLocator\ZF2\Zf2ServiceManagerProxy;
+use Zend\ServiceManager\Config;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Class Zf2ServiceManagerProxyTest
@@ -34,6 +36,29 @@ class Zf2ServiceManagerProxyTest extends \PHPUnit_Framework_TestCase
                 }
             ],
         ]);
+
+        $this->assertTrue($proxy->has('std_service'));
+        $this->assertSame($service, $proxy->get('std_service'));
+    }
+
+    /**
+     * @test
+     */
+    function it_can_be_created_with_an_instance_of_a_service_manager()
+    {
+        $service = new \stdClass();
+
+        $smConfig = new Config([
+            'factories' => [
+                'std_service' => function ($services) use ($service) {
+                        return $service;
+                    }
+            ],
+        ]);
+
+        $sm = new ServiceManager($smConfig);
+
+        $proxy = Zf2ServiceManagerProxy::proxy($sm);
 
         $this->assertTrue($proxy->has('std_service'));
         $this->assertSame($service, $proxy->get('std_service'));
