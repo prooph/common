@@ -49,7 +49,7 @@ class Zf2ActionEventDispatcher extends EventManager implements ActionEventDispat
             $event = $this->toZf2Event($event);
         }
 
-        parent::triggerUntil($event, function() use ($event, $callback) {
+        parent::trigger($event, function() use ($event, $callback) {
             return $callback($event);
         });
     }
