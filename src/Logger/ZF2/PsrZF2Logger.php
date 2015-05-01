@@ -20,7 +20,7 @@ use Zend\Log\LoggerInterface as ZendLoggerInterface;
  * PSR-3 compatible Logger using the ZF2 Logger internally
  *
  * @package Prooph\Common\Logger\ZF2
- * @author Alexander Miertsch <alexander.miertsch.extern@sixt.com>
+ * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
 final class PsrZF2Logger implements LoggerInterface
 {
