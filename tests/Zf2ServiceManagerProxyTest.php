@@ -11,6 +11,7 @@
 namespace ProophTest\Common;
 
 use Prooph\Common\ServiceLocator\ZF2\Zf2ServiceManagerProxy;
+use ProophTest\Common\Mock\ServiceInitializerMock;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceManager;
 
@@ -62,5 +63,83 @@ class Zf2ServiceManagerProxyTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($proxy->has('std_service'));
         $this->assertSame($service, $proxy->get('std_service'));
+    }
+
+    /**
+     * @test
+     */
+    function it_allows_overriding_a_service_if_specified()
+    {
+        $service = new \stdClass();
+
+        $smConfig = new Config([
+            'factories' => [
+                'std_service' => function ($services) use ($service) {
+                        return $service;
+                    }
+            ],
+        ]);
+
+        $sm = new ServiceManager($smConfig);
+
+        $proxy = Zf2ServiceManagerProxy::proxy($sm);
+
+        $anotherService = new \stdClass();
+
+        $proxy->set('std_service', $anotherService, true);
+
+        $this->assertNotSame($service, $proxy->get('std_service'));
+        $this->assertSame($anotherService, $proxy->get('std_service'));
+    }
+
+    /**
+     * @test
+     */
+    function it_sets_an_alias_for_a_service()
+    {
+        $service = new \stdClass();
+
+        $smConfig = new Config([
+            'factories' => [
+                'std_service' => function ($services) use ($service) {
+                        return $service;
+                    }
+            ],
+        ]);
+
+        $sm = new ServiceManager($smConfig);
+
+        $proxy = Zf2ServiceManagerProxy::proxy($sm);
+
+        $proxy->setAlias('aliased_service', 'std_service');
+
+        $this->assertTrue($proxy->has('std_service'));
+        $this->assertTrue($proxy->has('aliased_service'));
+        $this->assertSame($service, $proxy->get('aliased_service'));
+    }
+
+    /**
+     * @test
+     */
+    function it_adds_an_initializer_by_using_a_proxy()
+    {
+        $service = new \stdClass();
+
+        $smConfig = new Config([
+            'factories' => [
+                'std_service' => function ($services) use ($service) {
+                        return $service;
+                    }
+            ],
+        ]);
+
+        $sm = new ServiceManager($smConfig);
+
+        $proxy = Zf2ServiceManagerProxy::proxy($sm);
+
+        $proxy->addInitializer(new ServiceInitializerMock());
+
+        $this->assertSame($service, $proxy->get('std_service'));
+        $this->assertSame($proxy, $service->locator);
     }
 } 

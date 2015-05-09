@@ -43,4 +43,9 @@ interface ServiceLocator
      * @param string $orgServiceName
      */
     public function setAlias($alias, $orgServiceName);
+
+    /**
+     * @param ServiceInitializer $initializer
+     */
+    public function addInitializer(ServiceInitializer $initializer);
 } 

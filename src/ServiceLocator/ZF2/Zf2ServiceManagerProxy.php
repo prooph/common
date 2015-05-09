@@ -10,6 +10,7 @@
  */
 namespace Prooph\Common\ServiceLocator\ZF2;
 
+use Prooph\Common\ServiceLocator\ServiceInitializer;
 use Prooph\Common\ServiceLocator\ServiceLocator;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceManager;
@@ -112,5 +113,13 @@ final class Zf2ServiceManagerProxy implements ServiceLocator
     public function setAlias($alias, $orgServiceName)
     {
         $this->getServiceManager()->setAlias($alias, $orgServiceName);
+    }
+
+    /**
+     * @param ServiceInitializer $initializer
+     */
+    public function addInitializer(ServiceInitializer $initializer)
+    {
+        $this->getServiceManager()->addInitializer(Zf2InitializerProxy::proxy($initializer, $this));
     }
 }
