@@ -76,10 +76,21 @@ final class Zf2ServiceManagerProxy implements ServiceLocator
     /**
      * @param string $serviceName
      * @param mixed $service
+     * @param bool $allowOverride
      */
-    public function set($serviceName, $service)
+    public function set($serviceName, $service, $allowOverride = false)
     {
+
+        if ($allowOverride) {
+            $orgAllowOverride = $this->getServiceManager()->getAllowOverride();
+            $this->getServiceManager()->setAllowOverride($allowOverride);
+        }
+
         $this->getServiceManager()->setService($serviceName, $service);
+
+        if ($allowOverride) {
+            $this->getServiceManager()->setAllowOverride($orgAllowOverride);
+        }
     }
 
     /**
@@ -92,5 +103,14 @@ final class Zf2ServiceManagerProxy implements ServiceLocator
         }
 
         return $this->zf2ServiceManager;
+    }
+
+    /**
+     * @param string $alias
+     * @param string $orgServiceName
+     */
+    public function setAlias($alias, $orgServiceName)
+    {
+        $this->getServiceManager()->setAlias($alias, $orgServiceName);
     }
 }

@@ -34,6 +34,13 @@ interface ServiceLocator
     /**
      * @param string $serviceName
      * @param mixed $service
+     * @param bool $allowOverride
      */
-    public function set($serviceName, $service);
+    public function set($serviceName, $service, $allowOverride = false);
+
+    /**
+     * @param string $alias
+     * @param string $orgServiceName
+     */
+    public function setAlias($alias, $orgServiceName);
 } 
