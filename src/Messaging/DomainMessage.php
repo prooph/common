@@ -54,7 +54,7 @@ abstract class DomainMessage implements HasMessageName
     protected $metadata = array();
 
     /**
-     * Should be either MessageHeader::TYPE_COMMAND or MessageHeader::TYPE_EVENT
+     * Should be either MessageHeader::TYPE_COMMAND or MessageHeader::TYPE_EVENT or MessageHeader::TYPE_QUERY
      *
      * @return string
      */
@@ -105,7 +105,7 @@ abstract class DomainMessage implements HasMessageName
     }
 
     /**
-     * We force implementors to provide a meaningful factory method or use the fromArray or fromRemoteMessage methods
+     * We force implementers to provide a meaningful factory method or use the fromArray or fromRemoteMessage methods
      *
      * @param string $messageName
      * @param null $payload

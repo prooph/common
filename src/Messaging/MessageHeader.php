@@ -26,6 +26,7 @@ final class MessageHeader
 {
     const TYPE_COMMAND = 'command';
     const TYPE_EVENT   = 'event';
+    const TYPE_QUERY   = 'query';
 
     /**
      * @var Uuid
@@ -94,7 +95,7 @@ final class MessageHeader
         Assertion::notEmpty($version, 'MessageHeader.version must not be empty');
         Assertion::integer($version, 'MessageHeader.version must be an integer');
 
-        Assertion::inArray($type, [self::TYPE_COMMAND, self::TYPE_EVENT], 'MessageHeader.type must be command or event');
+        Assertion::inArray($type, [self::TYPE_COMMAND, self::TYPE_EVENT, self::TYPE_QUERY], 'MessageHeader.type must be command, query or event');
 
         $this->uuid      = $uuid;
         $this->createdAt = $createdAt;
