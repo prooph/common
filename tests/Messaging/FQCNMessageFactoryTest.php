@@ -11,6 +11,7 @@
 namespace ProophTest\Common\Messaging;
 use Prooph\Common\Messaging\FQCNMessageFactory;
 use ProophTest\Common\Mock\DoSomething;
+use ProophTest\Common\Mock\InvalidMessage;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -54,5 +55,23 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $command->version());
         $this->assertEquals(['command' => 'payload'], $command->payload());
         $this->assertEquals(['command' => 'metadata'], $command->metadata());
+    }
+
+    /**
+     * @test
+     * @expectedException \UnexpectedValueException
+     */
+    function it_throws_exception_when_message_class_cannot_be_found()
+    {
+        $this->messageFactory->createMessageFromArray('NotExistingClass', []);
+    }
+
+    /**
+     * @test
+     * @expectedException \UnexpectedValueException
+     */
+    function it_throws_exception_when_message_class_is_not_a_sub_class_domain_message()
+    {
+        $this->messageFactory->createMessageFromArray(InvalidMessage::class, []);
     }
 } 
