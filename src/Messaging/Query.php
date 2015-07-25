@@ -18,7 +18,7 @@ namespace Prooph\Common\Messaging;
  * @package Prooph\Common\Messaging
  * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
-class Query extends DomainMessage
+abstract class Query extends DomainMessage
 {
     /**
      * Should be either MessageHeader::TYPE_COMMAND or MessageHeader::TYPE_EVENT or MessageHeader::TYPE_QUERY

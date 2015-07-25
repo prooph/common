@@ -19,7 +19,7 @@ namespace Prooph\Common\Messaging;
  * @package Prooph\Common\Messaging
  * @author Alexander Miertsch <contact@prooph.de>
  */
-class Command extends DomainMessage
+abstract class Command extends DomainMessage
 {
     /**
      * @return string
