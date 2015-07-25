@@ -11,6 +11,7 @@
 namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\DomainEvent;
+use Prooph\Common\Messaging\DomainMessage;
 use Prooph\Common\Messaging\RemoteMessage;
 use ProophTest\Common\Mock\SomethingWasDone;
 use Rhumsaa\Uuid\Uuid;
@@ -110,14 +111,8 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_can_be_converted_to_remote_message_and_back()
+    function it_is_of_type_event()
     {
-        $remoteMessage = $this->domainEvent->toRemoteMessage();
-
-        $this->assertInstanceOf(RemoteMessage::class, $remoteMessage);
-
-        $commandCopy = SomethingWasDone::fromRemoteMessage($remoteMessage);
-
-        $this->assertEquals($this->domainEvent->toArray(), $commandCopy->toArray());
+        $this->assertEquals(DomainMessage::TYPE_EVENT, $this->domainEvent->messageType());
     }
 } 

@@ -24,9 +24,9 @@ abstract class Command extends DomainMessage
     /**
      * @return string
      */
-    protected function messageType()
+    public function messageType()
     {
-        return MessageHeader::TYPE_COMMAND;
+        return self::TYPE_COMMAND;
     }
 }
  
