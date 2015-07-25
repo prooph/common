@@ -14,7 +14,7 @@ namespace Prooph\Common\Event;
 /**
  * Interface ActionEventListenerAggregate
  *
- * An action event listener aggregate interface can itself attach to an ActionEventDispatcher.
+ * An action event listener aggregate interface can itself attach to an ActionEventEmitter.
  *
  * @package Prooph\Common\Event
  * @author Alexander Miertsch <kontakt@codeliner.ws>
@@ -22,12 +22,12 @@ namespace Prooph\Common\Event;
 interface ActionEventListenerAggregate 
 {
     /**
-     * @param ActionEventDispatcher $dispatcher
+     * @param ActionEventEmitter $dispatcher
      */
-    public function attach(ActionEventDispatcher $dispatcher);
+    public function attach(ActionEventEmitter $dispatcher);
 
     /**
-     * @param ActionEventDispatcher $dispatcher
+     * @param ActionEventEmitter $dispatcher
      */
-    public function detach(ActionEventDispatcher $dispatcher);
+    public function detach(ActionEventEmitter $dispatcher);
 } 

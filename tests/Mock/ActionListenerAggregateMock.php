@@ -11,7 +11,7 @@
 namespace ProophTest\Common\Mock;
 
 use Prooph\Common\Event\ActionEvent;
-use Prooph\Common\Event\ActionEventDispatcher;
+use Prooph\Common\Event\ActionEventEmitter;
 use Prooph\Common\Event\ActionEventListenerAggregate;
 use Prooph\Common\Event\DetachAggregateHandlers;
 
@@ -26,9 +26,9 @@ final class ActionListenerAggregateMock implements ActionEventListenerAggregate
     use DetachAggregateHandlers;
 
     /**
-     * @param ActionEventDispatcher $dispatcher
+     * @param ActionEventEmitter $dispatcher
      */
-    public function attach(ActionEventDispatcher $dispatcher)
+    public function attach(ActionEventEmitter $dispatcher)
     {
         $this->trackHandler($dispatcher->attachListener("test", [$this, "onTest"], 100));
     }
