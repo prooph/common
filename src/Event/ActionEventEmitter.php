@@ -12,7 +12,7 @@
 namespace Prooph\Common\Event;
 
 /**
- * Interface ActionEventDispatcher
+ * Interface ActionEventEmitter
  *
  * An action event dispatcher dispatches ActionEvents which are mutable objects used as a communication mechanism
  * between ActionEventListeners listening on the same event and performing actions based on it.
@@ -20,13 +20,13 @@ namespace Prooph\Common\Event;
  * @package Prooph\Common\Event
  * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
-interface ActionEventDispatcher 
+interface ActionEventEmitter
 {
     /**
      * @param null|string $name of the action event
      * @param string|object $target of the action event
      * @param null|array|\ArrayAccess $params with which the event is initialized
-     * @return ActionEvent that can be triggered by the ActionEventDispatcher
+     * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
     public function getNewActionEvent($name = null, $target = null, $params = null);
 

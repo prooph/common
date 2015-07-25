@@ -86,7 +86,7 @@ interface ActionEvent
     public function setParam($name, $value);
 
     /**
-     * Indicate whether or not the parent ActionEventDispatcher should stop propagating events
+     * Indicate whether or not the parent ActionEventEmitter should stop propagating events
      *
      * @param  bool $flag
      * @return void

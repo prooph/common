@@ -33,9 +33,9 @@ trait DetachAggregateHandlers
     }
 
     /**
-     * @param ActionEventDispatcher $dispatcher
+     * @param ActionEventEmitter $dispatcher
      */
-    public function detach(ActionEventDispatcher $dispatcher)
+    public function detach(ActionEventEmitter $dispatcher)
     {
         foreach ($this->handlerCollection as $handler)
         {

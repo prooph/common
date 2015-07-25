@@ -11,12 +11,12 @@
 namespace Prooph\Common\Event;
 
 /**
- * Class ProophActionEventDispatcher
+ * Class ProophActionEventEmitter
  *
  * @package Prooph\Common\Event
  * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
-class ProophActionEventDispatcher implements ActionEventDispatcher
+class ProophActionEventEmitter implements ActionEventEmitter
 {
     /**
      * Map of event name to listeners array
@@ -29,7 +29,7 @@ class ProophActionEventDispatcher implements ActionEventDispatcher
      * @param null|string $name of the action event
      * @param string|object $target of the action event
      * @param null|array|\ArrayAccess $params with which the event is initialized
-     * @return ActionEvent that can be triggered by the ActionEventDispatcher
+     * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
     public function getNewActionEvent($name = null, $target = null, $params = null)
     {
