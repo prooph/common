@@ -23,8 +23,8 @@ abstract class DomainEvent extends DomainMessage
     /**
      * @return string
      */
-    protected function messageType()
+    public function messageType()
     {
-        return MessageHeader::TYPE_EVENT;
+        return self::TYPE_EVENT;
     }
 }

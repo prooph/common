@@ -25,8 +25,8 @@ abstract class Query extends DomainMessage
      *
      * @return string
      */
-    protected function messageType()
+    public function messageType()
     {
-        return MessageHeader::TYPE_QUERY;
+        return self::TYPE_QUERY;
     }
 }

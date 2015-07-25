@@ -23,6 +23,10 @@ use Rhumsaa\Uuid\Uuid;
  */
 abstract class DomainMessage implements HasMessageName
 {
+    const TYPE_COMMAND = 'command';
+    const TYPE_EVENT   = 'event';
+    const TYPE_QUERY   = 'query';
+
     /**
      * @var string
      */
@@ -56,11 +60,11 @@ abstract class DomainMessage implements HasMessageName
     protected $dateTimeFormat = \DateTime::ISO8601;
 
     /**
-     * Should be either MessageHeader::TYPE_COMMAND or MessageHeader::TYPE_EVENT or MessageHeader::TYPE_QUERY
+     * Should be either DomainMessage::TYPE_COMMAND or DomainMessage::TYPE_EVENT or DomainMessage::TYPE_QUERY
      *
      * @return string
      */
-    abstract protected function messageType();
+    abstract public function messageType();
 
     /**
      * Return message payload as array
@@ -119,24 +123,6 @@ abstract class DomainMessage implements HasMessageName
         $message->createdAt = $messageData['created_at'];
 
         return $message;
-    }
-
-    /**
-     * Creates a new domain message from given RemoteMessage
-     *
-     * @param RemoteMessage $message
-     * @return static
-     */
-    public static function fromRemoteMessage(RemoteMessage $message)
-    {
-        return static::fromArray([
-            'uuid' => $message->header()->uuid()->toString(),
-            'name' => $message->name(),
-            'payload' => $message->payload(),
-            'version' => $message->header()->version(),
-            'created_at' => $message->header()->createdAt(),
-            'metadata' => $message->header()->metadata()
-        ]);
     }
 
     /**
@@ -204,16 +190,6 @@ abstract class DomainMessage implements HasMessageName
             'metadata' => $this->metadata,
             'created_at' => $this->createdAt()->format($this->dateTimeFormat)
         ];
-    }
-
-    /**
-     * @return RemoteMessage
-     */
-    public function toRemoteMessage()
-    {
-        $messageHeader = new MessageHeader($this->uuid, $this->createdAt, $this->version, $this->messageType(), $this->metadata);
-
-        return new RemoteMessage($this->name, $messageHeader, $this->payload());
     }
 
     /**

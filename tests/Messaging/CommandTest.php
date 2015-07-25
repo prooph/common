@@ -11,7 +11,7 @@
 namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\Command;
-use Prooph\Common\Messaging\RemoteMessage;
+use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\DoSomething;
 use Rhumsaa\Uuid\Uuid;
 
@@ -110,20 +110,6 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_can_be_converted_to_remote_message_and_back()
-    {
-        $remoteMessage = $this->command->toRemoteMessage();
-
-        $this->assertInstanceOf(RemoteMessage::class, $remoteMessage);
-
-        $commandCopy = DoSomething::fromRemoteMessage($remoteMessage);
-
-        $this->assertEquals($this->command->toArray(), $commandCopy->toArray());
-    }
-
-    /**
-     * @test
-     */
     function it_returns_new_instance_with_updated_version()
     {
         $newCommand = $this->command->withVersion(2);
@@ -170,5 +156,13 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((new \DateTimeImmutable)->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
         $this->assertEquals(['command' => 'payload'], $command->payload());
         $this->assertEquals([], $command->metadata());
+    }
+
+    /**
+     * @test
+     */
+    function it_is_of_type_command()
+    {
+        $this->assertEquals(DomainMessage::TYPE_COMMAND, $this->command->messageType());
     }
 } 

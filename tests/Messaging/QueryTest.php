@@ -11,8 +11,7 @@
 namespace ProophTest\Common\Messaging;
 
 
-use Prooph\Common\Messaging\MessageHeader;
-use Prooph\Common\Messaging\Query;
+use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\AskSomething;
 use Rhumsaa\Uuid\Uuid;
 
@@ -32,8 +31,6 @@ final class QueryTest extends \PHPUnit_Framework_TestCase
             'metadata' => ['query' => 'metadata']
         ]);
 
-        $remoteMessage = $query->toRemoteMessage();
-
-        $this->assertEquals(MessageHeader::TYPE_QUERY, $remoteMessage->header()->type());
+        $this->assertEquals(DomainMessage::TYPE_QUERY, $query->messageType());
     }
 } 
