@@ -15,7 +15,7 @@
         "zendframework/zend-eventmanager" : "~2.3",
         "zendframework/zend-log" : "~2.3",
         "psr/log": "~1.0",
-        "rhumsaa/uuid" : "~2.7",
+        "ramsey/uuid" : "~2.7",
         "beberlei/assert": "~2.0"
     },
     "require-dev": {
