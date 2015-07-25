@@ -13,6 +13,7 @@ namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\MessageHeader;
 use Prooph\Common\Messaging\Query;
+use ProophTest\Common\Mock\AskSomething;
 use Rhumsaa\Uuid\Uuid;
 
 final class QueryTest extends \PHPUnit_Framework_TestCase
@@ -22,7 +23,7 @@ final class QueryTest extends \PHPUnit_Framework_TestCase
      */
     function it_has_the_message_type_query()
     {
-        $query = Query::fromArray([
+        $query = AskSomething::fromArray([
             'name' => 'TestQuery',
             'uuid' => Uuid::uuid4()->toString(),
             'version' => 1,

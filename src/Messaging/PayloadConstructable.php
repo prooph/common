@@ -6,25 +6,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  * 
- * Date: 5/1/15 - 1:44 PM
+ * Date: 7/25/15 - 11:21 PM
  */
+
 namespace Prooph\Common\Messaging;
 
 /**
- * Class DomainEvent
- *
- * This is the base class for domain events.
+ * Interface PayloadConstructable
  *
  * @package Prooph\Common\Messaging
  * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
-abstract class DomainEvent extends DomainMessage
+interface PayloadConstructable 
 {
-    /**
-     * @return string
-     */
-    protected function messageType()
-    {
-        return MessageHeader::TYPE_EVENT;
-    }
-}
+    public function __construct(array $payload);
+} 

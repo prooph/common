@@ -12,6 +12,7 @@ namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\DomainEvent;
 use Prooph\Common\Messaging\RemoteMessage;
+use ProophTest\Common\Mock\SomethingWasDone;
 use Rhumsaa\Uuid\Uuid;
 
 final class DomainEventTest extends \PHPUnit_Framework_TestCase
@@ -36,7 +37,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
         $this->uuid = Uuid::uuid4();
         $this->createdAt = new \DateTimeImmutable();
 
-        $this->domainEvent = DomainEvent::fromArray([
+        $this->domainEvent = SomethingWasDone::fromArray([
             'name' => 'TestDomainEvent',
             'uuid' => $this->uuid->toString(),
             'version' => 1,
@@ -101,7 +102,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     {
         $commandData = $this->domainEvent->toArray();
 
-        $commandCopy = DomainEvent::fromArray($commandData);
+        $commandCopy = SomethingWasDone::fromArray($commandData);
 
         $this->assertEquals($commandData, $commandCopy->toArray());
     }
@@ -115,7 +116,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(RemoteMessage::class, $remoteMessage);
 
-        $commandCopy = DomainEvent::fromRemoteMessage($remoteMessage);
+        $commandCopy = SomethingWasDone::fromRemoteMessage($remoteMessage);
 
         $this->assertEquals($this->domainEvent->toArray(), $commandCopy->toArray());
     }

@@ -36,7 +36,7 @@ abstract class DomainMessage implements HasMessageName
     /**
      * @var int
      */
-    protected $version;
+    protected $version = 0;
 
     /**
      * @var \DateTimeImmutable
@@ -46,12 +46,14 @@ abstract class DomainMessage implements HasMessageName
     /**
      * @var array
      */
-    protected $payload = array();
+    protected $metadata = [];
 
     /**
-     * @var array
+     * Override this in your message if you want to use another format
+     *
+     * @var string
      */
-    protected $metadata = array();
+    protected $dateTimeFormat = \DateTime::ISO8601;
 
     /**
      * Should be either MessageHeader::TYPE_COMMAND or MessageHeader::TYPE_EVENT or MessageHeader::TYPE_QUERY
@@ -59,6 +61,25 @@ abstract class DomainMessage implements HasMessageName
      * @return string
      */
     abstract protected function messageType();
+
+    /**
+     * Return message payload as array
+     *
+     * The payload should only contain scalar types and sub arrays.
+     * The payload is normally passed to json_encode to persist the message or
+     * push it into a message queue.
+     *
+     * @return array
+     */
+    abstract public function payload();
+
+    /**
+     * This method is called when message is instantiated named constructor fromArray
+     *
+     * @param array $payload
+     * @return void
+     */
+    abstract protected function setPayload(array $payload);
 
     /**
      * Creates a new domain message from given array
@@ -70,20 +91,34 @@ abstract class DomainMessage implements HasMessageName
     {
         Assertion::keyExists($messageData, 'uuid');
         Assertion::keyExists($messageData, 'name');
+        Assertion::string($messageData['name'], 'name needs to be string');
+        Assertion::notEmpty($messageData['name'], 'name must not be empty');
         Assertion::keyExists($messageData, 'version');
+        Assertion::integer($messageData['version'], 'version needs to be an integer');
         Assertion::keyExists($messageData, 'payload');
+        Assertion::isArray($messageData['payload'], 'payload needs to be an array');
         Assertion::keyExists($messageData, 'metadata');
         Assertion::keyExists($messageData, 'created_at');
-        Assertion::isArray($messageData['metadata']);
+        Assertion::isArray($messageData['metadata'], 'metadata needs to be an array');
 
-        return new static(
-            $messageData['name'],
-            $messageData['payload'],
-            $messageData['version'],
-            Uuid::fromString($messageData['uuid']),
-            \DateTimeImmutable::createFromFormat(\DateTime::ISO8601, $messageData['created_at']),
-            $messageData['metadata']
-        );
+        $messageRef = new \ReflectionClass(get_called_class());
+
+        /** @var $message DomainMessage */
+        $message = $messageRef->newInstanceWithoutConstructor();
+
+        $message->uuid = Uuid::fromString($messageData['uuid']);
+        $message->name = $messageData['name'];
+        $message->version = $messageData['version'];
+        $message->setPayload($messageData['payload']);
+        $message->metadata = $messageData['metadata'];
+
+        if (! $messageData['created_at'] instanceof \DateTimeInterface) {
+            $messageData['created_at'] = \DateTimeImmutable::createFromFormat($message->dateTimeFormat, $messageData['created_at']);
+        }
+
+        $message->createdAt = $messageData['created_at'];
+
+        return $message;
     }
 
     /**
@@ -94,73 +129,32 @@ abstract class DomainMessage implements HasMessageName
      */
     public static function fromRemoteMessage(RemoteMessage $message)
     {
-        return new static(
-            $message->name(),
-            $message->payload(),
-            $message->header()->version(),
-            $message->header()->uuid(),
-            $message->header()->createdAt(),
-            $message->header()->metadata()
-        );
+        return static::fromArray([
+            'uuid' => $message->header()->uuid()->toString(),
+            'name' => $message->name(),
+            'payload' => $message->payload(),
+            'version' => $message->header()->version(),
+            'created_at' => $message->header()->createdAt(),
+            'metadata' => $message->header()->metadata()
+        ]);
     }
 
     /**
-     * We force implementers to provide a meaningful factory method or use the fromArray or fromRemoteMessage methods
-     *
-     * @param string $messageName
-     * @param null $payload
-     * @param int $version
-     * @param Uuid $uuid
-     * @param \DateTimeImmutable $createdAt
-     * @param array $metadata
-     * @throws \RuntimeException
+     * Call this method to initialize message with defaults
      */
-    protected function __construct($messageName, $payload = null, $version = 1, Uuid $uuid = null, \DateTimeImmutable $createdAt = null, array $metadata = [])
+    protected function init()
     {
-        $this->name = $messageName;
-
-        if (!is_null($payload)) {
-
-            if (! is_array($payload)) {
-                $payload = $this->convertPayload($payload);
-            }
-
-            if (is_array($payload)) {
-                $this->payload = $payload;
-            } else {
-                throw new \RuntimeException(
-                    sprintf(
-                        "Payload must be an array"
-                        . "instance of %s given.",
-                        ((is_object($payload)? get_class($payload) : gettype($payload)))
-                    )
-                );
-            }
+        if ($this->uuid === null) {
+            $this->uuid = Uuid::uuid4();
         }
 
-        $this->version = $version;
-
-        if (is_null($uuid)) {
-            $uuid = Uuid::uuid4();
+        if ($this->name === null) {
+            $this->name = get_called_class();
         }
 
-        $this->uuid = $uuid;
-
-        if (is_null($createdAt)) {
-            $createdAt = new \DateTimeImmutable();
+        if ($this->createdAt === null) {
+            $this->createdAt = new \DateTimeImmutable();
         }
-
-        $this->createdAt = $createdAt;
-
-        $this->metadata = $metadata;
-    }
-
-    /**
-     * @return array
-     */
-    public function payload()
-    {
-        return $this->payload;
     }
 
     /**
@@ -206,9 +200,9 @@ abstract class DomainMessage implements HasMessageName
             'name' => $this->name,
             'uuid' => $this->uuid->toString(),
             'version' => $this->version,
-            'payload' => $this->payload,
+            'payload' => $this->payload(),
             'metadata' => $this->metadata,
-            'created_at' => $this->createdAt()->format(\DateTime::ISO8601)
+            'created_at' => $this->createdAt()->format($this->dateTimeFormat)
         ];
     }
 
@@ -219,7 +213,7 @@ abstract class DomainMessage implements HasMessageName
     {
         $messageHeader = new MessageHeader($this->uuid, $this->createdAt, $this->version, $this->messageType(), $this->metadata);
 
-        return new RemoteMessage($this->name, $messageHeader, $this->payload);
+        return new RemoteMessage($this->name, $messageHeader, $this->payload());
     }
 
     /**
@@ -231,13 +225,53 @@ abstract class DomainMessage implements HasMessageName
     }
 
     /**
-     * Hook point for extending classes, override this method to convert payload to array
+     * Returns a new instance of the message with given metadata
      *
-     * @param mixed $payload
-     * @return mixed
+     * @param array $metadata
+     * @return DomainMessage
      */
-    protected function convertPayload($payload)
+    public function withMetadata(array $metadata)
     {
-        return $payload;
+        $messageData = $this->toArray();
+
+        $messageData['metadata'] = $metadata;
+
+        return static::fromArray($messageData);
     }
-} 
+
+    /**
+     * Returns a new instance of the message with given version
+     *
+     * @param int $version
+     * @return DomainMessage
+     */
+    public function withVersion($version)
+    {
+        Assertion::integer($version);
+
+        $messageData = $this->toArray();
+
+        $messageData['version'] = $version;
+
+        return static::fromArray($messageData);
+    }
+
+    /**
+     * Returns new instance of message with $key => $value added to metadata
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return DomainMessage
+     */
+    public function withAddedMetadata($key, $value)
+    {
+        Assertion::string($key, 'Invalid key');
+        Assertion::notEmpty($key, 'Invalid key');
+
+        $messageData = $this->toArray();
+
+        $messageData['metadata'][$key] = $value;
+
+        return static::fromArray($messageData);
+    }
+}

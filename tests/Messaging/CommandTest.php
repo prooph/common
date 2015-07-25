@@ -12,6 +12,7 @@ namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\Command;
 use Prooph\Common\Messaging\RemoteMessage;
+use ProophTest\Common\Mock\DoSomething;
 use Rhumsaa\Uuid\Uuid;
 
 final class CommandTest extends \PHPUnit_Framework_TestCase
@@ -36,7 +37,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
         $this->uuid = Uuid::uuid4();
         $this->createdAt = new \DateTimeImmutable();
 
-        $this->command = Command::fromArray([
+        $this->command = DoSomething::fromArray([
             'name' => 'TestCommand',
             'uuid' => $this->uuid->toString(),
             'version' => 1,
@@ -101,7 +102,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     {
         $commandData = $this->command->toArray();
 
-        $commandCopy = Command::fromArray($commandData);
+        $commandCopy = DoSomething::fromArray($commandData);
 
         $this->assertEquals($commandData, $commandCopy->toArray());
     }
@@ -115,8 +116,59 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(RemoteMessage::class, $remoteMessage);
 
-        $commandCopy = Command::fromRemoteMessage($remoteMessage);
+        $commandCopy = DoSomething::fromRemoteMessage($remoteMessage);
 
         $this->assertEquals($this->command->toArray(), $commandCopy->toArray());
+    }
+
+    /**
+     * @test
+     */
+    function it_returns_new_instance_with_updated_version()
+    {
+        $newCommand = $this->command->withVersion(2);
+
+        $this->assertNotSame($this->command, $newCommand);
+        $this->assertEquals(1, $this->command->version());
+        $this->assertEquals(2, $newCommand->version());
+    }
+
+    /**
+     * @test
+     */
+    function it_returns_new_instance_with_replaced_metadata()
+    {
+        $newCommand = $this->command->withMetadata(['other' => 'metadata']);
+
+        $this->assertNotSame($this->command, $newCommand);
+        $this->assertEquals(['command' => 'metadata'], $this->command->metadata());
+        $this->assertEquals(['other' => 'metadata'], $newCommand->metadata());
+    }
+
+    /**
+     * @test
+     */
+    function it_returns_new_instance_with_added_metadata()
+    {
+        $newCommand = $this->command->withAddedMetadata('other', 'metadata');
+
+        $this->assertNotSame($this->command, $newCommand);
+        $this->assertEquals(['command' => 'metadata'], $this->command->metadata());
+        $this->assertEquals(['command' => 'metadata', 'other' => 'metadata'], $newCommand->metadata());
+    }
+
+    /**
+     * @test
+     */
+    function it_is_initialized_with_defaults()
+    {
+        $command = new DoSomething(['command' => 'payload']);
+
+        $this->assertEquals(DoSomething::class, $command->messageName());
+        $this->assertInstanceOf(Uuid::class, $command->uuid());
+        $this->assertEquals(0, $command->version());
+        $this->assertEquals((new \DateTimeImmutable)->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
+        $this->assertEquals(['command' => 'payload'], $command->payload());
+        $this->assertEquals([], $command->metadata());
     }
 } 
