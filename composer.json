@@ -10,11 +10,6 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=5.5",
-        "zendframework/zend-stdlib" : "~2.3",
-        "zendframework/zend-servicemanager" : "~2.3",
-        "zendframework/zend-eventmanager" : "~2.3",
-        "zendframework/zend-log" : "~2.3",
-        "psr/log": "~1.0",
         "ramsey/uuid" : "~2.7",
         "beberlei/assert": "~2.0"
     },
@@ -23,6 +18,7 @@
         "satooshi/php-coveralls": "dev-master"
     },
     "suggest": {
+
     },
     "autoload": {
         "psr-4": {
