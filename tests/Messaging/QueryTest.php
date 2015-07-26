@@ -23,7 +23,7 @@ final class QueryTest extends \PHPUnit_Framework_TestCase
     function it_has_the_message_type_query()
     {
         $query = AskSomething::fromArray([
-            'name' => 'TestQuery',
+            'message_name' => 'TestQuery',
             'uuid' => Uuid::uuid4()->toString(),
             'version' => 1,
             'created_at' => (new \DateTimeImmutable())->format(\DateTime::ISO8601),

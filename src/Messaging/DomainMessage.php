@@ -30,7 +30,7 @@ abstract class DomainMessage implements HasMessageName
     /**
      * @var string
      */
-    protected $name;
+    protected $messageName;
 
     /**
      * @var Uuid
@@ -94,9 +94,9 @@ abstract class DomainMessage implements HasMessageName
     public static function fromArray(array $messageData)
     {
         Assertion::keyExists($messageData, 'uuid');
-        Assertion::keyExists($messageData, 'name');
-        Assertion::string($messageData['name'], 'name needs to be string');
-        Assertion::notEmpty($messageData['name'], 'name must not be empty');
+        Assertion::keyExists($messageData, 'message_name');
+        Assertion::string($messageData['message_name'], 'message name needs to be string');
+        Assertion::notEmpty($messageData['message_name'], 'message name must not be empty');
         Assertion::keyExists($messageData, 'version');
         Assertion::integer($messageData['version'], 'version needs to be an integer');
         Assertion::keyExists($messageData, 'payload');
@@ -111,7 +111,7 @@ abstract class DomainMessage implements HasMessageName
         $message = $messageRef->newInstanceWithoutConstructor();
 
         $message->uuid = Uuid::fromString($messageData['uuid']);
-        $message->name = $messageData['name'];
+        $message->messageName = $messageData['message_name'];
         $message->version = $messageData['version'];
         $message->setPayload($messageData['payload']);
         $message->metadata = $messageData['metadata'];
@@ -134,8 +134,8 @@ abstract class DomainMessage implements HasMessageName
             $this->uuid = Uuid::uuid4();
         }
 
-        if ($this->name === null) {
-            $this->name = get_called_class();
+        if ($this->messageName === null) {
+            $this->messageName = get_called_class();
         }
 
         if ($this->createdAt === null) {
@@ -183,7 +183,7 @@ abstract class DomainMessage implements HasMessageName
     public function toArray()
     {
         return [
-            'name' => $this->name,
+            'message_name' => $this->messageName,
             'uuid' => $this->uuid->toString(),
             'version' => $this->version,
             'payload' => $this->payload(),
@@ -197,7 +197,7 @@ abstract class DomainMessage implements HasMessageName
      */
     public function messageName()
     {
-        return $this->name;
+        return $this->messageName;
     }
 
     /**

@@ -41,7 +41,7 @@ class FQCNMessageFactory implements MessageFactory
             ));
         }
 
-        $messageData['name'] = $messageName;
+        $messageData['message_name'] = $messageName;
 
         return $messageName::fromArray($messageData);
     }
