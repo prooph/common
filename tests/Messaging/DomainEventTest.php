@@ -39,7 +39,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
         $this->createdAt = new \DateTimeImmutable();
 
         $this->domainEvent = SomethingWasDone::fromArray([
-            'name' => 'TestDomainEvent',
+            'message_name' => 'TestDomainEvent',
             'uuid' => $this->uuid->toString(),
             'version' => 1,
             'created_at' => $this->createdAt->format(\DateTime::ISO8601),

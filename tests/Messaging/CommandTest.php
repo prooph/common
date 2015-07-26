@@ -38,7 +38,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
         $this->createdAt = new \DateTimeImmutable();
 
         $this->command = DoSomething::fromArray([
-            'name' => 'TestCommand',
+            'message_name' => 'TestCommand',
             'uuid' => $this->uuid->toString(),
             'version' => 1,
             'created_at' => $this->createdAt->format(\DateTime::ISO8601),
