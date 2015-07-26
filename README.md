@@ -25,7 +25,7 @@ Just call `DomainMessage::init()` within your message constructors to initialize
 
 Each `Prooph\Common\Messaging\DomainMessage`
 - has a `Ramsey\Uuid uuid` to identify the message in logs or in event streams, allows for duplicate checks and so on,
-- a `string name` which defaults to the FQCN of the message, used to reconstitute a message
+- a `string messageName` which defaults to the FQCN of the message, used to reconstitute a message
 - a `int version` defaults to 0, mainly required for domain events to track version of corresponding aggregate roots
 - `array metadata` can contain scalar types or sub arrays, it is recommended to only use it as a hash table for scalar values
 - `DateTimeImmutable createdAt` is set when `DomainMessage::init`  is invoked, implementers can override `protected $dateTimeFormat = \DateTime::ISO8601` to use another format when message is serialized/deserialized.
