@@ -10,6 +10,7 @@
  */
 namespace Prooph\Common\Messaging;
 use Assert\Assertion;
+use Rhumsaa\Uuid\Uuid;
 
 /**
  * Class FQCNMessageFactory
@@ -41,7 +42,25 @@ class FQCNMessageFactory implements MessageFactory
             ));
         }
 
-        $messageData['message_name'] = $messageName;
+        if (! isset($messageData['message_name'])) {
+            $messageData['message_name'] = $messageName;
+        }
+
+        if (! isset($messageData['uuid'])) {
+            $messageData['uuid'] = Uuid::uuid4();
+        }
+
+        if (! isset($messageData['version'])) {
+            $messageData['version'] = 1;
+        }
+
+        if (! isset($messageData['created_at'])) {
+            $messageData['created_at'] = new \DateTimeImmutable();
+        }
+
+        if (! isset($messageData['metadata'])) {
+            $messageData['metadata'] = [];
+        }
 
         return $messageName::fromArray($messageData);
     }

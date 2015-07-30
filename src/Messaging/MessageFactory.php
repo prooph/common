@@ -20,6 +20,9 @@ namespace Prooph\Common\Messaging;
 interface MessageFactory 
 {
     /**
+     * Message data should contain at least a "payload" key
+     * but may also contain "uuid", "message_name", "version", "metadata", and "created_at".
+     *
      * @param string $messageName
      * @param array $messageData
      * @return DomainMessage
