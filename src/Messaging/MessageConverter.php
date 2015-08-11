@@ -14,7 +14,7 @@ namespace Prooph\Common\Messaging;
 /**
  * Interface MessageConverter
  *
- * A message converter is able to convert a DomainMessage into an array
+ * A message converter is able to convert a Message into an array
  *
  * @package Prooph\Common\Messaging
  * @author Alexander Miertsch <kontakt@codeliner.ws>
@@ -22,8 +22,10 @@ namespace Prooph\Common\Messaging;
 interface MessageConverter 
 {
     /**
-     * @param DomainMessage $domainMessage
+     *
+     *
+     * @param Message $domainMessage
      * @return array
      */
-    public function convertToArray(DomainMessage $domainMessage);
-} 
+    public function convertToArray(Message $domainMessage);
+}
