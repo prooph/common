@@ -117,7 +117,7 @@ abstract class DomainMessage implements HasMessageName
         $message->metadata = $messageData['metadata'];
 
         if (! $messageData['created_at'] instanceof \DateTimeInterface) {
-            $messageData['created_at'] = \DateTimeImmutable::createFromFormat($message->dateTimeFormat, $messageData['created_at']);
+            $messageData['created_at'] = \DateTimeImmutable::createFromFormat($message->dateTimeFormat, $messageData['created_at'], new \DateTimeZone('UTC'));
         }
 
         $message->createdAt = $messageData['created_at'];
@@ -139,7 +139,7 @@ abstract class DomainMessage implements HasMessageName
         }
 
         if ($this->createdAt === null) {
-            $this->createdAt = new \DateTimeImmutable();
+            $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
         }
     }
 
