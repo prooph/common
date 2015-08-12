@@ -85,7 +85,7 @@ A very simple way to handle payload data is to provide it as an array at constru
 prooph/common ships with a `Prooph\Common\Messaging\PayloadConstructable` interface and a `Prooph\Common\Messaging\PayloadTrait`.
 Use them if you don't want to worry about payload handling.
 
-##### Custom Messages
+### Custom Messages
 
 If you prefer to work with your own message implementations and want to use third party serializers everything you need to
 do is to implement the interface `Prooph\Common\Messaging\Message` and inject custom implementations of
