@@ -85,20 +85,12 @@ A very simple way to handle payload data is to provide it as an array at constru
 prooph/common ships with a `Prooph\Common\Messaging\PayloadConstructable` interface and a `Prooph\Common\Messaging\PayloadTrait`.
 Use them if you don't want to worry about payload handling.
 
-##### Custom message conversion
+##### Custom Messages
 
-If your message contains value objects and you don't want to serialize/deserialize them by hand you can also use hydrators or third party
-serializers. But you have to do a bit of work.
-
-First your message should return the value objects as payload when `public function payload()` is invoked.
-`protected function setPayload(array $payload)` on the other hand should assert that the given payload contains the same
-value objects and use some magic to set them as message properties.
-
-If all your messages now use such a custom payload logic you can implement your own `Prooph\Common\Messaging\MessageFactory`
-and `Prooph\Common\Messaging\MessageConverter` using hydrators or your serializer of choice to convert the message payload
-from/to array.
-All prooph/components which deal with message conversion use these objects and allow you to inject your own implementations.
-Please referrer to the documentation of the components for details.
+If you prefer to work with your own message implementations and want to use third party serializers everything you need to
+do is to implement the interface `Prooph\Common\Messaging\Message` and inject custom implementations of
+`Prooph\Common\Messaging\MessageFactory` and `Prooph\Common\Messaging\MessageConverter` into prooph components which deal
+with message conversion from/to plain PHP arrays. Please refer the docs of the components for details.
 
 ## ActionEventEmitter
 
