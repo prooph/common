@@ -16,17 +16,13 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class DomainMessage
  *
- * Base class for commands and domain events. Both are messages but differ in their intention.
+ * Base class for commands, domain events and queries. All are messages but differ in their intention.
  *
  * @package Prooph\Common\Messaging
  * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
-abstract class DomainMessage implements HasMessageName
+abstract class DomainMessage implements Message
 {
-    const TYPE_COMMAND = 'command';
-    const TYPE_EVENT   = 'event';
-    const TYPE_QUERY   = 'query';
-
     /**
      * @var string
      */
@@ -58,13 +54,6 @@ abstract class DomainMessage implements HasMessageName
      * @var string
      */
     protected $dateTimeFormat = \DateTime::ISO8601;
-
-    /**
-     * Should be either DomainMessage::TYPE_COMMAND or DomainMessage::TYPE_EVENT or DomainMessage::TYPE_QUERY
-     *
-     * @return string
-     */
-    abstract public function messageType();
 
     /**
      * Return message payload as array
@@ -176,7 +165,7 @@ abstract class DomainMessage implements HasMessageName
     }
 
     /**
-     * Returns an array copy of this command
+     * Returns an array copy of this message
      *
      * @return array
      */

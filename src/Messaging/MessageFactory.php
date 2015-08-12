@@ -25,7 +25,7 @@ interface MessageFactory
      *
      * @param string $messageName
      * @param array $messageData
-     * @return DomainMessage
+     * @return Message
      */
     public function createMessageFromArray($messageName, array $messageData);
-} 
+}
