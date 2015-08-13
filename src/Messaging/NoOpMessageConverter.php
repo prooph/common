@@ -9,6 +9,7 @@
  * Date: 7/26/15 - 3:30 PM
  */
 namespace Prooph\Common\Messaging;
+use Assert\Assertion;
 
 /**
  * Class NoOpMessageConverter
@@ -25,11 +26,13 @@ final class NoOpMessageConverter implements MessageConverter
 {
 
     /**
-     * @param DomainMessage $domainMessage
+     * @param Message $domainMessage
      * @return array
      */
-    public function convertToArray(DomainMessage $domainMessage)
+    public function convertToArray(Message $domainMessage)
     {
+        Assertion::isInstanceOf($domainMessage, DomainMessage::class);
+
         return $domainMessage->toArray();
     }
 }
