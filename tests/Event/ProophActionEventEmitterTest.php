@@ -231,7 +231,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     {
         $actionEventMock = $this->getMock(ActionEvent::class);
 
-        $this->assertNull($this->proophActionEventEmitter->dispatchUntil($actionEventMock, function() {
+        $this->assertNull($this->proophActionEventEmitter->dispatchUntil($actionEventMock, function () {
             return true;
         }));
     }
