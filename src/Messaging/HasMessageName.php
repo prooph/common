@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 06.07.14 - 18:34
  */
 
@@ -26,4 +26,3 @@ interface HasMessageName
      */
     public function messageName();
 }
- 

@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 7/25/15 - 11:21 PM
  */
 
@@ -17,7 +17,7 @@ namespace Prooph\Common\Messaging;
  * @package Prooph\Common\Messaging
  * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
-interface PayloadConstructable 
+interface PayloadConstructable
 {
     public function __construct(array $payload);
-} 
+}

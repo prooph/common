@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 3/5/15 - 6:12 PM
  */
 
@@ -78,4 +78,4 @@ interface ActionEventEmitter
      * @param  ActionEventListenerAggregate $aggregate
      */
     public function detachListenerAggregate(ActionEventListenerAggregate $aggregate);
-} 
+}

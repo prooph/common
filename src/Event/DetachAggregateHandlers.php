@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 3/5/15 - 8:34 PM
  */
 
@@ -37,9 +37,8 @@ trait DetachAggregateHandlers
      */
     public function detach(ActionEventEmitter $dispatcher)
     {
-        foreach ($this->handlerCollection as $handler)
-        {
+        foreach ($this->handlerCollection as $handler) {
             $dispatcher->detachListener($handler);
         }
     }
-} 
+}

@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 5/22/15 - 6:59 PM
  */
 namespace Prooph\Common\Event;
