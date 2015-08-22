@@ -11,6 +11,7 @@
 namespace ProophTest\Common\Event\ZF2;
 
 use Prooph\Common\Event\ActionEvent;
+use Prooph\Common\Event\ListenerHandler;
 use Prooph\Common\Event\ProophActionEventEmitter;
 use ProophTest\Common\Mock\ActionEventListenerMock;
 use ProophTest\Common\Mock\ActionListenerAggregateMock;
@@ -192,5 +193,46 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
 
         //If aggregate is not detached it would stop the event propagation and $listener1 would not be triggered
         $this->assertSame($actionEvent, $listener1->lastEvent);
+    }
+
+    /**
+     * @test
+     */
+    public function it_uses_default_event_name_if_none_given()
+    {
+        $event = $this->proophActionEventEmitter->getNewActionEvent();
+        $this->assertEquals('action_event', $event->getName());
+    }
+
+    /**
+     * @test
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Given parameter event should be a string.
+     */
+    public function it_throws_exception_when_event_is_not_a_string_when_attaching_listener()
+    {
+        $this->proophActionEventEmitter->attachListener(null, null);
+    }
+
+    /**
+     * @test
+     */
+    public function it_returns_false_when_unattached_listener_handler_gets_detached()
+    {
+        $listener = $this->getMockForAbstractClass(ListenerHandler::class);
+
+        $this->assertFalse($this->proophActionEventEmitter->detachListener($listener));
+    }
+
+    /**
+     * @test
+     */
+    public function it_returns_nothing_on_dispatch_until_when_no_listeners_attached()
+    {
+        $actionEventMock = $this->getMock(ActionEvent::class);
+
+        $this->assertNull($this->proophActionEventEmitter->dispatchUntil($actionEventMock, function() {
+            return true;
+        }));
     }
 }

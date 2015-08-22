@@ -51,7 +51,10 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
      */
     public function it_returns_param_if_set()
     {
-        $this->assertEquals('foo', $this->getTestEvent()->getParam('param1'));
+        $event = $this->getTestEvent();
+        $this->assertEquals('foo', $event->getParam('param1'));
+        $event->setParam('param1', 'bar');
+        $this->assertEquals('bar', $event->getParam('param1'));
     }
 
     /**
