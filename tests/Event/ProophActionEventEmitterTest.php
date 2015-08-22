@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 5/22/15 - 8:54 PM
  */
 namespace ProophTest\Common\Event\ZF2;
@@ -30,7 +30,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_attaches_action_event_listeners_and_dispatch_event_to_them()
+    public function it_attaches_action_event_listeners_and_dispatch_event_to_them()
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -53,7 +53,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_detaches_a_listener()
+    public function it_detaches_a_listener()
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -79,7 +79,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_triggers_listeners_until_callback_returns_true()
+    public function it_triggers_listeners_until_callback_returns_true()
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -106,7 +106,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_stops_dispatching_when_event_propagation_is_stopped()
+    public function it_stops_dispatching_when_event_propagation_is_stopped()
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -132,7 +132,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_triggers_listeners_with_high_priority_first()
+    public function it_triggers_listeners_with_high_priority_first()
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -158,7 +158,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_attaches_a_listener_aggregate()
+    public function it_attaches_a_listener_aggregate()
     {
         $listener1 = new ActionEventListenerMock();
         $listenerAggregate = new ActionListenerAggregateMock();
@@ -177,7 +177,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_detaches_listener_aggregate()
+    public function it_detaches_listener_aggregate()
     {
         $listener1 = new ActionEventListenerMock();
         $listenerAggregate = new ActionListenerAggregateMock();
@@ -193,4 +193,4 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
         //If aggregate is not detached it would stop the event propagation and $listener1 would not be triggered
         $this->assertSame($actionEvent, $listener1->lastEvent);
     }
-} 
+}

@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 08.03.14 - 21:03
  */
 
@@ -29,4 +29,3 @@ abstract class Command extends DomainMessage
         return self::TYPE_COMMAND;
     }
 }
- 

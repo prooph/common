@@ -5,10 +5,11 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 7/26/15 - 12:14 AM
  */
 namespace ProophTest\Common\Messaging;
+
 use Prooph\Common\Messaging\FQCNMessageFactory;
 use ProophTest\Common\Mock\DoSomething;
 use ProophTest\Common\Mock\InvalidMessage;
@@ -35,7 +36,7 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_creates_a_new_message_from_array_and_fqcn()
+    public function it_creates_a_new_message_from_array_and_fqcn()
     {
         $uuid = Uuid::uuid4();
         $createdAt = new \DateTimeImmutable();
@@ -60,7 +61,7 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_creates_a_new_message_with_defaults_from_array_and_fqcn()
+    public function it_creates_a_new_message_with_defaults_from_array_and_fqcn()
     {
         $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
             'payload' => ['command' => 'payload'],
@@ -76,7 +77,7 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
      * @test
      * @expectedException \UnexpectedValueException
      */
-    function it_throws_exception_when_message_class_cannot_be_found()
+    public function it_throws_exception_when_message_class_cannot_be_found()
     {
         $this->messageFactory->createMessageFromArray('NotExistingClass', []);
     }
@@ -85,8 +86,8 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
      * @test
      * @expectedException \UnexpectedValueException
      */
-    function it_throws_exception_when_message_class_is_not_a_sub_class_domain_message()
+    public function it_throws_exception_when_message_class_is_not_a_sub_class_domain_message()
     {
         $this->messageFactory->createMessageFromArray(InvalidMessage::class, []);
     }
-} 
+}

@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 3/5/15 - 6:17 PM
  */
 
@@ -20,7 +20,7 @@ namespace Prooph\Common\Event;
  * @package Prooph\Common\Event
  * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
-interface ActionEvent 
+interface ActionEvent
 {
     /**
      * Get event name
@@ -99,4 +99,4 @@ interface ActionEvent
      * @return bool
      */
     public function propagationIsStopped();
-} 
+}

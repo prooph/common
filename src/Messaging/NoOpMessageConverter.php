@@ -5,10 +5,11 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
+ *
  * Date: 7/26/15 - 3:30 PM
  */
 namespace Prooph\Common\Messaging;
+
 use Assert\Assertion;
 
 /**
