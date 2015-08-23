@@ -20,8 +20,16 @@ namespace Prooph\Common\Messaging;
 interface MessageFactory
 {
     /**
-     * Message data should contain at least a "payload" key
+     * Message data MUST contain at least a "payload" key
      * but may also contain "uuid", "message_name", "version", "metadata", and "created_at".
+     *
+     * If one of the optional keys is not part of the message data the factory should use a default instead:
+     * For example:
+     * uuid = Uuid::uuid4()
+     * message_name = $messageName //First parameter passed to the method
+     * version = 1
+     * metadata = []
+     * created_at = new \DateTimeImmutable()
      *
      * @param string $messageName
      * @param array $messageData
