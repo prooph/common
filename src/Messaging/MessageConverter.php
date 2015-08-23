@@ -22,7 +22,16 @@ namespace Prooph\Common\Messaging;
 interface MessageConverter
 {
     /**
+     * The result array MUST contain the following data structure:
      *
+     * [
+     *   'message_name' => string,
+     *   'uuid' => string,
+     *   'version' => int,
+     *   'payload' => array, //MUST only contain sub arrays and/or scalar types, objects, etc. are not allowed!
+     *   'metadata' => array, //MUST only contain key/value pairs with values being only scalar types!
+     *   'created_at' => string, //formatted \DateTime
+     * ]
      *
      * @param Message $domainMessage
      * @return array
