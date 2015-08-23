@@ -29,7 +29,7 @@ interface MessageFactory
      * message_name = $messageName //First parameter passed to the method
      * version = 1
      * metadata = []
-     * created_at = new \DateTimeImmutable()
+     * created_at = new \DateTimeImmutable('now', new \DateTimeZone('UTC')) //We recommend using UTC
      *
      * @param string $messageName
      * @param array $messageData
