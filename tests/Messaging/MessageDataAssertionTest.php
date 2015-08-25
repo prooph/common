@@ -9,6 +9,7 @@
  * Date: 8/25/15 - 3:50 PM
  */
 namespace ProophTest\Common\Messaging;
+
 use Prooph\Common\Messaging\MessageDataAssertion;
 use Prooph\Common\Messaging\NoOpMessageConverter;
 use ProophTest\Common\Mock\DoSomething;
@@ -25,7 +26,7 @@ final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_asserts_message_data_returned_by_the_no_op_message_converter()
+    public function it_asserts_message_data_returned_by_the_no_op_message_converter()
     {
         $testAssertions = new DoSomething(['test' => 'assertions']);
 
@@ -42,7 +43,7 @@ final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
      * @dataProvider
      * @dataProvider provideMessageDataWithMissingKey
      */
-    function it_throws_exception_if_message_data_is_invalid($messageData, $errorMessage)
+    public function it_throws_exception_if_message_data_is_invalid($messageData, $errorMessage)
     {
         $this->setExpectedException('\InvalidArgumentException', $errorMessage);
         MessageDataAssertion::assert($messageData);

@@ -18,7 +18,7 @@ use Assert\Assertion;
  * @package Prooph\Common\Messaging
  * @author Alexander Miertsch <kontakt@codeliner.ws>
  */
-final class MessageDataAssertion 
+final class MessageDataAssertion
 {
     /**
      * @param mixed $messageData
