@@ -77,7 +77,7 @@ final class MessageDataAssertion
     /**
      * @param mixed $payload
      */
-    private function assertSubPayload($payload)
+    private static function assertSubPayload($payload)
     {
         if (is_array($payload)) {
             foreach ($payload as $subPayload) {
@@ -92,7 +92,7 @@ final class MessageDataAssertion
     /**
      * @param array $metadata
      */
-    public function assertMetadata($metadata)
+    public static function assertMetadata($metadata)
     {
         Assertion::isArray($metadata, 'metadata must be an array');
 
@@ -105,7 +105,7 @@ final class MessageDataAssertion
     /**
      * @param \DateTimeInterface $createdAt
      */
-    public function assertCreatedAt($createdAt)
+    public static function assertCreatedAt($createdAt)
     {
         Assertion::isInstanceOf($createdAt, \DateTimeInterface::class, sprintf(
             'created_at must be of type %s. Got %s',
