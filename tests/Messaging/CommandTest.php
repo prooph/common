@@ -35,13 +35,13 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->uuid = Uuid::uuid4();
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
 
         $this->command = DoSomething::fromArray([
             'message_name' => 'TestCommand',
             'uuid' => $this->uuid->toString(),
             'version' => 1,
-            'created_at' => $this->createdAt->format(\DateTime::ISO8601),
+            'created_at' => $this->createdAt,
             'payload' => ['command' => 'payload'],
             'metadata' => ['command' => 'metadata']
         ]);

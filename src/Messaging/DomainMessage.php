@@ -49,13 +49,6 @@ abstract class DomainMessage implements Message
     protected $metadata = [];
 
     /**
-     * Override this in your message if you want to use another format
-     *
-     * @var string
-     */
-    protected $dateTimeFormat = \DateTime::ISO8601;
-
-    /**
      * Return message payload as array
      *
      * The payload should only contain scalar types and sub arrays.
@@ -82,17 +75,7 @@ abstract class DomainMessage implements Message
      */
     public static function fromArray(array $messageData)
     {
-        Assertion::keyExists($messageData, 'uuid');
-        Assertion::keyExists($messageData, 'message_name');
-        Assertion::string($messageData['message_name'], 'message name needs to be string');
-        Assertion::notEmpty($messageData['message_name'], 'message name must not be empty');
-        Assertion::keyExists($messageData, 'version');
-        Assertion::integer($messageData['version'], 'version needs to be an integer');
-        Assertion::keyExists($messageData, 'payload');
-        Assertion::isArray($messageData['payload'], 'payload needs to be an array');
-        Assertion::keyExists($messageData, 'metadata');
-        Assertion::keyExists($messageData, 'created_at');
-        Assertion::isArray($messageData['metadata'], 'metadata needs to be an array');
+        MessageDataAssertion::assert($messageData);
 
         $messageRef = new \ReflectionClass(get_called_class());
 
@@ -104,11 +87,6 @@ abstract class DomainMessage implements Message
         $message->version = $messageData['version'];
         $message->setPayload($messageData['payload']);
         $message->metadata = $messageData['metadata'];
-
-        if (! $messageData['created_at'] instanceof \DateTimeInterface) {
-            $messageData['created_at'] = \DateTimeImmutable::createFromFormat($message->dateTimeFormat, $messageData['created_at'], new \DateTimeZone('UTC'));
-        }
-
         $message->createdAt = $messageData['created_at'];
 
         return $message;
@@ -177,7 +155,7 @@ abstract class DomainMessage implements Message
             'version' => $this->version,
             'payload' => $this->payload(),
             'metadata' => $this->metadata,
-            'created_at' => $this->createdAt()->format($this->dateTimeFormat)
+            'created_at' => $this->createdAt(),
         ];
     }
 

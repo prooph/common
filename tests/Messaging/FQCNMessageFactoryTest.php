@@ -47,12 +47,12 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
             'version' => 2,
             'payload' => ['command' => 'payload'],
             'metadata' => ['command' => 'metadata'],
-            'created_at' => $createdAt->format(\DateTime::ISO8601),
+            'created_at' => $createdAt,
         ]);
 
         $this->assertEquals(DoSomething::class, $command->messageName());
         $this->assertEquals($uuid->toString(), $command->uuid()->toString());
-        $this->assertEquals($createdAt->format(\DateTime::ISO8601), $command->createdAt()->format(\DateTime::ISO8601));
+        $this->assertEquals($createdAt, $command->createdAt());
         $this->assertEquals(2, $command->version());
         $this->assertEquals(['command' => 'payload'], $command->payload());
         $this->assertEquals(['command' => 'metadata'], $command->metadata());
@@ -68,7 +68,7 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertEquals(DoSomething::class, $command->messageName());
-        $this->assertEquals(1, $command->version());
+        $this->assertEquals(0, $command->version());
         $this->assertEquals(['command' => 'payload'], $command->payload());
         $this->assertEquals([], $command->metadata());
     }

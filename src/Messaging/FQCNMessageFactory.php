@@ -51,11 +51,11 @@ class FQCNMessageFactory implements MessageFactory
         }
 
         if (! isset($messageData['version'])) {
-            $messageData['version'] = 1;
+            $messageData['version'] = 0;
         }
 
         if (! isset($messageData['created_at'])) {
-            $messageData['created_at'] = new \DateTimeImmutable();
+            $messageData['created_at'] = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
         }
 
         if (! isset($messageData['metadata'])) {
