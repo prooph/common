@@ -2,6 +2,17 @@
     "name": "prooph/common",
     "description": "Common classes used across prooph packages",
     "type": "library",
+    "authors": [
+        {
+            "name": "Alexander Miertsch",
+            "email": "contact@prooph.de",
+            "homepage": "http://www.prooph.de"
+        },
+        {
+            "name": "Sascha-Oliver Prolic",
+            "email": "saschaprolic@googlemail.com"
+        }
+    ],
     "keywords": [
         "prooph",
         "common"
