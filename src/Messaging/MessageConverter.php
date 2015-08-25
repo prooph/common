@@ -30,8 +30,11 @@ interface MessageConverter
      *   'version' => int,
      *   'payload' => array, //MUST only contain sub arrays and/or scalar types, objects, etc. are not allowed!
      *   'metadata' => array, //MUST only contain key/value pairs with values being only scalar types!
-     *   'created_at' => string, //formatted \DateTime
+     *   'created_at' => \DateTimeInterface,
      * ]
+     *
+     * The correct structure and types are asserted by MessageDataAssertion::assert()
+     * so make sure that the returned array of your custom conversion logic passes the assertion.
      *
      * @param Message $domainMessage
      * @return array

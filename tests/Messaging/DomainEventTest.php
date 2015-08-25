@@ -35,13 +35,13 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->uuid = Uuid::uuid4();
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
 
         $this->domainEvent = SomethingWasDone::fromArray([
             'message_name' => 'TestDomainEvent',
             'uuid' => $this->uuid->toString(),
             'version' => 1,
-            'created_at' => $this->createdAt->format(\DateTime::ISO8601),
+            'created_at' => $this->createdAt,
             'payload' => ['event' => 'payload'],
             'metadata' => ['event' => 'metadata']
         ]);
