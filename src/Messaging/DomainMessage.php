@@ -106,7 +106,11 @@ abstract class DomainMessage implements Message
         }
 
         if ($this->createdAt === null) {
-            $this->createdAt = \DateTimeImmutable::createFromFormat('U.u', microtime(true));
+            $time = microtime(true);
+            if (false === strpos($time, '.')) {
+                $time .= '.0000';
+            }
+            $this->createdAt = \DateTimeImmutable::createFromFormat('U.u', $time);
         }
     }
 
