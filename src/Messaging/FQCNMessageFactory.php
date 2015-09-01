@@ -55,7 +55,11 @@ class FQCNMessageFactory implements MessageFactory
         }
 
         if (! isset($messageData['created_at'])) {
-            $messageData['created_at'] = \DateTimeImmutable::createFromFormat('U.u', microtime(true));
+            $time = microtime(true);
+            if (false === strpos($time, '.')) {
+                $time .= '.0000';
+            }
+            $messageData['created_at'] = \DateTimeImmutable::createFromFormat('U.u', $time);
         }
 
         if (! isset($messageData['metadata'])) {
