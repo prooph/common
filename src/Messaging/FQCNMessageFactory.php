@@ -32,9 +32,7 @@ class FQCNMessageFactory implements MessageFactory
             throw new \UnexpectedValueException('Given message name is not a valid class: ' . (string)$messageName);
         }
 
-        $ref = new \ReflectionClass($messageName);
-
-        if (!$ref->isSubclassOf(DomainMessage::class)) {
+        if (!is_subclass_of($messageName, DomainMessage::class)) {
             throw new \UnexpectedValueException(sprintf(
                 'Message class %s is not a sub class of %s',
                 $messageName,
