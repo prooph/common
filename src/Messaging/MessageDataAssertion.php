@@ -86,7 +86,7 @@ final class MessageDataAssertion
             return;
         }
 
-        Assertion::scalar($payload, 'payload must only contain arrays and scalar values');
+        Assertion::nullOrscalar($payload, 'payload must only contain arrays and scalar values');
     }
 
     /**
