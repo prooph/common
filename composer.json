@@ -20,7 +20,7 @@
     "homepage": "http://getprooph.org/",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=5.5",
+        "php": "~5.5|~7.0",
         "ramsey/uuid" : "~2.8",
         "beberlei/assert": "~2.0"
     },
