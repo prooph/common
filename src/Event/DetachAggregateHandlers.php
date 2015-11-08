@@ -18,7 +18,7 @@ namespace Prooph\Common\Event;
  * to simplify detaching a ActionEventListenerAggregate.
  *
  * @package Prooph\Common\Event
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 trait DetachAggregateHandlers
 {

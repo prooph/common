@@ -19,7 +19,7 @@ use Rhumsaa\Uuid\Uuid;
  * Class FQCNMessageFactoryTest
  *
  * @package ProophTest\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
 {

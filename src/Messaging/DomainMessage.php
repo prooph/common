@@ -19,7 +19,7 @@ use Rhumsaa\Uuid\Uuid;
  * Base class for commands, domain events and queries. All are messages but differ in their intention.
  *
  * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 abstract class DomainMessage implements Message
 {

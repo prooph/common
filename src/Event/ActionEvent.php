@@ -18,7 +18,7 @@ namespace Prooph\Common\Event;
  * event and performing actions based on the event and its current state.
  *
  * @package Prooph\Common\Event
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 interface ActionEvent
 {

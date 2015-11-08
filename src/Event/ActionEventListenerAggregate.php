@@ -17,7 +17,7 @@ namespace Prooph\Common\Event;
  * An action event listener aggregate interface can itself attach to an ActionEventEmitter.
  *
  * @package Prooph\Common\Event
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 interface ActionEventListenerAggregate
 {

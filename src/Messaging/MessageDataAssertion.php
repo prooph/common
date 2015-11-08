@@ -16,7 +16,7 @@ use Assert\Assertion;
  * Class MessageDataAssertion
  *
  * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 final class MessageDataAssertion
 {

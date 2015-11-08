@@ -19,7 +19,7 @@ use Prooph\Common\Messaging\NoOpMessageConverter;
  * Class NoOpMessageConverterTest
  *
  * @package ProophTest\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 final class NoOpMessageConverterTest extends TestCase
 {

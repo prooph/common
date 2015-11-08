@@ -15,7 +15,7 @@ namespace Prooph\Common\Event;
  * Interface ListenerHandler
  *
  * @package Prooph\Common\Event
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 interface ListenerHandler
 {

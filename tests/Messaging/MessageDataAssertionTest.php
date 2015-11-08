@@ -19,7 +19,7 @@ use Rhumsaa\Uuid\Uuid;
  * Class MessageDataAssertionTest
  *
  * @package ProophTest\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
 {

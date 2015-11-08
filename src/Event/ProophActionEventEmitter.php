@@ -14,7 +14,7 @@ namespace Prooph\Common\Event;
  * Class ProophActionEventEmitter
  *
  * @package Prooph\Common\Event
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 class ProophActionEventEmitter implements ActionEventEmitter
 {

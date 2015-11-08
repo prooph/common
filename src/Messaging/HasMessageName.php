@@ -17,7 +17,7 @@ namespace Prooph\Common\Messaging;
  * A message implementing this interface is aware of its name.
  *
  * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 interface HasMessageName
 {

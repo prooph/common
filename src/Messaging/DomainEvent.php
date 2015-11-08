@@ -16,7 +16,7 @@ namespace Prooph\Common\Messaging;
  * This is the base class for domain events.
  *
  * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 abstract class DomainEvent extends DomainMessage
 {

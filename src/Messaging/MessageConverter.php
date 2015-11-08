@@ -17,7 +17,7 @@ namespace Prooph\Common\Messaging;
  * A message converter is able to convert a Message into an array
  *
  * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 interface MessageConverter
 {

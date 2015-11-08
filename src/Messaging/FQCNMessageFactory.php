@@ -16,7 +16,7 @@ use Rhumsaa\Uuid\Uuid;
  * Class FQCNMessageFactory
  *
  * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 class FQCNMessageFactory implements MessageFactory
 {

@@ -19,7 +19,7 @@ namespace Prooph\Common\Messaging;
  * for DomainMessage::payload() and DomainMessage::setPayload()
  *
  * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 trait PayloadTrait
 {

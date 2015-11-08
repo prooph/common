@@ -16,7 +16,7 @@ namespace Prooph\Common\Event;
  * Default implementation of ActionEvent
  *
  * @package Prooph\Common\Event
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 class DefaultActionEvent implements ActionEvent
 {

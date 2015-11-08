@@ -14,7 +14,7 @@ namespace Prooph\Common\Event;
  * Class DefaultListenerHandler
  *
  * @package Prooph\Common\Event
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 final class DefaultListenerHandler implements ListenerHandler
 {

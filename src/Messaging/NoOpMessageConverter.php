@@ -21,7 +21,7 @@ use Assert\Assertion;
  * with a custom converter using some special logic.
  *
  * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 final class NoOpMessageConverter implements MessageConverter
 {

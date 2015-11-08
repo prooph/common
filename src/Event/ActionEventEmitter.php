@@ -18,7 +18,7 @@ namespace Prooph\Common\Event;
  * between ActionEventListeners listening on the same event and performing actions based on it.
  *
  * @package Prooph\Common\Event
- * @author Alexander Miertsch <kontakt@codeliner.ws>
+ * @author Alexander Miertsch <contact@prooph.de>
  */
 interface ActionEventEmitter
 {
