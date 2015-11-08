@@ -133,6 +133,34 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_stops_dispatching_when_event_propagation_is_stopped_2()
+    {
+        $lastEvent = null;
+        $listener1 = new ActionEventListenerMock();
+        $listener2 = function (ActionEvent $event) {};
+        $listener3 = function (ActionEvent $event) use (&$lastEvent) {
+            if ($event->getParam('payload', false)) {
+                $lastEvent = $event;
+            }
+        };
+
+        $actionEvent = $this->proophActionEventEmitter->getNewActionEvent("test", $this, ['payload' => true]);
+
+        $this->proophActionEventEmitter->attachListener("test", $listener1);
+        $this->proophActionEventEmitter->attachListener("test", $listener2);
+        $this->proophActionEventEmitter->attachListener("test", $listener3);
+
+        $this->proophActionEventEmitter->dispatchUntil($actionEvent, function (ActionEvent $e) {
+            $e->stopPropagation(true);
+        });
+
+        $this->assertNull($lastEvent);
+        $this->assertSame($actionEvent, $listener1->lastEvent);
+    }
+
+    /**
+     * @test
+     */
     public function it_triggers_listeners_with_high_priority_first()
     {
         $lastEvent = null;

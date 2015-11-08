@@ -32,9 +32,7 @@ class FQCNMessageFactory implements MessageFactory
             throw new \UnexpectedValueException('Given message name is not a valid class: ' . (string)$messageName);
         }
 
-        $ref = new \ReflectionClass($messageName);
-
-        if (!$ref->isSubclassOf(DomainMessage::class)) {
+        if (!is_subclass_of($messageName, DomainMessage::class)) {
             throw new \UnexpectedValueException(sprintf(
                 'Message class %s is not a sub class of %s',
                 $messageName,
@@ -55,7 +53,11 @@ class FQCNMessageFactory implements MessageFactory
         }
 
         if (! isset($messageData['created_at'])) {
-            $messageData['created_at'] = \DateTimeImmutable::createFromFormat('U.u', microtime(true));
+            $time = microtime(true);
+            if (false === strpos($time, '.')) {
+                $time .= '.0000';
+            }
+            $messageData['created_at'] = \DateTimeImmutable::createFromFormat('U.u', $time);
         }
 
         if (! isset($messageData['metadata'])) {

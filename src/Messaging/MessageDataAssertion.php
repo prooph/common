@@ -82,11 +82,11 @@ final class MessageDataAssertion
         if (is_array($payload)) {
             foreach ($payload as $subPayload) {
                 self::assertSubPayload($subPayload);
-                return;
             }
+            return;
         }
 
-        Assertion::scalar($payload, 'payload must only contain arrays and scalar values');
+        Assertion::nullOrscalar($payload, 'payload must only contain arrays and scalar values');
     }
 
     /**
