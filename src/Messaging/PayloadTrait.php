@@ -52,4 +52,10 @@ trait PayloadTrait
     {
         $this->payload = $payload;
     }
+
+    /**
+     * Use this method to initialize message with defaults or extend your class from
+     * \Prooph\Common\Messaging\DomainMessage
+     */
+    abstract protected function init();
 }
