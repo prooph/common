@@ -13,7 +13,7 @@ namespace ProophTest\Common\Messaging;
 use Prooph\Common\Messaging\MessageDataAssertion;
 use Prooph\Common\Messaging\NoOpMessageConverter;
 use ProophTest\Common\Mock\DoSomething;
-use Rhumsaa\Uuid\Uuid;
+use Prooph\Common\Uuid;
 
 /**
  * Class MessageDataAssertionTest
@@ -51,7 +51,7 @@ final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
 
     public function provideMessageDataWithMissingKey()
     {
-        $uuid = Uuid::uuid4()->toString();
+        $uuid = (new Uuid\Version4Generator())->generate();
         $payload = ['foo' => ['bar' => ['baz' => 100]]];
         $metadata = ['key' => 'value', 'string' => 'scalar'];
         $createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));

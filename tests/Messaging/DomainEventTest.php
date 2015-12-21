@@ -12,8 +12,8 @@ namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\DomainEvent;
 use Prooph\Common\Messaging\DomainMessage;
+use Prooph\Common\Uuid;
 use ProophTest\Common\Mock\SomethingWasDone;
-use Rhumsaa\Uuid\Uuid;
 
 final class DomainEventTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,18 +28,18 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     private $createdAt;
 
     /**
-     * @var Uuid
+     * @var string
      */
     private $uuid;
 
     protected function setUp()
     {
-        $this->uuid = Uuid::uuid4();
+        $this->uuid = (new Uuid\Version4Generator())->generate();
         $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
 
         $this->domainEvent = SomethingWasDone::fromArray([
             'message_name' => 'TestDomainEvent',
-            'uuid' => $this->uuid->toString(),
+            'uuid' => $this->uuid,
             'version' => 1,
             'created_at' => $this->createdAt,
             'payload' => ['event' => 'payload'],
@@ -60,7 +60,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
      */
     public function it_has_a_uuid()
     {
-        $this->assertTrue($this->uuid->equals($this->domainEvent->uuid()));
+        $this->assertEquals($this->uuid, $this->domainEvent->uuid());
     }
 
     /**

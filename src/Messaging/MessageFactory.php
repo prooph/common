@@ -31,7 +31,7 @@ interface MessageFactory
      *
      * If one of the optional keys is not part of the message data the factory should use a default instead:
      * For example:
-     * uuid = Uuid::uuid4()
+     * uuid = (new \Prooph\Common\Uuid\Version4Generator())->generate()
      * message_name = $messageName //First parameter passed to the method
      * version = 1
      * metadata = []

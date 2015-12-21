@@ -12,7 +12,7 @@ namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\AskSomething;
-use Rhumsaa\Uuid\Uuid;
+use Prooph\Common\Uuid;
 
 final class QueryTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,7 +23,7 @@ final class QueryTest extends \PHPUnit_Framework_TestCase
     {
         $query = AskSomething::fromArray([
             'message_name' => 'TestQuery',
-            'uuid' => Uuid::uuid4()->toString(),
+            'uuid' => (new Uuid\Version4Generator())->generate(),
             'version' => 1,
             'created_at' => (new \DateTimeImmutable('now', new \DateTimeZone('UTC'))),
             'payload' => ['query' => 'payload'],

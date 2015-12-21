@@ -11,8 +11,6 @@
 
 namespace Prooph\Common\Messaging;
 
-use Rhumsaa\Uuid\Uuid;
-
 /**
  * Interface Message
  *
@@ -33,7 +31,7 @@ interface Message extends HasMessageName
     public function messageType();
 
     /**
-     * @return Uuid
+     * @return string
      */
     public function uuid();
 

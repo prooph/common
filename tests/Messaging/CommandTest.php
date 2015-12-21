@@ -10,10 +10,10 @@
  */
 namespace ProophTest\Common\Messaging;
 
+use ProophTest\Common\Mock\DoSomething;
 use Prooph\Common\Messaging\Command;
 use Prooph\Common\Messaging\DomainMessage;
-use ProophTest\Common\Mock\DoSomething;
-use Rhumsaa\Uuid\Uuid;
+use Prooph\Common\Uuid;
 
 final class CommandTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,18 +28,18 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     private $createdAt;
 
     /**
-     * @var Uuid
+     * @var string
      */
     private $uuid;
 
     protected function setUp()
     {
-        $this->uuid = Uuid::uuid4();
+        $this->uuid = (new Uuid\Version4Generator())->generate();
         $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
 
         $this->command = DoSomething::fromArray([
             'message_name' => 'TestCommand',
-            'uuid' => $this->uuid->toString(),
+            'uuid' => $this->uuid,
             'version' => 1,
             'created_at' => $this->createdAt,
             'payload' => ['command' => 'payload'],
@@ -60,7 +60,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
      */
     public function it_has_a_uuid()
     {
-        $this->assertTrue($this->uuid->equals($this->command->uuid()));
+        $this->assertEquals($this->uuid, $this->command->uuid());
     }
 
     /**
@@ -151,7 +151,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
         $command = new DoSomething(['command' => 'payload']);
 
         $this->assertEquals(DoSomething::class, $command->messageName());
-        $this->assertInstanceOf(Uuid::class, $command->uuid());
+        $this->assertTrue(is_string($command->uuid()));
         $this->assertEquals(0, $command->version());
         $this->assertEquals((new \DateTimeImmutable)->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
         $this->assertEquals(['command' => 'payload'], $command->payload());

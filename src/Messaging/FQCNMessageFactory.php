@@ -10,7 +10,7 @@
  */
 namespace Prooph\Common\Messaging;
 
-use Rhumsaa\Uuid\Uuid;
+use Prooph\Common\Uuid;
 
 /**
  * Class FQCNMessageFactory
@@ -45,7 +45,7 @@ class FQCNMessageFactory implements MessageFactory
         }
 
         if (! isset($messageData['uuid'])) {
-            $messageData['uuid'] = Uuid::uuid4();
+            $messageData['uuid'] = (new Uuid\Version4Generator())->generate();
         }
 
         if (! isset($messageData['version'])) {

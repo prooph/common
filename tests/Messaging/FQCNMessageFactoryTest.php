@@ -11,9 +11,9 @@
 namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\FQCNMessageFactory;
+use Prooph\Common\Uuid;
 use ProophTest\Common\Mock\DoSomething;
 use ProophTest\Common\Mock\InvalidMessage;
-use Rhumsaa\Uuid\Uuid;
 
 /**
  * Class FQCNMessageFactoryTest
@@ -38,12 +38,12 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function it_creates_a_new_message_from_array_and_fqcn()
     {
-        $uuid = Uuid::uuid4();
+        $uuid = (new Uuid\Version4Generator())->generate();
         $createdAt = new \DateTimeImmutable();
 
 
         $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
-            'uuid' => $uuid->toString(),
+            'uuid' => $uuid,
             'version' => 2,
             'payload' => ['command' => 'payload'],
             'metadata' => ['command' => 'metadata'],
@@ -51,7 +51,7 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertEquals(DoSomething::class, $command->messageName());
-        $this->assertEquals($uuid->toString(), $command->uuid()->toString());
+        $this->assertEquals($uuid, $command->uuid());
         $this->assertEquals($createdAt, $command->createdAt());
         $this->assertEquals(2, $command->version());
         $this->assertEquals(['command' => 'payload'], $command->payload());
