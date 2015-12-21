@@ -11,7 +11,7 @@
 namespace Prooph\Common\Messaging;
 
 use Assert\Assertion;
-use Rhumsaa\Uuid\Uuid;
+use Prooph\Common\Uuid;
 
 /**
  * Class DomainMessage
@@ -29,7 +29,7 @@ abstract class DomainMessage implements Message
     protected $messageName;
 
     /**
-     * @var Uuid
+     * @var string
      */
     protected $uuid;
 
@@ -82,7 +82,7 @@ abstract class DomainMessage implements Message
         /** @var $message DomainMessage */
         $message = $messageRef->newInstanceWithoutConstructor();
 
-        $message->uuid = Uuid::fromString($messageData['uuid']);
+        $message->uuid = $messageData['uuid'];
         $message->messageName = $messageData['message_name'];
         $message->version = $messageData['version'];
         $message->setPayload($messageData['payload']);
@@ -98,7 +98,7 @@ abstract class DomainMessage implements Message
     protected function init()
     {
         if ($this->uuid === null) {
-            $this->uuid = Uuid::uuid4();
+            $this->uuid = (new Uuid\Version4Generator())->generate();
         }
 
         if ($this->messageName === null) {
@@ -155,7 +155,7 @@ abstract class DomainMessage implements Message
     {
         return [
             'message_name' => $this->messageName,
-            'uuid' => $this->uuid->toString(),
+            'uuid' => $this->uuid,
             'version' => $this->version,
             'payload' => $this->payload(),
             'metadata' => $this->metadata,
