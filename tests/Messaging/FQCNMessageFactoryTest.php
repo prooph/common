@@ -13,7 +13,7 @@ namespace ProophTest\Common\Messaging;
 use Prooph\Common\Messaging\FQCNMessageFactory;
 use ProophTest\Common\Mock\DoSomething;
 use ProophTest\Common\Mock\InvalidMessage;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FQCNMessageFactoryTest

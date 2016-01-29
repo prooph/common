@@ -11,7 +11,7 @@
 namespace Prooph\Common\Messaging;
 
 use Assert\Assertion;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class DomainMessage

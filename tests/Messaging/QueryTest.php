@@ -12,7 +12,7 @@ namespace ProophTest\Common\Messaging;
 
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\AskSomething;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 final class QueryTest extends \PHPUnit_Framework_TestCase
 {
