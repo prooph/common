@@ -85,9 +85,9 @@ abstract class DomainMessage implements Message
         $message->uuid = Uuid::fromString($messageData['uuid']);
         $message->messageName = $messageData['message_name'];
         $message->version = $messageData['version'];
-        $message->setPayload($messageData['payload']);
         $message->metadata = $messageData['metadata'];
         $message->createdAt = $messageData['created_at'];
+        $message->setPayload($messageData['payload']);
 
         return $message;
     }
