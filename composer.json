@@ -20,14 +20,15 @@
     "homepage": "http://getprooph.org/",
     "license": "BSD-3-Clause",
     "require": {
-        "php": "~5.5|~7.0",
-        "ramsey/uuid" : "~2.8",
-        "beberlei/assert": "~2.3"
+        "php": "^7.1.0",
+        "ramsey/uuid" : "^3.5.0",
+        "beberlei/assert": "^2.6.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.8",
-        "fabpot/php-cs-fixer": "1.7.*",
-        "satooshi/php-coveralls": "^1.0"
+        "phpunit/phpunit": "^5.5.5",
+        "friendsofphp/php-cs-fixer": "^1.12.1",
+        "satooshi/php-coveralls": "^1.0",
+        "malukenho/docheader": "^0.1.3"
     },
     "suggest": {
 

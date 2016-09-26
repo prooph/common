@@ -1,13 +1,15 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ *  (c) 2014-2016 prooph software GmbH <contact@prooph.de>
+ *  (c) 2015-2016 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * Date: 22.08.15 - 15:27
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
  */
+
+declare (strict_types=1);
+
 namespace ProophTest\Common\Event;
 
 use PHPUnit_Framework_TestCase as TestCase;

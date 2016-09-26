@@ -1,13 +1,14 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ *  (c) 2014-2016 prooph software GmbH <contact@prooph.de>
+ *  (c) 2015-2016 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * Date: 7/25/15 - 11:19 PM
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
  */
+
+declare (strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -28,27 +29,18 @@ trait PayloadTrait
      */
     protected $payload;
 
-    /**
-     * @param array $payload
-     */
     public function __construct(array $payload)
     {
         $this->init();
         $this->setPayload($payload);
     }
 
-    /**
-     * @return array
-     */
-    public function payload()
+    public function payload() : array
     {
         return $this->payload;
     }
 
-    /**
-     * @param array $payload
-     */
-    protected function setPayload(array $payload)
+    protected function setPayload(array $payload) : void
     {
         $this->payload = $payload;
     }
@@ -57,5 +49,5 @@ trait PayloadTrait
      * Use this method to initialize message with defaults or extend your class from
      * \Prooph\Common\Messaging\DomainMessage
      */
-    abstract protected function init();
+    abstract protected function init() : void;
 }

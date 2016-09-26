@@ -1,14 +1,16 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ *  (c) 2014-2016 prooph software GmbH <contact@prooph.de>
+ *  (c) 2015-2016 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- *
- * Date: 5/22/15 - 8:54 PM
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
  */
-namespace ProophTest\Common\Event\ZF2;
+
+declare (strict_types=1);
+
+namespace ProophTest\Common\Event;
 
 use Prooph\Common\Event\ActionEvent;
 use Prooph\Common\Event\ListenerHandler;
@@ -257,7 +259,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_returns_nothing_on_dispatch_until_when_no_listeners_attached()
     {
-        $actionEventMock = $this->getMock(ActionEvent::class);
+        $actionEventMock = $this->createMock(ActionEvent::class);
 
         $this->assertNull($this->proophActionEventEmitter->dispatchUntil($actionEventMock, function () {
             return true;
