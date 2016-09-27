@@ -21,7 +21,7 @@ final class QueryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_the_message_type_query()
+    public function it_has_the_message_type_query() : void
     {
         $query = AskSomething::fromArray([
             'message_name' => 'TestQuery',

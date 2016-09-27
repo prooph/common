@@ -28,7 +28,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_can_be_initialized_with_a_name_a_target_and_params()
+    public function it_can_be_initialized_with_a_name_a_target_and_params() : void
     {
         $event = $this->getTestEvent();
 
@@ -40,7 +40,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_can_initialized_without_a_target_and_params()
+    public function it_can_initialized_without_a_target_and_params() : void
     {
         $event = new DefaultActionEvent('test-event');
 
@@ -51,7 +51,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_param_if_set()
+    public function it_returns_param_if_set() : void
     {
         $event = $this->getTestEvent();
         $this->assertEquals('foo', $event->getParam('param1'));
@@ -62,7 +62,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_null_if_param_is_not_set_and_no_other_default_is_given()
+    public function it_returns_null_if_param_is_not_set_and_no_other_default_is_given() : void
     {
         $this->assertNull($this->getTestEvent()->getParam('unknown'));
     }
@@ -70,7 +70,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_default_if_param_is_not_set()
+    public function it_returns_default_if_param_is_not_set() : void
     {
         $this->assertEquals('default', $this->getTestEvent()->getParam('unknown', 'default'));
     }
@@ -78,7 +78,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_changes_name_when_new_one_is_set()
+    public function it_changes_name_when_new_one_is_set() : void
     {
         $event = $this->getTestEvent();
 
@@ -90,17 +90,15 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @dataProvider provideInvalidNames
-     * @expectedException \InvalidArgumentException
      */
-    public function it_only_allows_strings_as_event_name($invalidName)
+    public function it_only_allows_strings_as_event_name($invalidName) : void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->getTestEvent()->setName($invalidName);
     }
 
-    /**
-     * @return array
-     */
-    public function provideInvalidNames()
+    public function provideInvalidNames() : array
     {
         return [
             [1],
@@ -113,7 +111,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_overrides_params_array_if_new_one_is_set()
+    public function it_overrides_params_array_if_new_one_is_set() : void
     {
         $event = $this->getTestEvent();
 
@@ -125,7 +123,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_allows_object_implementing_array_access_as_params()
+    public function it_allows_object_implementing_array_access_as_params() : void
     {
         $arrayLikeObject = new \ArrayObject(['object_param' => 'baz']);
 
@@ -138,10 +136,11 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
-    public function it_does_not_allow_params_object_that_is_not_of_type_array_access()
+    public function it_does_not_allow_params_object_that_is_not_of_type_array_access() : void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $stdObj = new \stdClass();
 
         $stdObj->param1 = 'foo';
@@ -152,7 +151,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_changes_target_if_new_is_set()
+    public function it_changes_target_if_new_is_set() : void
     {
         $event = $this->getTestEvent();
 
@@ -166,7 +165,7 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_indicates_that_propagation_should_be_stopped()
+    public function it_indicates_that_propagation_should_be_stopped() : void
     {
         $event = $this->getTestEvent();
 

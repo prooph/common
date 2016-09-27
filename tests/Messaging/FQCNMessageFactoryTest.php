@@ -38,7 +38,7 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_creates_a_new_message_from_array_and_fqcn()
+    public function it_creates_a_new_message_from_array_and_fqcn() : void
     {
         $uuid = Uuid::uuid4();
         $createdAt = new \DateTimeImmutable();
@@ -63,7 +63,7 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_creates_a_new_message_with_defaults_from_array_and_fqcn()
+    public function it_creates_a_new_message_with_defaults_from_array_and_fqcn() : void
     {
         $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
             'payload' => ['command' => 'payload'],
@@ -77,19 +77,21 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \UnexpectedValueException
      */
-    public function it_throws_exception_when_message_class_cannot_be_found()
+    public function it_throws_exception_when_message_class_cannot_be_found() : void
     {
+        $this->expectException(\UnexpectedValueException::class);
+
         $this->messageFactory->createMessageFromArray('NotExistingClass', []);
     }
 
     /**
      * @test
-     * @expectedException \UnexpectedValueException
      */
-    public function it_throws_exception_when_message_class_is_not_a_sub_class_domain_message()
+    public function it_throws_exception_when_message_class_is_not_a_sub_class_domain_message() : void
     {
+        $this->expectException(\UnexpectedValueException::class);
+
         $this->messageFactory->createMessageFromArray(InvalidMessage::class, []);
     }
 }

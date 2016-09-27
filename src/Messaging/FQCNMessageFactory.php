@@ -55,7 +55,7 @@ class FQCNMessageFactory implements MessageFactory
         }
 
         if (! isset($messageData['created_at'])) {
-            $time = microtime(true);
+            $time = (string) microtime(true);
             if (false === strpos($time, '.')) {
                 $time .= '.0000';
             }

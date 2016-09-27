@@ -91,7 +91,7 @@ abstract class DomainMessage implements Message
         }
 
         if ($this->createdAt === null) {
-            $time = microtime(true);
+            $time = (string) microtime(true);
             if (false === strpos($time, '.')) {
                 $time .= '.0000';
             }

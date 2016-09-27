@@ -23,11 +23,12 @@ class DefaultListenerHandlerTest extends TestCase
 {
     /**
      * @test
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Given parameter listener should be callable or an instance of ActionEventListener
      */
-    public function it_throws_exception_when_invalid_listener_given()
+    public function it_throws_exception_when_invalid_listener_given() : void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Given parameter listener should be callable or an instance of ActionEventListener');
+
         new DefaultListenerHandler('invalid');
     }
 }
