@@ -22,13 +22,7 @@ use Ramsey\Uuid\Uuid;
  */
 class FQCNMessageFactory implements MessageFactory
 {
-    /**
-     * @param string $messageName
-     * @param array $messageData
-     * @throws \UnexpectedValueException
-     * @return DomainMessage
-     */
-    public function createMessageFromArray($messageName, array $messageData)
+    public function createMessageFromArray(string $messageName, array $messageData) : Message
     {
         if (! class_exists($messageName)) {
             throw new \UnexpectedValueException('Given message name is not a valid class: ' . (string)$messageName);

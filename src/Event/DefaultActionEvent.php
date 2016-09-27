@@ -47,7 +47,7 @@ class DefaultActionEvent implements ActionEvent
      * @param mixed|null $target
      * @param array|\ArrayAccess|null $params
      */
-    public function __construct($name, $target = null, $params = null)
+    public function __construct(string $name, $target = null, $params = null)
     {
         $this->setName($name);
 
@@ -60,12 +60,7 @@ class DefaultActionEvent implements ActionEvent
         $this->setParams($params);
     }
 
-    /**
-     * Get event name
-     *
-     * @return string
-     */
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
@@ -97,19 +92,12 @@ class DefaultActionEvent implements ActionEvent
      * @param  mixed $default Default value to return if parameter does not exist
      * @return mixed
      */
-    public function getParam($name, $default = null)
+    public function getParam(string $name, $default = null)
     {
         return isset($this->params[$name])? $this->params[$name] : $default;
     }
 
-    /**
-     * Set the event name
-     *
-     * @param  string $name
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function setName($name)
+    public function setName(string $name) : void
     {
         if (! is_string($name)) {
             throw new \InvalidArgumentException("Event name is invalid. Expected string. Got " . gettype($name));
@@ -124,7 +112,7 @@ class DefaultActionEvent implements ActionEvent
      * @param  null|string|object $target
      * @return void
      */
-    public function setTarget($target)
+    public function setTarget($target) : void
     {
         $this->target = $target;
     }
@@ -136,7 +124,7 @@ class DefaultActionEvent implements ActionEvent
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function setParams($params)
+    public function setParams($params) : void
     {
         if (! is_array($params) && ! $params instanceof \ArrayAccess) {
             throw new \InvalidArgumentException("Event params are invalid. Expected type is array or \\ArrayAccess. Got " . gettype($params));
@@ -152,28 +140,23 @@ class DefaultActionEvent implements ActionEvent
      * @param  mixed $value
      * @return void
      */
-    public function setParam($name, $value)
+    public function setParam(string $name, $value) : void
     {
         $this->params[$name] = $value;
     }
 
     /**
      * Indicate whether or not the parent ActionEventEmitter should stop propagating events
-     *
-     * @param  bool $flag
-     * @return void
      */
-    public function stopPropagation($flag = true)
+    public function stopPropagation(bool $flag = true) : void
     {
         $this->stopPropagation = $flag;
     }
 
     /**
      * Has this event indicated event propagation should stop?
-     *
-     * @return bool
      */
-    public function propagationIsStopped()
+    public function propagationIsStopped() : bool
     {
         return $this->stopPropagation;
     }

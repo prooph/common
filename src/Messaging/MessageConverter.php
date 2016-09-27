@@ -40,5 +40,5 @@ interface MessageConverter
      * @param Message $domainMessage
      * @return array
      */
-    public function convertToArray(Message $domainMessage);
+    public function convertToArray(Message $domainMessage) : array;
 }

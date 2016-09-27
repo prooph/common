@@ -31,7 +31,7 @@ final class ActionEventListenerMock implements ActionEventListener
     /**
      * @param ActionEvent $event
      */
-    public function __invoke(ActionEvent $event)
+    public function __invoke(ActionEvent $event) : void
     {
         $this->lastEvent = $event;
     }

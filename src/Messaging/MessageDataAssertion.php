@@ -25,7 +25,7 @@ final class MessageDataAssertion
     /**
      * @param mixed $messageData
      */
-    public static function assert($messageData)
+    public static function assert($messageData) : void
     {
         Assertion::isArray($messageData, 'MessageData must be an array');
         Assertion::keyExists($messageData, 'message_name', 'MessageData must contain a key message_name');
@@ -43,34 +43,22 @@ final class MessageDataAssertion
         self::assertCreatedAt($messageData['created_at']);
     }
 
-    /**
-     * @param string $uuid
-     */
-    public static function assertUuid($uuid)
+    public static function assertUuid($uuid) : void
     {
         Assertion::uuid($uuid, 'uuid must be a valid UUID string');
     }
 
-    /**
-     * @param string $messageName
-     */
-    public static function assertMessageName($messageName)
+    public static function assertMessageName($messageName) : void
     {
         Assertion::minLength($messageName, 3, 'message_name must be string with at least 3 chars length');
     }
 
-    /**
-     * @param $version
-     */
-    public static function assertVersion($version)
+    public static function assertVersion($version) : void
     {
         Assertion::min($version, 0, 'version must be an unsigned integer');
     }
 
-    /**
-     * @param array $payload
-     */
-    public static function assertPayload($payload)
+    public static function assertPayload($payload) : void
     {
         Assertion::isArray($payload, 'payload must be an array');
         self::assertSubPayload($payload);
@@ -79,7 +67,7 @@ final class MessageDataAssertion
     /**
      * @param mixed $payload
      */
-    private static function assertSubPayload($payload)
+    private static function assertSubPayload($payload) : void
     {
         if (is_array($payload)) {
             foreach ($payload as $subPayload) {
@@ -92,10 +80,7 @@ final class MessageDataAssertion
         Assertion::nullOrscalar($payload, 'payload must only contain arrays and scalar values');
     }
 
-    /**
-     * @param array $metadata
-     */
-    public static function assertMetadata($metadata)
+    public static function assertMetadata($metadata) : void
     {
         Assertion::isArray($metadata, 'metadata must be an array');
 
@@ -105,10 +90,7 @@ final class MessageDataAssertion
         }
     }
 
-    /**
-     * @param \DateTimeInterface $createdAt
-     */
-    public static function assertCreatedAt($createdAt)
+    public static function assertCreatedAt($createdAt) : void
     {
         Assertion::isInstanceOf($createdAt, \DateTimeInterface::class, sprintf(
             'created_at must be of type %s. Got %s',

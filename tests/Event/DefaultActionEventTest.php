@@ -89,27 +89,6 @@ class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @dataProvider provideInvalidNames
-     */
-    public function it_only_allows_strings_as_event_name($invalidName) : void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-
-        $this->getTestEvent()->setName($invalidName);
-    }
-
-    public function provideInvalidNames() : array
-    {
-        return [
-            [1],
-            [true],
-            [[]],
-            [new \stdClass()]
-        ];
-    }
-
-    /**
-     * @test
      */
     public function it_overrides_params_array_if_new_one_is_set() : void
     {

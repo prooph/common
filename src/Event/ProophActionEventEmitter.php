@@ -33,7 +33,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      * @param null|array|\ArrayAccess $params with which the event is initialized
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
-    public function getNewActionEvent($name = null, $target = null, $params = null)
+    public function getNewActionEvent(?string $name, $target = null, $params = null) : ActionEvent
     {
         if ($name === null) {
             $name = 'action_event';
@@ -42,12 +42,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
         return new DefaultActionEvent($name, $target, $params);
     }
 
-    /**
-     * Trigger an action event
-     *
-     * @param \Prooph\Common\Event\ActionEvent $event
-     */
-    public function dispatch(ActionEvent $event)
+    public function dispatch(ActionEvent $event) : void
     {
         foreach ($this->getListeners($event) as $listenerHandler) {
             $listener = $listenerHandler->getActionEventListener();
@@ -62,11 +57,8 @@ class ProophActionEventEmitter implements ActionEventEmitter
      * Trigger an event until the given callback returns a boolean true
      *
      * The callback is invoked after each listener and gets the action event as only argument
-     *
-     * @param \Prooph\Common\Event\ActionEvent $event
-     * @param  callable $callback
      */
-    public function dispatchUntil(ActionEvent $event, $callback)
+    public function dispatchUntil(ActionEvent $event, callable $callback) : void
     {
         foreach ($this->getListeners($event) as $listenerHandler) {
             $listener = $listenerHandler->getActionEventListener();
@@ -90,7 +82,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      * @throws \InvalidArgumentException
      * @return ListenerHandler
      */
-    public function attachListener($event, $listener, $priority = 1)
+    public function attachListener(string $event, $listener, int $priority = 1) : ListenerHandler
     {
         if (! is_string($event)) {
             throw new \InvalidArgumentException("Given parameter event should be a string. Got " . gettype($event));
@@ -109,7 +101,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      * @param ListenerHandler $listenerHandler
      * @return bool
      */
-    public function detachListener(ListenerHandler $listenerHandler)
+    public function detachListener(ListenerHandler $listenerHandler) : bool
     {
         foreach ($this->events as &$prioritizedListeners) {
             foreach ($prioritizedListeners as &$listenerHandlers) {
@@ -125,22 +117,12 @@ class ProophActionEventEmitter implements ActionEventEmitter
         return false;
     }
 
-    /**
-     * Attach a listener aggregate
-     *
-     * @param  ActionEventListenerAggregate $aggregate
-     */
-    public function attachListenerAggregate(ActionEventListenerAggregate $aggregate)
+    public function attachListenerAggregate(ActionEventListenerAggregate $aggregate) : void
     {
         $aggregate->attach($this);
     }
 
-    /**
-     * Detach a listener aggregate
-     *
-     * @param  ActionEventListenerAggregate $aggregate
-     */
-    public function detachListenerAggregate(ActionEventListenerAggregate $aggregate)
+    public function detachListenerAggregate(ActionEventListenerAggregate $aggregate) : void
     {
         $aggregate->detach($this);
     }
@@ -149,7 +131,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      * @param ActionEvent $event
      * @return ListenerHandler[]
      */
-    private function getListeners(ActionEvent $event)
+    private function getListeners(ActionEvent $event) : iterable
     {
         $prioritizedListeners = isset($this->events[$event->getName()])? $this->events[$event->getName()] : [] ;
 

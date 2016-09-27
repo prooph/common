@@ -29,24 +29,16 @@ interface ActionEventEmitter
      * @param null|array|\ArrayAccess $params with which the event is initialized
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
-    public function getNewActionEvent($name = null, $target = null, $params = null);
+    public function getNewActionEvent(?string $name, $target = null, $params = null) : ActionEvent;
 
-    /**
-     * Trigger an action event
-     *
-     * @param \Prooph\Common\Event\ActionEvent $event
-     */
-    public function dispatch(ActionEvent $event);
+    public function dispatch(ActionEvent $event) : void;
 
     /**
      * Trigger an event until the given callback returns a boolean true
      *
      * The callback is invoked after each listener and gets the action event as only argument
-     *
-     * @param \Prooph\Common\Event\ActionEvent $event
-     * @param  callable $callback
      */
-    public function dispatchUntil(ActionEvent $event, $callback);
+    public function dispatchUntil(ActionEvent $event, callable $callback) : void;
 
     /**
      * Attach a listener to an event
@@ -56,27 +48,11 @@ interface ActionEventEmitter
      * @param  int $priority Priority at which to register listener
      * @return ListenerHandler
      */
-    public function attachListener($event, $listener, $priority = 1);
+    public function attachListener(string $event, $listener, int $priority = 1) : ListenerHandler;
 
-    /**
-     * Detach an event listener
-     *
-     * @param ListenerHandler $listenerHandler
-     * @return bool
-     */
-    public function detachListener(ListenerHandler $listenerHandler);
+    public function detachListener(ListenerHandler $listenerHandler) : bool;
 
-    /**
-     * Attach a listener aggregate
-     *
-     * @param  ActionEventListenerAggregate $aggregate
-     */
-    public function attachListenerAggregate(ActionEventListenerAggregate $aggregate);
+    public function attachListenerAggregate(ActionEventListenerAggregate $aggregate) : void;
 
-    /**
-     * Detach a listener aggregate
-     *
-     * @param  ActionEventListenerAggregate $aggregate
-     */
-    public function detachListenerAggregate(ActionEventListenerAggregate $aggregate);
+    public function detachListenerAggregate(ActionEventListenerAggregate $aggregate) : void;
 }

@@ -230,19 +230,8 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_uses_default_event_name_if_none_given() : void
     {
-        $event = $this->proophActionEventEmitter->getNewActionEvent();
+        $event = $this->proophActionEventEmitter->getNewActionEvent(null);
         $this->assertEquals('action_event', $event->getName());
-    }
-
-    /**
-     * @test
-     */
-    public function it_throws_exception_when_event_is_not_a_string_when_attaching_listener() : void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Given parameter event should be a string.');
-
-        $this->proophActionEventEmitter->attachListener(null, null);
     }
 
     /**

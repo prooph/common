@@ -23,12 +23,7 @@ namespace Prooph\Common\Event;
  */
 interface ActionEvent
 {
-    /**
-     * Get event name
-     *
-     * @return string
-     */
-    public function getName();
+    public function getName() : string;
 
     /**
      * Get target/context from which event was triggered
@@ -51,15 +46,9 @@ interface ActionEvent
      * @param  mixed $default Default value to return if parameter does not exist
      * @return mixed
      */
-    public function getParam($name, $default = null);
+    public function getParam(string $name, $default = null);
 
-    /**
-     * Set the event name
-     *
-     * @param  string $name
-     * @return void
-     */
-    public function setName($name);
+    public function setName(string $name) : void;
 
     /**
      * Set the event target/context
@@ -67,7 +56,7 @@ interface ActionEvent
      * @param  null|string|object $target
      * @return void
      */
-    public function setTarget($target);
+    public function setTarget($target) : void;
 
     /**
      * Set event parameters
@@ -75,7 +64,7 @@ interface ActionEvent
      * @param  array|\ArrayAccess $params
      * @return void
      */
-    public function setParams($params);
+    public function setParams($params) : void;
 
     /**
      * Set a single parameter by key
@@ -84,7 +73,7 @@ interface ActionEvent
      * @param  mixed $value
      * @return void
      */
-    public function setParam($name, $value);
+    public function setParam(string $name, $value) : void;
 
     /**
      * Indicate whether or not the parent ActionEventEmitter should stop propagating events
@@ -92,12 +81,10 @@ interface ActionEvent
      * @param  bool $flag
      * @return void
      */
-    public function stopPropagation($flag = true);
+    public function stopPropagation(bool $flag = true) : void;
 
     /**
      * Has this event indicated event propagation should stop?
-     *
-     * @return bool
      */
-    public function propagationIsStopped();
+    public function propagationIsStopped() : bool;
 }
