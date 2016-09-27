@@ -31,11 +31,11 @@ final class NoOpMessageConverterTest extends TestCase
      */
     public function it_converts_to_array() : void
     {
-        $messageMock = $this->prophesize(DomainMessage::class);
-        //$messageMock->toArray()->willReturn([]);
+        $messageMock = $this->getMockForAbstractClass(DomainMessage::class, [], '', true, true, true, ['toArray']);
+        $messageMock->expects($this->once())->method('toArray');
 
         $converter = new NoOpMessageConverter();
-        //$converter->convertToArray($messageMock->reveal());
+        $converter->convertToArray($messageMock);
     }
 
     /**
