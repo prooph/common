@@ -8,7 +8,7 @@
  *  file that was distributed with this source code.
  */
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace ProophTest\Common\Event;
 
@@ -113,7 +113,9 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) { $event->stopPropagation(true); };
+        $listener2 = function (ActionEvent $event) {
+            $event->stopPropagation(true);
+        };
         $listener3 = function (ActionEvent $event) use (&$lastEvent) {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
@@ -139,7 +141,8 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) {};
+        $listener2 = function (ActionEvent $event) {
+        };
         $listener3 = function (ActionEvent $event) use (&$lastEvent) {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
@@ -167,7 +170,9 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) { $event->stopPropagation(true); };
+        $listener2 = function (ActionEvent $event) {
+            $event->stopPropagation(true);
+        };
         $listener3 = function (ActionEvent $event) use (&$lastEvent) {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
