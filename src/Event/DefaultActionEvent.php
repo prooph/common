@@ -44,7 +44,7 @@ class DefaultActionEvent implements ActionEvent
 
     /**
      * @param string $name
-     * @param mixed|null $target
+     * @param null|string|object $target
      * @param array|\ArrayAccess|null $params
      */
     public function __construct(string $name, $target = null, $params = null)
@@ -99,10 +99,6 @@ class DefaultActionEvent implements ActionEvent
 
     public function setName(string $name) : void
     {
-        if (! is_string($name)) {
-            throw new \InvalidArgumentException("Event name is invalid. Expected string. Got " . gettype($name));
-        }
-
         $this->name = $name;
     }
 
