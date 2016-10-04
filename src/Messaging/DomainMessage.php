@@ -41,7 +41,7 @@ abstract class DomainMessage implements Message
     protected $version = 0;
 
     /**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */
     protected $createdAt;
 
@@ -112,7 +112,7 @@ abstract class DomainMessage implements Message
         return $this->version;
     }
 
-    public function createdAt() : \DateTimeImmutable
+    public function createdAt() : \DateTimeInterface
     {
         return $this->createdAt;
     }
@@ -150,8 +150,6 @@ abstract class DomainMessage implements Message
 
     public function withVersion(int $version) : Message
     {
-        Assertion::integer($version);
-
         $messageData = $this->toArray();
 
         $messageData['version'] = $version;
@@ -166,7 +164,6 @@ abstract class DomainMessage implements Message
      */
     public function withAddedMetadata(string $key, $value) : Message
     {
-        Assertion::string($key, 'Invalid key');
         Assertion::notEmpty($key, 'Invalid key');
 
         $messageData = $this->toArray();

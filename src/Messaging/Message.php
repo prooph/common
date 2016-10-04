@@ -35,7 +35,7 @@ interface Message extends HasMessageName
 
     public function version() : int;
 
-    public function createdAt() : \DateTimeImmutable;
+    public function createdAt() : \DateTimeInterface;
 
     public function metadata() : array;
 
