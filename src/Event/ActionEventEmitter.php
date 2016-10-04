@@ -29,7 +29,7 @@ interface ActionEventEmitter
      * @param null|array|\ArrayAccess $params with which the event is initialized
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
-    public function getNewActionEvent(?string $name, $target = null, $params = null) : ActionEvent;
+    public function getNewActionEvent(?string $name = null, $target = null, $params = null) : ActionEvent;
 
     public function dispatch(ActionEvent $event) : void;
 
