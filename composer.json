@@ -21,7 +21,7 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": "^7.1.0",
-        "ramsey/uuid" : "^3.5.0",
+        "ramsey/uuid" : "^3.5.1",
         "beberlei/assert": "^2.6.3"
     },
     "require-dev": {
