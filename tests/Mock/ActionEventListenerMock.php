@@ -13,7 +13,6 @@ declare (strict_types=1);
 namespace ProophTest\Common\Mock;
 
 use Prooph\Common\Event\ActionEvent;
-use Prooph\Common\Event\ActionEventListener;
 
 /**
  * Class ActionEventListenerMock
@@ -21,7 +20,7 @@ use Prooph\Common\Event\ActionEventListener;
  * @package ProophTest\Common\Mock
  * @author Alexander Miertsch <contact@prooph.de>
  */
-final class ActionEventListenerMock implements ActionEventListener
+final class ActionEventListenerMock
 {
     /**
      * @var ActionEvent

@@ -21,25 +21,21 @@ namespace Prooph\Common\Event;
 final class DefaultListenerHandler implements ListenerHandler
 {
     /**
-     * @var callable|ActionEventListener
+     * @var callable
      */
     private $listener;
 
     /**
-     * @param callable|ActionEventListener $listener
+     * @param callable $listener
      * @throws \InvalidArgumentException
      */
-    public function __construct($listener)
+    public function __construct(callable $listener)
     {
-        if (! $listener instanceof ActionEventListener && !is_callable($listener)) {
-            throw new \InvalidArgumentException('Given parameter listener should be callable or an instance of ActionEventListener. Got ' . (is_object($listener)? get_class($listener) : gettype($listener)));
-        }
-
         $this->listener = $listener;
     }
 
     /**
-     * @return callable|ActionEventListener
+     * @return callable
      */
     public function getActionEventListener()
     {

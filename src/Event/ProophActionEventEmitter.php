@@ -77,12 +77,12 @@ class ProophActionEventEmitter implements ActionEventEmitter
      * Attach a listener to an event
      *
      * @param  string $event Name of the event
-     * @param  callable|ActionEventListener $listener
+     * @param  callable $listener
      * @param  int $priority Priority at which to register listener
      * @throws \InvalidArgumentException
      * @return ListenerHandler
      */
-    public function attachListener(string $event, $listener, int $priority = 1) : ListenerHandler
+    public function attachListener(string $event, callable $listener, int $priority = 1) : ListenerHandler
     {
         if (! is_string($event)) {
             throw new \InvalidArgumentException("Given parameter event should be a string. Got " . gettype($event));

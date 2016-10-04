@@ -44,11 +44,11 @@ interface ActionEventEmitter
      * Attach a listener to an event
      *
      * @param  string $event
-     * @param  callable|ActionEventListener $listener
+     * @param  callable $listener
      * @param  int $priority Priority at which to register listener
      * @return ListenerHandler
      */
-    public function attachListener(string $event, $listener, int $priority = 1) : ListenerHandler;
+    public function attachListener(string $event, callable $listener, int $priority = 1) : ListenerHandler;
 
     public function detachListener(ListenerHandler $listenerHandler) : bool;
 
