@@ -30,7 +30,7 @@ final class ActionEventListenerMock
     /**
      * @param ActionEvent $event
      */
-    public function __invoke(ActionEvent $event) : void
+    public function __invoke(ActionEvent $event): void
     {
         $this->lastEvent = $event;
     }

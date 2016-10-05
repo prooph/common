@@ -22,7 +22,7 @@ namespace Prooph\Common\Event;
  */
 interface ActionEventListenerAggregate
 {
-    public function attach(ActionEventEmitter $dispatcher) : void;
+    public function attach(ActionEventEmitter $dispatcher): void;
 
-    public function detach(ActionEventEmitter $dispatcher) : void;
+    public function detach(ActionEventEmitter $dispatcher): void;
 }

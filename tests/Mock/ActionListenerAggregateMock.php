@@ -30,7 +30,7 @@ final class ActionListenerAggregateMock implements ActionEventListenerAggregate
     /**
      * @param ActionEventEmitter $dispatcher
      */
-    public function attach(ActionEventEmitter $dispatcher) : void
+    public function attach(ActionEventEmitter $dispatcher): void
     {
         $this->trackHandler($dispatcher->attachListener("test", [$this, "onTest"], 100));
     }
@@ -38,7 +38,7 @@ final class ActionListenerAggregateMock implements ActionEventListenerAggregate
     /**
      * @param ActionEvent $event
      */
-    public function onTest(ActionEvent $event) : void
+    public function onTest(ActionEvent $event): void
     {
         $event->stopPropagation(true);
     }

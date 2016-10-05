@@ -22,5 +22,5 @@ namespace Prooph\Common\Messaging;
  */
 interface HasMessageName
 {
-    public function messageName() : string;
+    public function messageName(): string;
 }

@@ -28,7 +28,7 @@ trait DetachAggregateHandlers
      */
     private $handlerCollection = [];
 
-    protected function trackHandler(ListenerHandler $handler) : void
+    protected function trackHandler(ListenerHandler $handler): void
     {
         $this->handlerCollection[] = $handler;
     }
@@ -36,7 +36,7 @@ trait DetachAggregateHandlers
     /**
      * @param ActionEventEmitter $dispatcher
      */
-    public function detach(ActionEventEmitter $dispatcher) : void
+    public function detach(ActionEventEmitter $dispatcher): void
     {
         foreach ($this->handlerCollection as $handler) {
             $dispatcher->detachListener($handler);

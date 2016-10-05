@@ -52,7 +52,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_a_name() : void
+    public function it_has_a_name(): void
     {
         $this->assertEquals('TestDomainEvent', $this->domainEvent->messageName());
     }
@@ -60,7 +60,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_a_uuid() : void
+    public function it_has_a_uuid(): void
     {
         $this->assertTrue($this->uuid->equals($this->domainEvent->uuid()));
     }
@@ -68,7 +68,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_a_version() : void
+    public function it_has_a_version(): void
     {
         $this->assertEquals(1, $this->domainEvent->version());
     }
@@ -76,7 +76,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_created_at_information() : void
+    public function it_has_created_at_information(): void
     {
         $this->assertEquals($this->createdAt->format(\DateTime::ISO8601), $this->domainEvent->createdAt()->format(\DateTime::ISO8601));
     }
@@ -84,7 +84,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_payload() : void
+    public function it_has_payload(): void
     {
         $this->assertEquals(['event' => 'payload'], $this->domainEvent->payload());
     }
@@ -92,7 +92,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_metadata() : void
+    public function it_has_metadata(): void
     {
         $this->assertEquals(['event' => 'metadata'], $this->domainEvent->metadata());
     }
@@ -100,7 +100,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_can_be_converted_to_array_and_back() : void
+    public function it_can_be_converted_to_array_and_back(): void
     {
         $commandData = $this->domainEvent->toArray();
 
@@ -112,7 +112,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_is_of_type_event() : void
+    public function it_is_of_type_event(): void
     {
         $this->assertEquals(DomainMessage::TYPE_EVENT, $this->domainEvent->messageType());
     }

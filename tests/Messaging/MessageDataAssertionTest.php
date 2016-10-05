@@ -28,7 +28,7 @@ final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_asserts_message_data_returned_by_the_no_op_message_converter() : void
+    public function it_asserts_message_data_returned_by_the_no_op_message_converter(): void
     {
         $testAssertions = new DoSomething(['test' => 'assertions', ['null' => null]]);
 

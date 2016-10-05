@@ -22,7 +22,7 @@ namespace Prooph\Common\Messaging;
  */
 abstract class Query extends DomainMessage
 {
-    public function messageType() : string
+    public function messageType(): string
     {
         return self::TYPE_QUERY;
     }

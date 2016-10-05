@@ -35,12 +35,12 @@ trait PayloadTrait
         $this->setPayload($payload);
     }
 
-    public function payload() : array
+    public function payload(): array
     {
         return $this->payload;
     }
 
-    protected function setPayload(array $payload) : void
+    protected function setPayload(array $payload): void
     {
         $this->payload = $payload;
     }
@@ -49,5 +49,5 @@ trait PayloadTrait
      * Use this method to initialize message with defaults or extend your class from
      * \Prooph\Common\Messaging\DomainMessage
      */
-    abstract protected function init() : void;
+    abstract protected function init(): void;
 }

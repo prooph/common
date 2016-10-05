@@ -27,7 +27,7 @@ use Assert\Assertion;
  */
 final class NoOpMessageConverter implements MessageConverter
 {
-    public function convertToArray(Message $domainMessage) : array
+    public function convertToArray(Message $domainMessage): array
     {
         Assertion::isInstanceOf($domainMessage, DomainMessage::class);
 

@@ -60,7 +60,7 @@ class DefaultActionEvent implements ActionEvent
         $this->setParams($params);
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -97,7 +97,7 @@ class DefaultActionEvent implements ActionEvent
         return isset($this->params[$name])? $this->params[$name] : $default;
     }
 
-    public function setName(string $name) : void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -108,7 +108,7 @@ class DefaultActionEvent implements ActionEvent
      * @param  null|string|object $target
      * @return void
      */
-    public function setTarget($target) : void
+    public function setTarget($target): void
     {
         $this->target = $target;
     }
@@ -120,7 +120,7 @@ class DefaultActionEvent implements ActionEvent
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function setParams($params) : void
+    public function setParams($params): void
     {
         if (! is_array($params) && ! $params instanceof \ArrayAccess) {
             throw new \InvalidArgumentException("Event params are invalid. Expected type is array or \\ArrayAccess. Got " . gettype($params));
@@ -136,7 +136,7 @@ class DefaultActionEvent implements ActionEvent
      * @param  mixed $value
      * @return void
      */
-    public function setParam(string $name, $value) : void
+    public function setParam(string $name, $value): void
     {
         $this->params[$name] = $value;
     }
@@ -144,7 +144,7 @@ class DefaultActionEvent implements ActionEvent
     /**
      * Indicate whether or not the parent ActionEventEmitter should stop propagating events
      */
-    public function stopPropagation(bool $flag = true) : void
+    public function stopPropagation(bool $flag = true): void
     {
         $this->stopPropagation = $flag;
     }
@@ -152,7 +152,7 @@ class DefaultActionEvent implements ActionEvent
     /**
      * Has this event indicated event propagation should stop?
      */
-    public function propagationIsStopped() : bool
+    public function propagationIsStopped(): bool
     {
         return $this->stopPropagation;
     }

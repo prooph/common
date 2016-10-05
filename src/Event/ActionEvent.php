@@ -23,7 +23,7 @@ namespace Prooph\Common\Event;
  */
 interface ActionEvent
 {
-    public function getName() : string;
+    public function getName(): string;
 
     /**
      * Get target/context from which event was triggered
@@ -48,7 +48,7 @@ interface ActionEvent
      */
     public function getParam(string $name, $default = null);
 
-    public function setName(string $name) : void;
+    public function setName(string $name): void;
 
     /**
      * Set the event target/context
@@ -56,7 +56,7 @@ interface ActionEvent
      * @param  null|string|object $target
      * @return void
      */
-    public function setTarget($target) : void;
+    public function setTarget($target): void;
 
     /**
      * Set event parameters
@@ -64,7 +64,7 @@ interface ActionEvent
      * @param  array|\ArrayAccess $params
      * @return void
      */
-    public function setParams($params) : void;
+    public function setParams($params): void;
 
     /**
      * Set a single parameter by key
@@ -73,7 +73,7 @@ interface ActionEvent
      * @param  mixed $value
      * @return void
      */
-    public function setParam(string $name, $value) : void;
+    public function setParam(string $name, $value): void;
 
     /**
      * Indicate whether or not the parent ActionEventEmitter should stop propagating events
@@ -81,10 +81,10 @@ interface ActionEvent
      * @param  bool $flag
      * @return void
      */
-    public function stopPropagation(bool $flag = true) : void;
+    public function stopPropagation(bool $flag = true): void;
 
     /**
      * Has this event indicated event propagation should stop?
      */
-    public function propagationIsStopped() : bool;
+    public function propagationIsStopped(): bool;
 }

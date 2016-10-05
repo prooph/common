@@ -29,16 +29,16 @@ interface ActionEventEmitter
      * @param null|array|\ArrayAccess $params with which the event is initialized
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
-    public function getNewActionEvent(?string $name = null, $target = null, $params = null) : ActionEvent;
+    public function getNewActionEvent(?string $name = null, $target = null, $params = null): ActionEvent;
 
-    public function dispatch(ActionEvent $event) : void;
+    public function dispatch(ActionEvent $event): void;
 
     /**
      * Trigger an event until the given callback returns a boolean true
      *
      * The callback is invoked after each listener and gets the action event as only argument
      */
-    public function dispatchUntil(ActionEvent $event, callable $callback) : void;
+    public function dispatchUntil(ActionEvent $event, callable $callback): void;
 
     /**
      * Attach a listener to an event
@@ -48,11 +48,11 @@ interface ActionEventEmitter
      * @param  int $priority Priority at which to register listener
      * @return ListenerHandler
      */
-    public function attachListener(string $event, callable $listener, int $priority = 1) : ListenerHandler;
+    public function attachListener(string $event, callable $listener, int $priority = 1): ListenerHandler;
 
-    public function detachListener(ListenerHandler $listenerHandler) : bool;
+    public function detachListener(ListenerHandler $listenerHandler): bool;
 
-    public function attachListenerAggregate(ActionEventListenerAggregate $aggregate) : void;
+    public function attachListenerAggregate(ActionEventListenerAggregate $aggregate): void;
 
-    public function detachListenerAggregate(ActionEventListenerAggregate $aggregate) : void;
+    public function detachListenerAggregate(ActionEventListenerAggregate $aggregate): void;
 }

@@ -42,5 +42,5 @@ interface MessageFactory
      * @param array $messageData
      * @return Message
      */
-    public function createMessageFromArray(string $messageName, array $messageData) : Message;
+    public function createMessageFromArray(string $messageName, array $messageData): Message;
 }

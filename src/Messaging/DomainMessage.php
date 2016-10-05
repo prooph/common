@@ -57,11 +57,11 @@ abstract class DomainMessage implements Message
      * The payload is normally passed to json_encode to persist the message or
      * push it into a message queue.
      */
-    abstract public function payload() : array;
+    abstract public function payload(): array;
 
-    abstract protected function setPayload(array $payload) : void;
+    abstract protected function setPayload(array $payload): void;
 
-    public static function fromArray(array $messageData) : DomainMessage
+    public static function fromArray(array $messageData): DomainMessage
     {
         MessageDataAssertion::assert($messageData);
 
@@ -80,7 +80,7 @@ abstract class DomainMessage implements Message
         return $message;
     }
 
-    protected function init() : void
+    protected function init(): void
     {
         if ($this->uuid === null) {
             $this->uuid = Uuid::uuid4();
@@ -99,7 +99,7 @@ abstract class DomainMessage implements Message
         }
     }
 
-    public function uuid() : Uuid
+    public function uuid(): Uuid
     {
         return $this->uuid;
     }
@@ -107,22 +107,22 @@ abstract class DomainMessage implements Message
     /**
      * @return int
      */
-    public function version() : int
+    public function version(): int
     {
         return $this->version;
     }
 
-    public function createdAt() : \DateTimeInterface
+    public function createdAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function metadata() : array
+    public function metadata(): array
     {
         return $this->metadata;
     }
 
-    public function toArray() : array
+    public function toArray(): array
     {
         return [
             'message_name' => $this->messageName,
@@ -134,12 +134,12 @@ abstract class DomainMessage implements Message
         ];
     }
 
-    public function messageName() : string
+    public function messageName(): string
     {
         return $this->messageName;
     }
 
-    public function withMetadata(array $metadata) : Message
+    public function withMetadata(array $metadata): Message
     {
         $messageData = $this->toArray();
 
@@ -148,7 +148,7 @@ abstract class DomainMessage implements Message
         return static::fromArray($messageData);
     }
 
-    public function withVersion(int $version) : Message
+    public function withVersion(int $version): Message
     {
         $messageData = $this->toArray();
 
@@ -162,7 +162,7 @@ abstract class DomainMessage implements Message
      *
      * Given value must have a scalar type.
      */
-    public function withAddedMetadata(string $key, $value) : Message
+    public function withAddedMetadata(string $key, $value): Message
     {
         Assertion::notEmpty($key, 'Invalid key');
 

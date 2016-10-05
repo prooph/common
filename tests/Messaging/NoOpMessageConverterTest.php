@@ -29,7 +29,7 @@ final class NoOpMessageConverterTest extends TestCase
     /**
      * @test
      */
-    public function it_converts_to_array() : void
+    public function it_converts_to_array(): void
     {
         $messageMock = $this->getMockForAbstractClass(DomainMessage::class, [], '', true, true, true, ['toArray']);
         $messageMock->expects($this->once())->method('toArray');
@@ -41,7 +41,7 @@ final class NoOpMessageConverterTest extends TestCase
     /**
      * @test
      */
-    public function it_throws_exception_when_message_is_not_a_domain_message() : void
+    public function it_throws_exception_when_message_is_not_a_domain_message(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('was expected to be instanceof of "Prooph\Common\Messaging\DomainMessage" but is not');

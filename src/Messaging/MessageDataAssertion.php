@@ -25,7 +25,7 @@ final class MessageDataAssertion
     /**
      * @param mixed $messageData
      */
-    public static function assert($messageData) : void
+    public static function assert($messageData): void
     {
         Assertion::isArray($messageData, 'MessageData must be an array');
         Assertion::keyExists($messageData, 'message_name', 'MessageData must contain a key message_name');
@@ -43,22 +43,22 @@ final class MessageDataAssertion
         self::assertCreatedAt($messageData['created_at']);
     }
 
-    public static function assertUuid($uuid) : void
+    public static function assertUuid($uuid): void
     {
         Assertion::uuid($uuid, 'uuid must be a valid UUID string');
     }
 
-    public static function assertMessageName($messageName) : void
+    public static function assertMessageName($messageName): void
     {
         Assertion::minLength($messageName, 3, 'message_name must be string with at least 3 chars length');
     }
 
-    public static function assertVersion($version) : void
+    public static function assertVersion($version): void
     {
         Assertion::min($version, 0, 'version must be an unsigned integer');
     }
 
-    public static function assertPayload($payload) : void
+    public static function assertPayload($payload): void
     {
         Assertion::isArray($payload, 'payload must be an array');
         self::assertSubPayload($payload);
@@ -67,7 +67,7 @@ final class MessageDataAssertion
     /**
      * @param mixed $payload
      */
-    private static function assertSubPayload($payload) : void
+    private static function assertSubPayload($payload): void
     {
         if (is_array($payload)) {
             foreach ($payload as $subPayload) {
@@ -80,7 +80,7 @@ final class MessageDataAssertion
         Assertion::nullOrscalar($payload, 'payload must only contain arrays and scalar values');
     }
 
-    public static function assertMetadata($metadata) : void
+    public static function assertMetadata($metadata): void
     {
         Assertion::isArray($metadata, 'metadata must be an array');
 
@@ -90,12 +90,12 @@ final class MessageDataAssertion
         }
     }
 
-    public static function assertCreatedAt($createdAt) : void
+    public static function assertCreatedAt($createdAt): void
     {
         Assertion::isInstanceOf($createdAt, \DateTimeInterface::class, sprintf(
             'created_at must be of type %s. Got %s',
             \DateTimeInterface::class,
-            is_object($createdAt)? get_class($createdAt) : gettype($createdAt)
+            is_object($createdAt)? get_class($createdAt): gettype($createdAt)
         ));
     }
 }

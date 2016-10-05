@@ -29,24 +29,24 @@ interface Message extends HasMessageName
     /**
      * Should be one of Message::TYPE_COMMAND, Message::TYPE_EVENT or Message::TYPE_QUERY
      */
-    public function messageType() : string;
+    public function messageType(): string;
 
-    public function uuid() : Uuid;
+    public function uuid(): Uuid;
 
-    public function version() : int;
+    public function version(): int;
 
-    public function createdAt() : \DateTimeInterface;
+    public function createdAt(): \DateTimeInterface;
 
-    public function metadata() : array;
+    public function metadata(): array;
 
-    public function withVersion(int $version) : Message;
+    public function withVersion(int $version): Message;
 
-    public function withMetadata(array $metadata) : Message;
+    public function withMetadata(array $metadata): Message;
 
     /**
      * Returns new instance of message with $key => $value added to metadata
      *
      * Given value must have a scalar type.
      */
-    public function withAddedMetadata(string $key, $value) : Message;
+    public function withAddedMetadata(string $key, $value): Message;
 }

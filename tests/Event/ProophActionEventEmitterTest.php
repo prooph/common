@@ -33,7 +33,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_attaches_action_event_listeners_and_dispatch_event_to_them() : void
+    public function it_attaches_action_event_listeners_and_dispatch_event_to_them(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -56,7 +56,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_detaches_a_listener() : void
+    public function it_detaches_a_listener(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -82,7 +82,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_triggers_listeners_until_callback_returns_true() : void
+    public function it_triggers_listeners_until_callback_returns_true(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -109,7 +109,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_stops_dispatching_when_event_propagation_is_stopped() : void
+    public function it_stops_dispatching_when_event_propagation_is_stopped(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -137,7 +137,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_stops_dispatching_when_event_propagation_is_stopped_2() : void
+    public function it_stops_dispatching_when_event_propagation_is_stopped_2(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -166,7 +166,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_triggers_listeners_with_high_priority_first() : void
+    public function it_triggers_listeners_with_high_priority_first(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -194,7 +194,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_attaches_a_listener_aggregate() : void
+    public function it_attaches_a_listener_aggregate(): void
     {
         $listener1 = new ActionEventListenerMock();
         $listenerAggregate = new ActionListenerAggregateMock();
@@ -213,7 +213,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_detaches_listener_aggregate() : void
+    public function it_detaches_listener_aggregate(): void
     {
         $listener1 = new ActionEventListenerMock();
         $listenerAggregate = new ActionListenerAggregateMock();
@@ -233,7 +233,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_uses_default_event_name_if_none_given() : void
+    public function it_uses_default_event_name_if_none_given(): void
     {
         $event = $this->proophActionEventEmitter->getNewActionEvent(null);
         $this->assertEquals('action_event', $event->getName());
@@ -242,7 +242,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_false_when_unattached_listener_handler_gets_detached() : void
+    public function it_returns_false_when_unattached_listener_handler_gets_detached(): void
     {
         $listener = $this->getMockForAbstractClass(ListenerHandler::class);
 
@@ -252,7 +252,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_nothing_on_dispatch_until_when_no_listeners_attached() : void
+    public function it_returns_nothing_on_dispatch_until_when_no_listeners_attached(): void
     {
         $actionEventMock = $this->createMock(ActionEvent::class);
 
