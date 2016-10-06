@@ -33,10 +33,7 @@ final class DefaultListenerHandler implements ListenerHandler
         $this->listener = $listener;
     }
 
-    /**
-     * @return callable
-     */
-    public function getActionEventListener()
+    public function getActionEventListener(): callable
     {
         return $this->listener;
     }
