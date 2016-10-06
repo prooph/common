@@ -129,9 +129,9 @@ final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
                 'A metadata value must have a scalar type. Got array for sub_array'
             ],
             [
-                //#14 created_at must be of type \DateTimeInterface
+                //#14 created_at must be of type \DateTimeImmutable
                 ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 0, 'payload' => $payload, 'metadata' => $metadata, 'created_at' => '2015-08-25 16:30:10'],
-                'created_at must be of type DateTimeInterface. Got string'
+                'created_at must be of type DateTimeImmutable. Got string'
             ],
         ];
     }
