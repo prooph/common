@@ -46,8 +46,7 @@ trait PayloadTrait
     }
 
     /**
-     * Use this method to initialize message with defaults or extend your class from
-     * \Prooph\Common\Messaging\DomainMessage
+     * Use this method to initialize message with defaults or extend your class from DomainMessage
      */
     abstract protected function init(): void;
 }

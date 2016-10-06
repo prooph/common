@@ -38,7 +38,7 @@ class DefaultActionEvent implements ActionEvent
     protected $params;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $stopPropagation = false;
 

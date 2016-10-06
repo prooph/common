@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 use Assert\Assertion;
+use DateTimeImmutable;
 
 /**
  * Class MessageDataAssertion
@@ -92,10 +93,10 @@ final class MessageDataAssertion
 
     public static function assertCreatedAt($createdAt): void
     {
-        Assertion::isInstanceOf($createdAt, \DateTimeInterface::class, sprintf(
+        Assertion::isInstanceOf($createdAt, DateTimeImmutable::class, sprintf(
             'created_at must be of type %s. Got %s',
-            \DateTimeInterface::class,
-            is_object($createdAt)? get_class($createdAt): gettype($createdAt)
+            DateTimeImmutable::class,
+            is_object($createdAt) ? get_class($createdAt) : gettype($createdAt)
         ));
     }
 }

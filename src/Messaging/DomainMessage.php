@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 use Assert\Assertion;
+use DateTimeImmutable;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -41,7 +42,7 @@ abstract class DomainMessage implements Message
     protected $version = 0;
 
     /**
-     * @var \DateTimeInterface
+     * @var DateTimeImmutable
      */
     protected $createdAt;
 
@@ -112,7 +113,7 @@ abstract class DomainMessage implements Message
         return $this->version;
     }
 
-    public function createdAt(): \DateTimeInterface
+    public function createdAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }

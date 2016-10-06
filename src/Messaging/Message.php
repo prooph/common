@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
+use DateTimeImmutable;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -35,7 +36,7 @@ interface Message extends HasMessageName
 
     public function version(): int;
 
-    public function createdAt(): \DateTimeInterface;
+    public function createdAt(): DateTimeImmutable;
 
     public function metadata(): array;
 
