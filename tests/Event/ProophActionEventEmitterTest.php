@@ -252,12 +252,33 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_nothing_on_dispatch_until_when_no_listeners_attached(): void
+    public function it_dispatches_until_whith_no_listeners_attached(): void
     {
         $actionEventMock = $this->createMock(ActionEvent::class);
 
-        $this->assertNull($this->proophActionEventEmitter->dispatchUntil($actionEventMock, function () {
+        $this->proophActionEventEmitter->dispatchUntil($actionEventMock, function () {
             return true;
-        }));
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function it_attaches_to_known_event_names(): void
+    {
+        $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
+        $proophActionEventEmitter->attachListener('foo', function () {});
+    }
+
+    /**
+     * @test
+     */
+    public function it_does_not_attach_to_unknown_event_names(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Unknown event name given: invalid');
+
+        $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
+        $proophActionEventEmitter->attachListener('invalid', function () {});
     }
 }

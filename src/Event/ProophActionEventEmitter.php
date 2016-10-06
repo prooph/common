@@ -92,7 +92,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      */
     public function attachListener(string $event, callable $listener, int $priority = 1): ListenerHandler
     {
-        if (! empty($this->availableEventNames) && ! isset($this->availableEventNames[$event])) {
+        if (! empty($this->availableEventNames) && ! in_array($event, $this->availableEventNames, true)) {
             throw new \InvalidArgumentException("Unknown event name given: $event");
         }
 
