@@ -94,7 +94,7 @@ class DefaultActionEvent implements ActionEvent
      */
     public function getParam(string $name, $default = null)
     {
-        return isset($this->params[$name])? $this->params[$name] : $default;
+        return $this->params[$name] ?? $default;
     }
 
     public function setName(string $name): void

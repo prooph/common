@@ -135,7 +135,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      */
     private function getListeners(ActionEvent $event): iterable
     {
-        $prioritizedListeners = isset($this->events[$event->getName()])? $this->events[$event->getName()] : [] ;
+        $prioritizedListeners = $this->events[$event->getName()] ?? [] ;
 
         krsort($prioritizedListeners, SORT_NUMERIC);
 
