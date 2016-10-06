@@ -44,9 +44,7 @@ class DefaultActionEvent implements ActionEvent
 
     /**
      * @param string $name
-     *
      * @param null|string|object $target
-     *
      * @param array|\ArrayAccess|null $params
      */
     public function __construct(string $name, $target = null, $params = null)
@@ -91,7 +89,6 @@ class DefaultActionEvent implements ActionEvent
      * Get a single parameter by name
      *
      * @param  string $name
-     *
      * @param  mixed $default Default value to return if parameter does not exist
      *
      * @return mixed
@@ -123,9 +120,9 @@ class DefaultActionEvent implements ActionEvent
      *
      * @param  array|\ArrayAccess $params
      *
-     * @throws \InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws \InvalidArgumentException
      */
     public function setParams($params): void
     {
@@ -140,7 +137,6 @@ class DefaultActionEvent implements ActionEvent
      * Set a single parameter by key
      *
      * @param  string $name
-     *
      * @param  mixed $value
      *
      * @return void

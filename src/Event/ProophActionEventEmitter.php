@@ -42,9 +42,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
 
     /**
      * @param null|string $name of the action event
-     *
      * @param string|object $target of the action event
-     *
      * @param null|array|\ArrayAccess $params with which the event is initialized
      *
      * @return ActionEvent that can be triggered by the ActionEventEmitter

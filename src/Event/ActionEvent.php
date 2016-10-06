@@ -43,7 +43,6 @@ interface ActionEvent
      * Get a single parameter by name
      *
      * @param  string $name
-     *
      * @param  mixed $default Default value to return if parameter does not exist
      *
      * @return mixed
@@ -74,7 +73,6 @@ interface ActionEvent
      * Set a single parameter by key
      *
      * @param  string $name
-     *
      * @param  mixed $value
      *
      * @return void
