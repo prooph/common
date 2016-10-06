@@ -47,7 +47,9 @@ final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
      */
     public function it_throws_exception_if_message_data_is_invalid($messageData, $errorMessage)
     {
-        $this->setExpectedException('\InvalidArgumentException', $errorMessage);
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage($errorMessage);
+
         MessageDataAssertion::assert($messageData);
     }
 
