@@ -267,7 +267,8 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     public function it_attaches_to_known_event_names(): void
     {
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
-        $proophActionEventEmitter->attachListener('foo', function () {});
+        $proophActionEventEmitter->attachListener('foo', function () {
+        });
     }
 
     /**
@@ -279,6 +280,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
         $this->expectExceptionMessage('Unknown event name given: invalid');
 
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
-        $proophActionEventEmitter->attachListener('invalid', function () {});
+        $proophActionEventEmitter->attachListener('invalid', function () {
+        });
     }
 }
