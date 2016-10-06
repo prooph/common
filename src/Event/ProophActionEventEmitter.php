@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
+use Assert\Assertion;
+
 /**
  * Class ProophActionEventEmitter
  *
@@ -26,6 +28,17 @@ class ProophActionEventEmitter implements ActionEventEmitter
      * @var array
      */
     protected $events = [];
+
+    /**
+     * @var string[]
+     */
+    protected $availableEventNames = [];
+
+    public function __construct(array $availableEventNames = [])
+    {
+        Assertion::allString($availableEventNames, 'Available event names must be an array of strings');
+        $this->availableEventNames = $availableEventNames;
+    }
 
     /**
      * @param null|string $name of the action event
@@ -75,17 +88,12 @@ class ProophActionEventEmitter implements ActionEventEmitter
 
     /**
      * Attach a listener to an event
-     *
-     * @param  string $event Name of the event
-     * @param  callable $listener
-     * @param  int $priority Priority at which to register listener
      * @throws \InvalidArgumentException
-     * @return ListenerHandler
      */
     public function attachListener(string $event, callable $listener, int $priority = 1): ListenerHandler
     {
-        if (! is_string($event)) {
-            throw new \InvalidArgumentException("Given parameter event should be a string. Got " . gettype($event));
+        if (! empty($this->availableEventNames) && ! isset($this->availableEventNames[$event])) {
+            throw new \InvalidArgumentException("Unknown event name given: $event");
         }
 
         $handler = new DefaultListenerHandler($listener);
@@ -95,12 +103,6 @@ class ProophActionEventEmitter implements ActionEventEmitter
         return $handler;
     }
 
-    /**
-     * Detach an event listener
-     *
-     * @param ListenerHandler $listenerHandler
-     * @return bool
-     */
     public function detachListener(ListenerHandler $listenerHandler): bool
     {
         foreach ($this->events as &$prioritizedListeners) {
