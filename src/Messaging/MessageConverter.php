@@ -36,9 +36,6 @@ interface MessageConverter
      *
      * The correct structure and types are asserted by MessageDataAssertion::assert()
      * so make sure that the returned array of your custom conversion logic passes the assertion.
-     *
-     * @param Message $domainMessage
-     * @return array
      */
     public function convertToArray(Message $domainMessage): array;
 }

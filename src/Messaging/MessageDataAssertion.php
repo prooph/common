@@ -25,6 +25,8 @@ final class MessageDataAssertion
 {
     /**
      * @param mixed $messageData
+     *
+     * @return void
      */
     public static function assert($messageData): void
     {
@@ -67,6 +69,8 @@ final class MessageDataAssertion
 
     /**
      * @param mixed $payload
+     *
+     * @return void
      */
     private static function assertSubPayload($payload): void
     {

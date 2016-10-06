@@ -20,8 +20,5 @@ namespace Prooph\Common\Event;
  */
 interface ListenerHandler
 {
-    /**
-     * @return callable
-     */
-    public function getActionEventListener();
+    public function getActionEventListener() : callable;
 }

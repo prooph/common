@@ -44,7 +44,9 @@ class DefaultActionEvent implements ActionEvent
 
     /**
      * @param string $name
+     *
      * @param null|string|object $target
+     *
      * @param array|\ArrayAccess|null $params
      */
     public function __construct(string $name, $target = null, $params = null)
@@ -89,7 +91,9 @@ class DefaultActionEvent implements ActionEvent
      * Get a single parameter by name
      *
      * @param  string $name
+     *
      * @param  mixed $default Default value to return if parameter does not exist
+     *
      * @return mixed
      */
     public function getParam(string $name, $default = null)
@@ -106,6 +110,7 @@ class DefaultActionEvent implements ActionEvent
      * Set the event target/context
      *
      * @param  null|string|object $target
+     *
      * @return void
      */
     public function setTarget($target): void
@@ -117,7 +122,9 @@ class DefaultActionEvent implements ActionEvent
      * Set event parameters
      *
      * @param  array|\ArrayAccess $params
+     *
      * @throws \InvalidArgumentException
+     *
      * @return void
      */
     public function setParams($params): void
@@ -133,7 +140,9 @@ class DefaultActionEvent implements ActionEvent
      * Set a single parameter by key
      *
      * @param  string $name
+     *
      * @param  mixed $value
+     *
      * @return void
      */
     public function setParam(string $name, $value): void

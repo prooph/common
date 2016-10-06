@@ -105,9 +105,6 @@ abstract class DomainMessage implements Message
         return $this->uuid;
     }
 
-    /**
-     * @return int
-     */
     public function version(): int
     {
         return $this->version;

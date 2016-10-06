@@ -26,7 +26,6 @@ final class DefaultListenerHandler implements ListenerHandler
     private $listener;
 
     /**
-     * @param callable $listener
      * @throws \InvalidArgumentException
      */
     public function __construct(callable $listener)

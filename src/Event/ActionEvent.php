@@ -43,7 +43,9 @@ interface ActionEvent
      * Get a single parameter by name
      *
      * @param  string $name
+     *
      * @param  mixed $default Default value to return if parameter does not exist
+     *
      * @return mixed
      */
     public function getParam(string $name, $default = null);
@@ -54,6 +56,7 @@ interface ActionEvent
      * Set the event target/context
      *
      * @param  null|string|object $target
+     *
      * @return void
      */
     public function setTarget($target): void;
@@ -62,6 +65,7 @@ interface ActionEvent
      * Set event parameters
      *
      * @param  array|\ArrayAccess $params
+     *
      * @return void
      */
     public function setParams($params): void;
@@ -70,7 +74,9 @@ interface ActionEvent
      * Set a single parameter by key
      *
      * @param  string $name
+     *
      * @param  mixed $value
+     *
      * @return void
      */
     public function setParam(string $name, $value): void;
@@ -79,6 +85,7 @@ interface ActionEvent
      * Indicate whether or not the parent ActionEventEmitter should stop propagating events
      *
      * @param  bool $flag
+     *
      * @return void
      */
     public function stopPropagation(bool $flag = true): void;

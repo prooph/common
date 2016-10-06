@@ -42,8 +42,11 @@ class ProophActionEventEmitter implements ActionEventEmitter
 
     /**
      * @param null|string $name of the action event
+     *
      * @param string|object $target of the action event
+     *
      * @param null|array|\ArrayAccess $params with which the event is initialized
+     *
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
     public function getNewActionEvent(?string $name = null, $target = null, $params = null): ActionEvent
@@ -88,6 +91,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
 
     /**
      * Attach a listener to an event
+     *
      * @throws \InvalidArgumentException
      */
     public function attachListener(string $event, callable $listener, int $priority = 1): ListenerHandler
@@ -131,6 +135,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
 
     /**
      * @param ActionEvent $event
+     *
      * @return ListenerHandler[]
      */
     private function getListeners(ActionEvent $event): iterable

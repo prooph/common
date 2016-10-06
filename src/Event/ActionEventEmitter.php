@@ -25,8 +25,11 @@ interface ActionEventEmitter
 {
     /**
      * @param null|string $name of the action event
+     *
      * @param string|object $target of the action event
+     *
      * @param null|array|\ArrayAccess $params with which the event is initialized
+     *
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
     public function getNewActionEvent(?string $name = null, $target = null, $params = null): ActionEvent;
@@ -40,14 +43,6 @@ interface ActionEventEmitter
      */
     public function dispatchUntil(ActionEvent $event, callable $callback): void;
 
-    /**
-     * Attach a listener to an event
-     *
-     * @param  string $event
-     * @param  callable $listener
-     * @param  int $priority Priority at which to register listener
-     * @return ListenerHandler
-     */
     public function attachListener(string $event, callable $listener, int $priority = 1): ListenerHandler;
 
     public function detachListener(ListenerHandler $listenerHandler): bool;
