@@ -235,7 +235,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
      */
     public function it_uses_default_event_name_if_none_given(): void
     {
-        $event = $this->proophActionEventEmitter->getNewActionEvent(null);
+        $event = $this->proophActionEventEmitter->getNewActionEvent();
         $this->assertEquals('action_event', $event->getName());
     }
 

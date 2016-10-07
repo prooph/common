@@ -47,7 +47,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      *
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
-    public function getNewActionEvent(?string $name = null, $target = null, $params = null): ActionEvent
+    public function getNewActionEvent(string $name = null, $target = null, $params = null): ActionEvent
     {
         if ($name === null) {
             $name = 'action_event';
