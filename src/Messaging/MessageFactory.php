@@ -1,13 +1,14 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ * (c) 2014-2016 prooph software GmbH <contact@prooph.de>
+ * (c) 2015-2016 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Date: 7/26/15 - 12:08 AM
  */
+
+declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
@@ -21,7 +22,7 @@ interface MessageFactory
 {
     /**
      * Message data MUST contain at least a "payload" key
-     * but may also contain "uuid", "message_name", "version", "metadata", and "created_at".
+     * but may also contain "uuid", "message_name", "metadata", and "created_at".
      *
      * In general the message factory MUST support creating event objects from an array returned by
      * the corresponding Prooph\Common\Messaging\MessageConverter
@@ -33,13 +34,8 @@ interface MessageFactory
      * For example:
      * uuid = Uuid::uuid4()
      * message_name = $messageName //First parameter passed to the method
-     * version = 1
      * metadata = []
      * created_at = new \DateTimeImmutable('now', new \DateTimeZone('UTC')) //We treat all dates as UTC
-     *
-     * @param string $messageName
-     * @param array $messageData
-     * @return Message
      */
-    public function createMessageFromArray($messageName, array $messageData);
+    public function createMessageFromArray(string $messageName, array $messageData): Message;
 }

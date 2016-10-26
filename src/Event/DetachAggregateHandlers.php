@@ -1,13 +1,14 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ * (c) 2014-2016 prooph software GmbH <contact@prooph.de>
+ * (c) 2015-2016 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Date: 3/5/15 - 8:34 PM
  */
+
+declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
@@ -27,15 +28,12 @@ trait DetachAggregateHandlers
      */
     private $handlerCollection = [];
 
-    protected function trackHandler(ListenerHandler $handler)
+    protected function trackHandler(ListenerHandler $handler): void
     {
         $this->handlerCollection[] = $handler;
     }
 
-    /**
-     * @param ActionEventEmitter $dispatcher
-     */
-    public function detach(ActionEventEmitter $dispatcher)
+    public function detach(ActionEventEmitter $dispatcher): void
     {
         foreach ($this->handlerCollection as $handler) {
             $dispatcher->detachListener($handler);

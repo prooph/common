@@ -1,13 +1,14 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ * (c) 2014-2016 prooph software GmbH <contact@prooph.de>
+ * (c) 2015-2016 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Date: 3/5/15 - 6:52 PM
  */
+
+declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
@@ -21,13 +22,7 @@ namespace Prooph\Common\Event;
  */
 interface ActionEventListenerAggregate
 {
-    /**
-     * @param ActionEventEmitter $dispatcher
-     */
-    public function attach(ActionEventEmitter $dispatcher);
+    public function attach(ActionEventEmitter $dispatcher): void;
 
-    /**
-     * @param ActionEventEmitter $dispatcher
-     */
-    public function detach(ActionEventEmitter $dispatcher);
+    public function detach(ActionEventEmitter $dispatcher): void;
 }

@@ -1,14 +1,16 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ * (c) 2014-2016 prooph software GmbH <contact@prooph.de>
+ * (c) 2015-2016 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Date: 5/22/15 - 8:54 PM
  */
-namespace ProophTest\Common\Event\ZF2;
+
+declare(strict_types=1);
+
+namespace ProophTest\Common\Event;
 
 use Prooph\Common\Event\ActionEvent;
 use Prooph\Common\Event\ListenerHandler;
@@ -31,7 +33,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_attaches_action_event_listeners_and_dispatch_event_to_them()
+    public function it_attaches_action_event_listeners_and_dispatch_event_to_them(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -54,7 +56,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_detaches_a_listener()
+    public function it_detaches_a_listener(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -80,7 +82,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_triggers_listeners_until_callback_returns_true()
+    public function it_triggers_listeners_until_callback_returns_true(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
@@ -107,11 +109,13 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_stops_dispatching_when_event_propagation_is_stopped()
+    public function it_stops_dispatching_when_event_propagation_is_stopped(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) { $event->stopPropagation(true); };
+        $listener2 = function (ActionEvent $event) {
+            $event->stopPropagation(true);
+        };
         $listener3 = function (ActionEvent $event) use (&$lastEvent) {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
@@ -133,11 +137,12 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_stops_dispatching_when_event_propagation_is_stopped_2()
+    public function it_stops_dispatching_when_event_propagation_is_stopped_2(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) {};
+        $listener2 = function (ActionEvent $event) {
+        };
         $listener3 = function (ActionEvent $event) use (&$lastEvent) {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
@@ -161,11 +166,13 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_triggers_listeners_with_high_priority_first()
+    public function it_triggers_listeners_with_high_priority_first(): void
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) { $event->stopPropagation(true); };
+        $listener2 = function (ActionEvent $event) {
+            $event->stopPropagation(true);
+        };
         $listener3 = function (ActionEvent $event) use (&$lastEvent) {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
@@ -187,7 +194,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_attaches_a_listener_aggregate()
+    public function it_attaches_a_listener_aggregate(): void
     {
         $listener1 = new ActionEventListenerMock();
         $listenerAggregate = new ActionListenerAggregateMock();
@@ -206,7 +213,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_detaches_listener_aggregate()
+    public function it_detaches_listener_aggregate(): void
     {
         $listener1 = new ActionEventListenerMock();
         $listenerAggregate = new ActionListenerAggregateMock();
@@ -226,7 +233,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_uses_default_event_name_if_none_given()
+    public function it_uses_default_event_name_if_none_given(): void
     {
         $event = $this->proophActionEventEmitter->getNewActionEvent();
         $this->assertEquals('action_event', $event->getName());
@@ -234,18 +241,8 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Given parameter event should be a string.
      */
-    public function it_throws_exception_when_event_is_not_a_string_when_attaching_listener()
-    {
-        $this->proophActionEventEmitter->attachListener(null, null);
-    }
-
-    /**
-     * @test
-     */
-    public function it_returns_false_when_unattached_listener_handler_gets_detached()
+    public function it_returns_false_when_unattached_listener_handler_gets_detached(): void
     {
         $listener = $this->getMockForAbstractClass(ListenerHandler::class);
 
@@ -255,12 +252,35 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_nothing_on_dispatch_until_when_no_listeners_attached()
+    public function it_dispatches_until_whith_no_listeners_attached(): void
     {
-        $actionEventMock = $this->getMock(ActionEvent::class);
+        $actionEventMock = $this->createMock(ActionEvent::class);
 
-        $this->assertNull($this->proophActionEventEmitter->dispatchUntil($actionEventMock, function () {
+        $this->proophActionEventEmitter->dispatchUntil($actionEventMock, function () {
             return true;
-        }));
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function it_attaches_to_known_event_names(): void
+    {
+        $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
+        $proophActionEventEmitter->attachListener('foo', function () {
+        });
+    }
+
+    /**
+     * @test
+     */
+    public function it_does_not_attach_to_unknown_event_names(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Unknown event name given: invalid');
+
+        $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
+        $proophActionEventEmitter->attachListener('invalid', function () {
+        });
     }
 }
