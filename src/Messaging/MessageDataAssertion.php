@@ -33,14 +33,12 @@ final class MessageDataAssertion
         Assertion::isArray($messageData, 'MessageData must be an array');
         Assertion::keyExists($messageData, 'message_name', 'MessageData must contain a key message_name');
         Assertion::keyExists($messageData, 'uuid', 'MessageData must contain a key uuid');
-        Assertion::keyExists($messageData, 'version', 'MessageData must contain a key version');
         Assertion::keyExists($messageData, 'payload', 'MessageData must contain a key payload');
         Assertion::keyExists($messageData, 'metadata', 'MessageData must contain a key metadata');
         Assertion::keyExists($messageData, 'created_at', 'MessageData must contain a key created_at');
 
         self::assertMessageName($messageData['message_name']);
         self::assertUuid($messageData['uuid']);
-        self::assertVersion($messageData['version']);
         self::assertPayload($messageData['payload']);
         self::assertMetadata($messageData['metadata']);
         self::assertCreatedAt($messageData['created_at']);
@@ -54,11 +52,6 @@ final class MessageDataAssertion
     public static function assertMessageName($messageName): void
     {
         Assertion::minLength($messageName, 3, 'message_name must be string with at least 3 chars length');
-    }
-
-    public static function assertVersion($version): void
-    {
-        Assertion::min($version, 0, 'version must be an unsigned integer');
     }
 
     public static function assertPayload($payload): void

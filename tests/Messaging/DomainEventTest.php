@@ -42,7 +42,6 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
         $this->domainEvent = SomethingWasDone::fromArray([
             'message_name' => 'TestDomainEvent',
             'uuid' => $this->uuid->toString(),
-            'version' => 1,
             'created_at' => $this->createdAt,
             'payload' => ['event' => 'payload'],
             'metadata' => ['event' => 'metadata']
@@ -63,14 +62,6 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
     public function it_has_a_uuid(): void
     {
         $this->assertTrue($this->uuid->equals($this->domainEvent->uuid()));
-    }
-
-    /**
-     * @test
-     */
-    public function it_has_a_version(): void
-    {
-        $this->assertEquals(1, $this->domainEvent->version());
     }
 
     /**

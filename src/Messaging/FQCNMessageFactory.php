@@ -44,10 +44,6 @@ class FQCNMessageFactory implements MessageFactory
             $messageData['uuid'] = Uuid::uuid4();
         }
 
-        if (! isset($messageData['version'])) {
-            $messageData['version'] = 0;
-        }
-
         if (! isset($messageData['created_at'])) {
             $time = (string) microtime(true);
             if (false === strpos($time, '.')) {

@@ -67,72 +67,62 @@ final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 //#1 uuid is missing
-                ['message_name' => 'test-message', 'version' => 1, 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
+                ['message_name' => 'test-message', 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
                 'MessageData must contain a key uuid'
             ],
             [
                 //#2 message_name missing
-                ['uuid' => $uuid, 'version' => 1, 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
+                ['uuid' => $uuid, 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
                 'MessageData must contain a key message_name'
             ],
             [
-                //#3 version missing
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
-                'MessageData must contain a key version'
-            ],
-            [
-                //#4 payload missing
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 1, 'metadata' => $metadata, 'created_at' => $createdAt],
+                //#3 payload missing
+                ['uuid' => $uuid, 'message_name' => 'test-message', 'metadata' => $metadata, 'created_at' => $createdAt],
                 'MessageData must contain a key payload'
             ],
             [
-                //#5 metadata missing
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 1, 'payload' => $payload, 'created_at' => $createdAt],
+                //#4 metadata missing
+                ['uuid' => $uuid, 'message_name' => 'test-message', 'payload' => $payload, 'created_at' => $createdAt],
                 'MessageData must contain a key metadata'
             ],
             [
-                //#6 created at missing
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 1, 'payload' => $payload, 'metadata' => $metadata],
+                //#5 created at missing
+                ['uuid' => $uuid, 'message_name' => 'test-message', 'payload' => $payload, 'metadata' => $metadata],
                 'MessageData must contain a key created_at'
             ],
             [
-                //#7 invalid uuid string
-                ['uuid' => 'invalid', 'message_name' => 'test-message', 'version' => 1, 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
+                //#6 invalid uuid string
+                ['uuid' => 'invalid', 'message_name' => 'test-message', 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
                 'uuid must be a valid UUID string'
             ],
             [
-                //#8 message name to short
-                ['uuid' => $uuid, 'message_name' => 'te', 'version' => 1, 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
+                //#7 message name to short
+                ['uuid' => $uuid, 'message_name' => 'te', 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
                 'message_name must be string with at least 3 chars length'
             ],
             [
-                //#9 version must be an unsigned integer
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => -1, 'payload' => $payload, 'metadata' => $metadata, 'created_at' => $createdAt],
-                'version must be an unsigned integer'
-            ],
-            [
-                //#10 payload must be an array
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 0, 'payload' => 'string', 'metadata' => $metadata, 'created_at' => $createdAt],
+                //#8 payload must be an array
+                ['uuid' => $uuid, 'message_name' => 'test-message', 'payload' => 'string', 'metadata' => $metadata, 'created_at' => $createdAt],
                 'payload must be an array'
             ],
             [
-                //#11 payload must not contain objects
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 0, 'payload' => ['sub' => ['key' => new \stdClass()]], 'metadata' => $metadata, 'created_at' => $createdAt],
+                //#9 payload must not contain objects
+                ['uuid' => $uuid, 'message_name' => 'test-message', 'payload' => ['sub' => ['key' => new \stdClass()]], 'metadata' => $metadata, 'created_at' => $createdAt],
                 'payload must only contain arrays and scalar values'
             ],
             [
-                //#12 metadata must be an array
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 0, 'payload' => $payload, 'metadata' => 'string', 'created_at' => $createdAt],
+                //#10 metadata must be an array
+                ['uuid' => $uuid, 'message_name' => 'test-message', 'payload' => $payload, 'metadata' => 'string', 'created_at' => $createdAt],
                 'metadata must be an array'
             ],
             [
-                //#13 metadata must not contain non scalar values
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 0, 'payload' => $payload, 'metadata' => ['sub_array' => []], 'created_at' => $createdAt],
+                //#11 metadata must not contain non scalar values
+                ['uuid' => $uuid, 'message_name' => 'test-message', 'payload' => $payload, 'metadata' => ['sub_array' => []], 'created_at' => $createdAt],
                 'A metadata value must have a scalar type. Got array for sub_array'
             ],
             [
-                //#14 created_at must be of type \DateTimeImmutable
-                ['uuid' => $uuid, 'message_name' => 'test-message', 'version' => 0, 'payload' => $payload, 'metadata' => $metadata, 'created_at' => '2015-08-25 16:30:10'],
+                //#12 created_at must be of type \DateTimeImmutable
+                ['uuid' => $uuid, 'message_name' => 'test-message', 'payload' => $payload, 'metadata' => $metadata, 'created_at' => '2015-08-25 16:30:10'],
                 'created_at must be of type DateTimeImmutable. Got string'
             ],
         ];

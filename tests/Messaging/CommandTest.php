@@ -42,7 +42,6 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
         $this->command = DoSomething::fromArray([
             'message_name' => 'TestCommand',
             'uuid' => $this->uuid->toString(),
-            'version' => 1,
             'created_at' => $this->createdAt,
             'payload' => ['command' => 'payload'],
             'metadata' => ['command' => 'metadata']
@@ -63,14 +62,6 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     public function it_has_a_uuid(): void
     {
         $this->assertTrue($this->uuid->equals($this->command->uuid()));
-    }
-
-    /**
-     * @test
-     */
-    public function it_has_a_version(): void
-    {
-        $this->assertEquals(1, $this->command->version());
     }
 
     /**
@@ -112,18 +103,6 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_new_instance_with_updated_version(): void
-    {
-        $newCommand = $this->command->withVersion(2);
-
-        $this->assertNotSame($this->command, $newCommand);
-        $this->assertEquals(1, $this->command->version());
-        $this->assertEquals(2, $newCommand->version());
-    }
-
-    /**
-     * @test
-     */
     public function it_returns_new_instance_with_replaced_metadata(): void
     {
         $newCommand = $this->command->withMetadata(['other' => 'metadata']);
@@ -154,7 +133,6 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(DoSomething::class, $command->messageName());
         $this->assertInstanceOf(Uuid::class, $command->uuid());
-        $this->assertEquals(0, $command->version());
         $this->assertEquals((new \DateTimeImmutable)->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
         $this->assertEquals(['command' => 'payload'], $command->payload());
         $this->assertEquals([], $command->metadata());

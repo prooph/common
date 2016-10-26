@@ -28,7 +28,6 @@ interface MessageConverter
      * [
      *   'message_name' => string,
      *   'uuid' => string,
-     *   'version' => int,
      *   'payload' => array, //MUST only contain sub arrays and/or scalar types, objects, etc. are not allowed!
      *   'metadata' => array, //MUST only contain key/value pairs with values being only scalar types!
      *   'created_at' => \DateTimeInterface,

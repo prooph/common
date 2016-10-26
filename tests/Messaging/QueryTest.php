@@ -26,7 +26,6 @@ final class QueryTest extends \PHPUnit_Framework_TestCase
         $query = AskSomething::fromArray([
             'message_name' => 'TestQuery',
             'uuid' => Uuid::uuid4()->toString(),
-            'version' => 1,
             'created_at' => (new \DateTimeImmutable('now', new \DateTimeZone('UTC'))),
             'payload' => ['query' => 'payload'],
             'metadata' => ['query' => 'metadata']

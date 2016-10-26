@@ -38,8 +38,6 @@ interface Message extends HasMessageName
 
     public function metadata(): array;
 
-    public function withVersion(int $version): Message;
-
     public function withMetadata(array $metadata): Message;
 
     /**

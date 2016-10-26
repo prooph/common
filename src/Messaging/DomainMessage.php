@@ -37,11 +37,6 @@ abstract class DomainMessage implements Message
     protected $uuid;
 
     /**
-     * @var int
-     */
-    protected $version = 0;
-
-    /**
      * @var DateTimeImmutable
      */
     protected $createdAt;
@@ -73,7 +68,6 @@ abstract class DomainMessage implements Message
 
         $message->uuid = Uuid::fromString($messageData['uuid']);
         $message->messageName = $messageData['message_name'];
-        $message->version = $messageData['version'];
         $message->metadata = $messageData['metadata'];
         $message->createdAt = $messageData['created_at'];
         $message->setPayload($messageData['payload']);
@@ -105,11 +99,6 @@ abstract class DomainMessage implements Message
         return $this->uuid;
     }
 
-    public function version(): int
-    {
-        return $this->version;
-    }
-
     public function createdAt(): DateTimeImmutable
     {
         return $this->createdAt;
@@ -125,7 +114,6 @@ abstract class DomainMessage implements Message
         return [
             'message_name' => $this->messageName,
             'uuid' => $this->uuid->toString(),
-            'version' => $this->version,
             'payload' => $this->payload(),
             'metadata' => $this->metadata,
             'created_at' => $this->createdAt(),
@@ -142,15 +130,6 @@ abstract class DomainMessage implements Message
         $messageData = $this->toArray();
 
         $messageData['metadata'] = $metadata;
-
-        return static::fromArray($messageData);
-    }
-
-    public function withVersion(int $version): Message
-    {
-        $messageData = $this->toArray();
-
-        $messageData['version'] = $version;
 
         return static::fromArray($messageData);
     }
