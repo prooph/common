@@ -34,8 +34,6 @@ interface Message extends HasMessageName
 
     public function uuid(): Uuid;
 
-    public function version(): int;
-
     public function createdAt(): DateTimeImmutable;
 
     public function metadata(): array;
@@ -47,7 +45,7 @@ interface Message extends HasMessageName
     /**
      * Returns new instance of message with $key => $value added to metadata
      *
-     * Given value must have a scalar type.
+     * Given value must have a scalar or array type.
      */
     public function withAddedMetadata(string $key, $value): Message;
 }
