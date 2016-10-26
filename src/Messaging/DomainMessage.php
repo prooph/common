@@ -46,15 +46,6 @@ abstract class DomainMessage implements Message
      */
     protected $metadata = [];
 
-    /**
-     * Return message payload as array
-     *
-     * The payload should only contain scalar types and sub arrays.
-     * The payload is normally passed to json_encode to persist the message or
-     * push it into a message queue.
-     */
-    abstract public function payload(): array;
-
     abstract protected function setPayload(array $payload): void;
 
     public static function fromArray(array $messageData): DomainMessage

@@ -36,6 +36,8 @@ interface Message extends HasMessageName
 
     public function createdAt(): DateTimeImmutable;
 
+    public function payload(): array;
+
     public function metadata(): array;
 
     public function withMetadata(array $metadata): Message;
