@@ -32,13 +32,14 @@ final class ActionListenerAggregateMock implements ActionEventListenerAggregate
      */
     public function attach(ActionEventEmitter $dispatcher): void
     {
-        $this->trackHandler($dispatcher->attachListener("test", [$this, "onTest"], 100));
+        $callable = \Closure::fromCallable([$this, 'onTest']);
+        $this->trackHandler($dispatcher->attachListener("test", $callable, 100));
     }
 
     /**
      * @param ActionEvent $event
      */
-    public function onTest(ActionEvent $event): void
+    private function onTest(ActionEvent $event): void
     {
         $event->stopPropagation(true);
     }

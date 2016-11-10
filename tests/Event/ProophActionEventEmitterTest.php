@@ -37,7 +37,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) use (&$lastEvent) {
+        $listener2 = function (ActionEvent $event) use (&$lastEvent): void {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
             }
@@ -60,7 +60,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) use (&$lastEvent) {
+        $listener2 = function (ActionEvent $event) use (&$lastEvent): void {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
             }
@@ -86,7 +86,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     {
         $lastEvent = null;
         $listener1 = new ActionEventListenerMock();
-        $listener2 = function (ActionEvent $event) use (&$lastEvent) {
+        $listener2 = function (ActionEvent $event) use (&$lastEvent): void {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
             }
@@ -116,7 +116,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
         $listener2 = function (ActionEvent $event) {
             $event->stopPropagation(true);
         };
-        $listener3 = function (ActionEvent $event) use (&$lastEvent) {
+        $listener3 = function (ActionEvent $event) use (&$lastEvent): void {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
             }
@@ -143,7 +143,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
         $listener1 = new ActionEventListenerMock();
         $listener2 = function (ActionEvent $event) {
         };
-        $listener3 = function (ActionEvent $event) use (&$lastEvent) {
+        $listener3 = function (ActionEvent $event) use (&$lastEvent): void {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
             }
@@ -173,7 +173,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
         $listener2 = function (ActionEvent $event) {
             $event->stopPropagation(true);
         };
-        $listener3 = function (ActionEvent $event) use (&$lastEvent) {
+        $listener3 = function (ActionEvent $event) use (&$lastEvent): void {
             if ($event->getParam('payload', false)) {
                 $lastEvent = $event;
             }
@@ -267,7 +267,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
     public function it_attaches_to_known_event_names(): void
     {
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
-        $proophActionEventEmitter->attachListener('foo', function () {
+        $proophActionEventEmitter->attachListener('foo', function (): void {
         });
     }
 
@@ -280,7 +280,7 @@ class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
         $this->expectExceptionMessage('Unknown event name given: invalid');
 
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
-        $proophActionEventEmitter->attachListener('invalid', function () {
+        $proophActionEventEmitter->attachListener('invalid', function (): void {
         });
     }
 }
