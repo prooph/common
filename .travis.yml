@@ -11,6 +11,11 @@ matrix:
       env:
         - DEPENDENCIES="--prefer-lowest --prefer-stable"
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.local
+
 before_script:
   - composer self-update
   - composer update --prefer-dist $DEPENDENCIES
@@ -18,7 +23,7 @@ before_script:
 script:
   - ./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
   - ./vendor/bin/php-cs-fixer fix -v --diff --dry-run
-  - ./vendor/bin/docheader check config/ examples/ src/ tests/
+  - ./vendor/bin/docheader check src/ tests/
 
 after_success:
   - if [[ $TEST_COVERAGE == 'true' ]]; then php vendor/bin/coveralls -v; fi
