@@ -73,7 +73,7 @@ abstract class DomainMessage implements Message
         }
 
         if ($this->messageName === null) {
-            $this->messageName = get_called_class();
+            $this->messageName = get_class($this);
         }
 
         if ($this->createdAt === null) {
