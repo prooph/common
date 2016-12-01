@@ -44,7 +44,7 @@ final class DomainEventTest extends \PHPUnit_Framework_TestCase
             'uuid' => $this->uuid->toString(),
             'created_at' => $this->createdAt,
             'payload' => ['event' => 'payload'],
-            'metadata' => ['event' => 'metadata']
+            'metadata' => ['event' => 'metadata'],
         ]);
     }
 

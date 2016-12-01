@@ -112,6 +112,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
                 foreach ($listenerHandlers as $index => $listedListenerHandler) {
                     if ($listedListenerHandler === $listenerHandler) {
                         unset($listenerHandlers[$index]);
+
                         return true;
                     }
                 }
@@ -138,7 +139,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      */
     private function getListeners(ActionEvent $event): iterable
     {
-        $prioritizedListeners = $this->events[$event->getName()] ?? [] ;
+        $prioritizedListeners = $this->events[$event->getName()] ?? [];
 
         krsort($prioritizedListeners, SORT_NUMERIC);
 

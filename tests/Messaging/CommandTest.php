@@ -44,7 +44,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
             'uuid' => $this->uuid->toString(),
             'created_at' => $this->createdAt,
             'payload' => ['command' => 'payload'],
-            'metadata' => ['command' => 'metadata']
+            'metadata' => ['command' => 'metadata'],
         ]);
     }
 
@@ -133,7 +133,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(DoSomething::class, $command->messageName());
         $this->assertInstanceOf(Uuid::class, $command->uuid());
-        $this->assertEquals((new \DateTimeImmutable)->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
+        $this->assertEquals((new \DateTimeImmutable())->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
         $this->assertEquals(['command' => 'payload'], $command->payload());
         $this->assertEquals([], $command->metadata());
     }

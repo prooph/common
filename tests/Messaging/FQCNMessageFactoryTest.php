@@ -43,7 +43,6 @@ final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
         $uuid = Uuid::uuid4();
         $createdAt = new \DateTimeImmutable();
 
-
         $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
             'uuid' => $uuid->toString(),
             'payload' => ['command' => 'payload'],

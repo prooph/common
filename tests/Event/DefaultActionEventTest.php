@@ -16,7 +16,6 @@ use Prooph\Common\Event\DefaultActionEvent;
 
 class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @return DefaultActionEvent
      */

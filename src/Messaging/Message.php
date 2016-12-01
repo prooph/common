@@ -24,8 +24,8 @@ use Ramsey\Uuid\Uuid;
 interface Message extends HasMessageName
 {
     public const TYPE_COMMAND = 'command';
-    public const TYPE_EVENT   = 'event';
-    public const TYPE_QUERY   = 'query';
+    public const TYPE_EVENT = 'event';
+    public const TYPE_QUERY = 'query';
 
     /**
      * Should be one of Message::TYPE_COMMAND, Message::TYPE_EVENT or Message::TYPE_QUERY

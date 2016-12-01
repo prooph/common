@@ -28,7 +28,7 @@ final class QueryTest extends \PHPUnit_Framework_TestCase
             'uuid' => Uuid::uuid4()->toString(),
             'created_at' => (new \DateTimeImmutable('now', new \DateTimeZone('UTC'))),
             'payload' => ['query' => 'payload'],
-            'metadata' => ['query' => 'metadata']
+            'metadata' => ['query' => 'metadata'],
         ]);
 
         $this->assertEquals(DomainMessage::TYPE_QUERY, $query->messageType());

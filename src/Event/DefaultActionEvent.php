@@ -127,7 +127,7 @@ class DefaultActionEvent implements ActionEvent
     public function setParams($params): void
     {
         if (! is_array($params) && ! $params instanceof \ArrayAccess) {
-            throw new \InvalidArgumentException("Event params are invalid. Expected type is array or \\ArrayAccess. Got " . gettype($params));
+            throw new \InvalidArgumentException('Event params are invalid. Expected type is array or \\ArrayAccess. Got ' . gettype($params));
         }
 
         $this->params = $params;
