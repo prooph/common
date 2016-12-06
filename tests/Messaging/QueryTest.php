@@ -12,11 +12,12 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\AskSomething;
 use Ramsey\Uuid\Uuid;
 
-final class QueryTest extends \PHPUnit_Framework_TestCase
+class QueryTest extends TestCase
 {
     /**
      * @test

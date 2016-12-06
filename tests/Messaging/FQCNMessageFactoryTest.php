@@ -12,18 +12,13 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\FQCNMessageFactory;
 use ProophTest\Common\Mock\DoSomething;
 use ProophTest\Common\Mock\InvalidMessage;
 use Ramsey\Uuid\Uuid;
 
-/**
- * Class FQCNMessageFactoryTest
- *
- * @package ProophTest\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
- */
-final class FQCNMessageFactoryTest extends \PHPUnit_Framework_TestCase
+class FQCNMessageFactoryTest extends TestCase
 {
     /**
      * @var FQCNMessageFactory

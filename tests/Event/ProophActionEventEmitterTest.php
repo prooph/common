@@ -12,13 +12,14 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Event;
 
+use PHPUnit\Framework\TestCase;
 use Prooph\Common\Event\ActionEvent;
 use Prooph\Common\Event\ListenerHandler;
 use Prooph\Common\Event\ProophActionEventEmitter;
 use ProophTest\Common\Mock\ActionEventListenerMock;
 use ProophTest\Common\Mock\ActionListenerAggregateMock;
 
-class ProophActionEventEmitterTest extends \PHPUnit_Framework_TestCase
+class ProophActionEventEmitterTest extends TestCase
 {
     /**
      * @var ProophActionEventEmitter

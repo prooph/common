@@ -12,9 +12,10 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Event;
 
+use PHPUnit\Framework\TestCase;
 use Prooph\Common\Event\DefaultActionEvent;
 
-class DefaultActionEventTest extends \PHPUnit_Framework_TestCase
+class DefaultActionEventTest extends TestCase
 {
     /**
      * @return DefaultActionEvent

@@ -13,18 +13,12 @@ declare(strict_types=1);
 namespace ProophTest\Common\Messaging;
 
 use Assert\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\DomainMessage;
 use Prooph\Common\Messaging\Message;
 use Prooph\Common\Messaging\NoOpMessageConverter;
 
-/**
- * Class NoOpMessageConverterTest
- *
- * @package ProophTest\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
- */
-final class NoOpMessageConverterTest extends TestCase
+class NoOpMessageConverterTest extends TestCase
 {
     /**
      * @test

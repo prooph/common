@@ -12,12 +12,13 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\DomainEvent;
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\SomethingWasDone;
 use Ramsey\Uuid\Uuid;
 
-final class DomainEventTest extends \PHPUnit_Framework_TestCase
+class DomainEventTest extends TestCase
 {
     /**
      * @var DomainEvent

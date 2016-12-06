@@ -12,18 +12,13 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\MessageDataAssertion;
 use Prooph\Common\Messaging\NoOpMessageConverter;
 use ProophTest\Common\Mock\DoSomething;
 use Ramsey\Uuid\Uuid;
 
-/**
- * Class MessageDataAssertionTest
- *
- * @package ProophTest\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
- */
-final class MessageDataAssertionTest extends \PHPUnit_Framework_TestCase
+class MessageDataAssertionTest extends TestCase
 {
     /**
      * @test
