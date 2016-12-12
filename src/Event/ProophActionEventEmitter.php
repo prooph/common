@@ -14,12 +14,6 @@ namespace Prooph\Common\Event;
 
 use Assert\Assertion;
 
-/**
- * Class ProophActionEventEmitter
- *
- * @package Prooph\Common\Event
- * @author Alexander Miertsch <contact@prooph.de>
- */
 class ProophActionEventEmitter implements ActionEventEmitter
 {
     /**

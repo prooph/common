@@ -14,12 +14,6 @@ namespace ProophTest\Common\Mock;
 
 use Prooph\Common\Event\ActionEvent;
 
-/**
- * Class ActionEventListenerMock
- *
- * @package ProophTest\Common\Mock
- * @author Alexander Miertsch <contact@prooph.de>
- */
 final class ActionEventListenerMock
 {
     /**

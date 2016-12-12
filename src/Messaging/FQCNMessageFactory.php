@@ -16,12 +16,6 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Ramsey\Uuid\Uuid;
 
-/**
- * Class FQCNMessageFactory
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
- */
 class FQCNMessageFactory implements MessageFactory
 {
     public function createMessageFromArray(string $messageName, array $messageData): Message

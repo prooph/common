@@ -12,14 +12,6 @@ declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
-/**
- * Class DefaultActionEvent
- *
- * Default implementation of ActionEvent
- *
- * @package Prooph\Common\Event
- * @author Alexander Miertsch <contact@prooph.de>
- */
 class DefaultActionEvent implements ActionEvent
 {
     /**

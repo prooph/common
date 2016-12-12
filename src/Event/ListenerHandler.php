@@ -12,12 +12,6 @@ declare(strict_types=1);
 
 namespace Prooph\Common\Event;
 
-/**
- * Interface ListenerHandler
- *
- * @package Prooph\Common\Event
- * @author Alexander Miertsch <contact@prooph.de>
- */
 interface ListenerHandler
 {
     public function getActionEventListener(): callable;

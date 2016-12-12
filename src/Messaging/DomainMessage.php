@@ -18,12 +18,7 @@ use DateTimeZone;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Class DomainMessage
- *
  * Base class for commands, domain events and queries. All are messages but differ in their intention.
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 abstract class DomainMessage implements Message
 {

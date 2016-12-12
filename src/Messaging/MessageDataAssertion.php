@@ -15,12 +15,6 @@ namespace Prooph\Common\Messaging;
 use Assert\Assertion;
 use DateTimeImmutable;
 
-/**
- * Class MessageDataAssertion
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
- */
 final class MessageDataAssertion
 {
     /**
@@ -62,8 +56,6 @@ final class MessageDataAssertion
 
     /**
      * @param mixed $payload
-     *
-     * @return void
      */
     private static function assertSubPayload($payload): void
     {

@@ -13,12 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 /**
- * Class Query
- *
  * This is the base class for queries used to fetch data from read model.
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 abstract class Query extends DomainMessage
 {

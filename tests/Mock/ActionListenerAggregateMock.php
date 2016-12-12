@@ -17,12 +17,6 @@ use Prooph\Common\Event\ActionEventEmitter;
 use Prooph\Common\Event\ActionEventListenerAggregate;
 use Prooph\Common\Event\DetachAggregateHandlers;
 
-/**
- * Class ActionListenerAggregateMock
- *
- * @package ProophTest\Common\Mock
- * @author Alexander Miertsch <contact@prooph.de>
- */
 final class ActionListenerAggregateMock implements ActionEventListenerAggregate
 {
     use DetachAggregateHandlers;

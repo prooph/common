@@ -13,12 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 /**
- * Class Command
- *
  * This is the base class for commands used to trigger actions in a domain model.
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 abstract class Command extends DomainMessage
 {

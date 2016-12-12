@@ -12,12 +12,6 @@ declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
-/**
- * Interface MessageFactory
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
- */
 interface MessageFactory
 {
     /**

@@ -13,13 +13,8 @@ declare(strict_types=1);
 namespace Prooph\Common\Event;
 
 /**
- * Interface ActionEventEmitter
- *
  * An action event dispatcher dispatches ActionEvents which are mutable objects used as a communication mechanism
  * between ActionEventListeners listening on the same event and performing actions based on it.
- *
- * @package Prooph\Common\Event
- * @author Alexander Miertsch <contact@prooph.de>
  */
 interface ActionEventEmitter
 {

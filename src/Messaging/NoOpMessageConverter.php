@@ -15,15 +15,10 @@ namespace Prooph\Common\Messaging;
 use Assert\Assertion;
 
 /**
- * Class NoOpMessageConverter
- *
  * The NoOpMessageConverter does not perform any conversion logic.
  * It simply returns DomainMessage::toArray.
  * The converter acts as a default implementation but allows replacement
  * with a custom converter using some special logic.
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 final class NoOpMessageConverter implements MessageConverter
 {
