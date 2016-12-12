@@ -13,13 +13,8 @@ declare(strict_types=1);
 namespace Prooph\Common\Event;
 
 /**
- * Trait DetachAggregateHandlers
- *
  * Trait to centralize logic of keeping track of registered ListenerHandlers of a ActionEventListenerAggregate and
  * to simplify detaching a ActionEventListenerAggregate.
- *
- * @package Prooph\Common\Event
- * @author Alexander Miertsch <contact@prooph.de>
  */
 trait DetachAggregateHandlers
 {

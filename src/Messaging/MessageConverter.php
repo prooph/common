@@ -13,12 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 /**
- * Interface MessageConverter
- *
  * A message converter is able to convert a Message into an array
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 interface MessageConverter
 {

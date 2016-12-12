@@ -15,12 +15,6 @@ namespace Prooph\Common\Messaging;
 use DateTimeImmutable;
 use Ramsey\Uuid\Uuid;
 
-/**
- * Interface Message
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
- */
 interface Message extends HasMessageName
 {
     public const TYPE_COMMAND = 'command';

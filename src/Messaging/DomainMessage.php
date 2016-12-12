@@ -14,15 +14,11 @@ namespace Prooph\Common\Messaging;
 
 use Assert\Assertion;
 use DateTimeImmutable;
+use DateTimeZone;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Class DomainMessage
- *
  * Base class for commands, domain events and queries. All are messages but differ in their intention.
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 abstract class DomainMessage implements Message
 {
@@ -77,11 +73,7 @@ abstract class DomainMessage implements Message
         }
 
         if ($this->createdAt === null) {
-            $time = (string) microtime(true);
-            if (false === strpos($time, '.')) {
-                $time .= '.0000';
-            }
-            $this->createdAt = \DateTimeImmutable::createFromFormat('U.u', $time);
+            $this->createdAt = new DateTimeImmutable('now', new DateTimeZone('UTC'));
         }
     }
 

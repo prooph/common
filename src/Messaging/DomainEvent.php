@@ -13,12 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 /**
- * Class DomainEvent
- *
  * This is the base class for domain events.
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 abstract class DomainEvent extends DomainMessage
 {

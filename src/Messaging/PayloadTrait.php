@@ -13,14 +13,9 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 /**
- * Trait PayloadTrait
- *
  * Use this trait together with the PayloadConstructable interface
  * to use simple message instantiation and default implementations
  * for DomainMessage::payload() and DomainMessage::setPayload()
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 trait PayloadTrait
 {

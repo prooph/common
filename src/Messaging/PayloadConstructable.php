@@ -12,12 +12,6 @@ declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
-/**
- * Interface PayloadConstructable
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
- */
 interface PayloadConstructable
 {
     public function __construct(array $payload);

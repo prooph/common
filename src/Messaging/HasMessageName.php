@@ -13,12 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 /**
- * Interface HasMessageName
- *
  * A message implementing this interface is aware of its name.
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 interface HasMessageName
 {

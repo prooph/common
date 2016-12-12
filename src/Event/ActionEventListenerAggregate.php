@@ -13,12 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Event;
 
 /**
- * Interface ActionEventListenerAggregate
- *
  * An action event listener aggregate interface can itself attach to an ActionEventEmitter.
- *
- * @package Prooph\Common\Event
- * @author Alexander Miertsch <contact@prooph.de>
  */
 interface ActionEventListenerAggregate
 {

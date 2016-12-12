@@ -13,13 +13,8 @@ declare(strict_types=1);
 namespace Prooph\Common\Event;
 
 /**
- * Interface ActionEvent
- *
  * An action event is mutable object used as a communication mechanism for ActionEventListeners listening on the same
  * event and performing actions based on the event and its current state.
- *
- * @package Prooph\Common\Event
- * @author Alexander Miertsch <contact@prooph.de>
  */
 interface ActionEvent
 {
