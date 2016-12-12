@@ -14,6 +14,7 @@ namespace Prooph\Common\Messaging;
 
 use Assert\Assertion;
 use DateTimeImmutable;
+use DateTimeZone;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -77,11 +78,7 @@ abstract class DomainMessage implements Message
         }
 
         if ($this->createdAt === null) {
-            $time = (string) microtime(true);
-            if (false === strpos($time, '.')) {
-                $time .= '.0000';
-            }
-            $this->createdAt = \DateTimeImmutable::createFromFormat('U.u', $time);
+            $this->createdAt = new DateTimeImmutable('now', new DateTimeZone('UTC'));
         }
     }
 

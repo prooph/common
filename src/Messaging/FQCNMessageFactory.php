@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -45,11 +47,7 @@ class FQCNMessageFactory implements MessageFactory
         }
 
         if (! isset($messageData['created_at'])) {
-            $time = (string) microtime(true);
-            if (false === strpos($time, '.')) {
-                $time .= '.0000';
-            }
-            $messageData['created_at'] = \DateTimeImmutable::createFromFormat('U.u', $time);
+            $messageData['created_at'] = new DateTimeImmutable('now', new DateTimeZone('UTC'));
         }
 
         if (! isset($messageData['metadata'])) {
