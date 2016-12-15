@@ -4,5 +4,6 @@
 /vendor
 .idea
 .php_cs.cache
+/docs/html/*.html
 nbproject
 composer.lock
