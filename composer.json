@@ -22,7 +22,7 @@
     "require": {
         "php": "^7.1.0",
         "ramsey/uuid" : "^3.5.1",
-        "beberlei/assert": "^2.6.5"
+        "beberlei/assert": "^2.7.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
