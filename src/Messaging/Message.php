@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Prooph\Common\Messaging;
 
 use DateTimeImmutable;
-use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 interface Message extends HasMessageName
 {
@@ -26,7 +26,7 @@ interface Message extends HasMessageName
      */
     public function messageType(): string;
 
-    public function uuid(): Uuid;
+    public function uuid(): UuidInterface;
 
     public function createdAt(): DateTimeImmutable;
 
