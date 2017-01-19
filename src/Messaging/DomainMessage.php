@@ -16,6 +16,7 @@ use Assert\Assertion;
 use DateTimeImmutable;
 use DateTimeZone;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * Base class for commands, domain events and queries. All are messages but differ in their intention.
@@ -28,7 +29,7 @@ abstract class DomainMessage implements Message
     protected $messageName;
 
     /**
-     * @var Uuid
+     * @var UuidInterface
      */
     protected $uuid;
 
@@ -77,7 +78,7 @@ abstract class DomainMessage implements Message
         }
     }
 
-    public function uuid(): Uuid
+    public function uuid(): UuidInterface
     {
         return $this->uuid;
     }

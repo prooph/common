@@ -17,6 +17,7 @@ use Prooph\Common\Messaging\Command;
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\DoSomething;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 class CommandTest extends TestCase
 {
@@ -31,7 +32,7 @@ class CommandTest extends TestCase
     private $createdAt;
 
     /**
-     * @var Uuid
+     * @var UuidInterface
      */
     private $uuid;
 
@@ -133,7 +134,7 @@ class CommandTest extends TestCase
         $command = new DoSomething(['command' => 'payload']);
 
         $this->assertEquals(DoSomething::class, $command->messageName());
-        $this->assertInstanceOf(Uuid::class, $command->uuid());
+        $this->assertInstanceOf(UuidInterface::class, $command->uuid());
         $this->assertEquals((new \DateTimeImmutable())->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
         $this->assertEquals(['command' => 'payload'], $command->payload());
         $this->assertEquals([], $command->metadata());
