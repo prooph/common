@@ -1,0 +1,10 @@
+{
+  "title": "Prooph Common",
+  "content": [
+    {"intro": "../README.md"},
+    {"messaging": "messaging.md"},
+    {"event": "event.md"}
+  ],
+  "target": "./html",
+  "template": "../vendor/prooph/bookdown-template/templates/main.php"
+}
