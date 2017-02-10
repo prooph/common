@@ -1,21 +1,25 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ * (c) 2014-2017 prooph software GmbH <contact@prooph.de>
+ * (c) 2015-2017 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Date: 5/1/15 - 12:53 PM
  */
+
+declare(strict_types=1);
+
 namespace ProophTest\Common\Messaging;
 
+use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\Command;
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\DoSomething;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
-final class CommandTest extends \PHPUnit_Framework_TestCase
+class CommandTest extends TestCase
 {
     /**
      * @var Command
@@ -28,7 +32,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     private $createdAt;
 
     /**
-     * @var Uuid
+     * @var UuidInterface
      */
     private $uuid;
 
@@ -40,17 +44,16 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
         $this->command = DoSomething::fromArray([
             'message_name' => 'TestCommand',
             'uuid' => $this->uuid->toString(),
-            'version' => 1,
             'created_at' => $this->createdAt,
             'payload' => ['command' => 'payload'],
-            'metadata' => ['command' => 'metadata']
+            'metadata' => ['command' => 'metadata'],
         ]);
     }
 
     /**
      * @test
      */
-    public function it_has_a_name()
+    public function it_has_a_name(): void
     {
         $this->assertEquals('TestCommand', $this->command->messageName());
     }
@@ -58,7 +61,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_a_uuid()
+    public function it_has_a_uuid(): void
     {
         $this->assertTrue($this->uuid->equals($this->command->uuid()));
     }
@@ -66,15 +69,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_a_version()
-    {
-        $this->assertEquals(1, $this->command->version());
-    }
-
-    /**
-     * @test
-     */
-    public function it_has_created_at_information()
+    public function it_has_created_at_information(): void
     {
         $this->assertEquals($this->createdAt->format(\DateTime::ISO8601), $this->command->createdAt()->format(\DateTime::ISO8601));
     }
@@ -82,7 +77,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_payload()
+    public function it_has_payload(): void
     {
         $this->assertEquals(['command' => 'payload'], $this->command->payload());
     }
@@ -90,7 +85,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_has_metadata()
+    public function it_has_metadata(): void
     {
         $this->assertEquals(['command' => 'metadata'], $this->command->metadata());
     }
@@ -98,7 +93,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_can_be_converted_to_array_and_back()
+    public function it_can_be_converted_to_array_and_back(): void
     {
         $commandData = $this->command->toArray();
 
@@ -110,19 +105,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_new_instance_with_updated_version()
-    {
-        $newCommand = $this->command->withVersion(2);
-
-        $this->assertNotSame($this->command, $newCommand);
-        $this->assertEquals(1, $this->command->version());
-        $this->assertEquals(2, $newCommand->version());
-    }
-
-    /**
-     * @test
-     */
-    public function it_returns_new_instance_with_replaced_metadata()
+    public function it_returns_new_instance_with_replaced_metadata(): void
     {
         $newCommand = $this->command->withMetadata(['other' => 'metadata']);
 
@@ -134,7 +117,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_returns_new_instance_with_added_metadata()
+    public function it_returns_new_instance_with_added_metadata(): void
     {
         $newCommand = $this->command->withAddedMetadata('other', 'metadata');
 
@@ -146,14 +129,13 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_is_initialized_with_defaults()
+    public function it_is_initialized_with_defaults(): void
     {
         $command = new DoSomething(['command' => 'payload']);
 
         $this->assertEquals(DoSomething::class, $command->messageName());
-        $this->assertInstanceOf(Uuid::class, $command->uuid());
-        $this->assertEquals(0, $command->version());
-        $this->assertEquals((new \DateTimeImmutable)->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
+        $this->assertInstanceOf(UuidInterface::class, $command->uuid());
+        $this->assertEquals((new \DateTimeImmutable())->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
         $this->assertEquals(['command' => 'payload'], $command->payload());
         $this->assertEquals([], $command->metadata());
     }
@@ -161,7 +143,7 @@ final class CommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_is_of_type_command()
+    public function it_is_of_type_command(): void
     {
         $this->assertEquals(DomainMessage::TYPE_COMMAND, $this->command->messageType());
     }

@@ -3,5 +3,7 @@
 /.buildpath
 /vendor
 .idea
+.php_cs.cache
+/docs/html
 nbproject
 composer.lock

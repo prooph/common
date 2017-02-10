@@ -1,28 +1,21 @@
 <?php
-/*
+/**
  * This file is part of the prooph/common.
- * (c) 2014-2015 prooph software GmbH <contact@prooph.de>
+ * (c) 2014-2017 prooph software GmbH <contact@prooph.de>
+ * (c) 2015-2017 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * Date: 06.07.14 - 18:34
  */
+
+declare(strict_types=1);
 
 namespace Prooph\Common\Messaging;
 
 /**
- * Interface HasMessageName
- *
  * A message implementing this interface is aware of its name.
- *
- * @package Prooph\Common\Messaging
- * @author Alexander Miertsch <contact@prooph.de>
  */
 interface HasMessageName
 {
-    /**
-     * @return string Name of the message
-     */
-    public function messageName();
+    public function messageName(): string;
 }
