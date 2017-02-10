@@ -6,6 +6,11 @@
 
 Common classes shared between prooph components
 
+## Note about versions
+
+The 4.0 release is only for the newer prooph-components (event-store v7, service-bus v6, and so on). If you are using
+an older version of prooph/event-store or prooph/service bus, stick to 3.x series.
+
 ## Shared Kernel
 
 Prooph components work with [php-fig](http://www.php-fig.org/) standards and other de facto standards like [Container-Interop](https://github.com/container-interop/container-interop) whenever possible.
