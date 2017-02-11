@@ -25,6 +25,16 @@ $ php -S 0.0.0.0:8080 -t docs/html/
 
 Then browse to http://localhost:8080/
 
+## Changes from 3.x series
+
+- Minimum requirement is now PHP 7.1
+- Add payload-method to Message interface
+- Removed version-method from Message interface 
+- Removed ActionEventListener interface
+- Action Event Emitter can accept a list of available event names
+- Update to ramsey/uuid 3.5.1
+- Update to PHPUnit 6.0
+
 ## Support
 
 - Ask questions on [prooph-users](https://groups.google.com/forum/?hl=de#!forum/prooph) google group.
@@ -34,5 +44,3 @@ Then browse to http://localhost:8080/
 
 Please feel free to fork and extend existing or add new features and send a pull request with your changes!
 To establish a consistent code quality, please provide unit tests for all your changes and may adapt the documentation.
-
-
