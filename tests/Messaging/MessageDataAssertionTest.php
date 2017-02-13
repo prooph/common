@@ -13,7 +13,7 @@ namespace ProophTest\Common\Messaging;
 use Prooph\Common\Messaging\MessageDataAssertion;
 use Prooph\Common\Messaging\NoOpMessageConverter;
 use ProophTest\Common\Mock\DoSomething;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class MessageDataAssertionTest

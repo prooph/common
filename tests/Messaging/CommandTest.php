@@ -13,7 +13,7 @@ namespace ProophTest\Common\Messaging;
 use Prooph\Common\Messaging\Command;
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\DoSomething;
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 final class CommandTest extends \PHPUnit_Framework_TestCase
 {
