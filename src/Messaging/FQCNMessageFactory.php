@@ -10,7 +10,7 @@
  */
 namespace Prooph\Common\Messaging;
 
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class FQCNMessageFactory
