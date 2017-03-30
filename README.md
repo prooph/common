@@ -6,6 +6,8 @@
 
 Common classes shared between prooph components
 
+Due to a bug in PHP 7.1.3 this library is not compatible with that specific php version.
+
 ## Note about versions
 
 The 4.0 release is only for the newer prooph-components (event-store v7, service-bus v6, and so on). If you are using
