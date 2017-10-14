@@ -39,7 +39,7 @@ Then browse to http://localhost:8080/
 
 ## Support
 
-- Ask questions on [prooph-users](https://groups.google.com/forum/?hl=de#!forum/prooph) google group.
+- Ask questions on Stack Overflow tagged with [#prooph](https://stackoverflow.com/questions/tagged/prooph).
 - File issues at [https://github.com/prooph/common/issues](https://github.com/prooph/common/issues).
 
 ## Contribute
