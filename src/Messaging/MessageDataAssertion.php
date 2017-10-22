@@ -67,7 +67,7 @@ final class MessageDataAssertion
             return;
         }
 
-        Assertion::nullOrscalar($payload, 'payload must only contain arrays and scalar values');
+        Assertion::nullOrNotEmpty($payload, 'payload must be null or notEmpty');
     }
 
     public static function assertMetadata($metadata): void
