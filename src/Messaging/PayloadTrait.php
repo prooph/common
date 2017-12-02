@@ -24,7 +24,7 @@ trait PayloadTrait
      */
     protected $payload;
 
-    public function __construct(array $payload)
+    public function __construct(array $payload = [])
     {
         $this->init();
         $this->setPayload($payload);

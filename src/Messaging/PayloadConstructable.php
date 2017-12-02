@@ -14,5 +14,5 @@ namespace Prooph\Common\Messaging;
 
 interface PayloadConstructable
 {
-    public function __construct(array $payload);
+    public function __construct(array $payload = []);
 }
