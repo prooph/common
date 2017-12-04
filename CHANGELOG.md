@@ -1,5 +1,31 @@
 # Change Log
 
+## [v4.2.1](https://github.com/prooph/common/tree/v4.2.1)
+
+[Full Changelog](https://github.com/prooph/common/compare/v4.2.0...v4.2.1)
+
+**Implemented enhancements:**
+
+- test php 7.2 [\#67](https://github.com/prooph/common/pull/67) ([prolic](https://github.com/prolic))
+
+**Closed issues:**
+
+- PayloadTrait requires payload to present [\#65](https://github.com/prooph/common/issues/65)
+
+## [v4.2.0](https://github.com/prooph/common/tree/v4.2.0) (2017-12-02)
+[Full Changelog](https://github.com/prooph/common/compare/v4.1.0...v4.2.0)
+
+**Implemented enhancements:**
+
+- make payload optional [\#66](https://github.com/prooph/common/pull/66) ([prolic](https://github.com/prolic))
+
+## [v4.1.0](https://github.com/prooph/common/tree/v4.1.0) (2017-03-30)
+[Full Changelog](https://github.com/prooph/common/compare/v4.0.0...v4.1.0)
+
+**Merged pull requests:**
+
+- Prepare for 4.0 Release [\#62](https://github.com/prooph/common/pull/62) ([prolic](https://github.com/prolic))
+
 ## [v4.0.0](https://github.com/prooph/common/tree/v4.0.0) (2017-02-10)
 [Full Changelog](https://github.com/prooph/common/compare/v4.0.0-beta2...v4.0.0)
 
