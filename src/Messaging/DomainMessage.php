@@ -111,11 +111,11 @@ abstract class DomainMessage implements Message
 
     public function withMetadata(array $metadata): Message
     {
-        $messageData = $this->toArray();
+        $message = clone $this;
 
-        $messageData['metadata'] = $metadata;
+        $message->metadata = $metadata;
 
-        return static::fromArray($messageData);
+        return $message;
     }
 
     /**
@@ -127,10 +127,10 @@ abstract class DomainMessage implements Message
     {
         Assertion::notEmpty($key, 'Invalid key');
 
-        $messageData = $this->toArray();
+        $message = clone $this;
 
-        $messageData['metadata'][$key] = $value;
+        $message->metadata[$key] = $value;
 
-        return static::fromArray($messageData);
+        return $message;
     }
 }
