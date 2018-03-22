@@ -1,7 +1,14 @@
 # Change Log
 
-## [v4.2.1](https://github.com/prooph/common/tree/v4.2.1)
+## [v4.2.2](https://github.com/prooph/common/tree/v4.2.2)
 
+[Full Changelog](https://github.com/prooph/common/compare/v4.2.1...v4.2.2)
+
+**Implemented enhancements:**
+
+- Fix DomainMessage metadata bottleneck [\#69](https://github.com/prooph/common/pull/69) ([enumag](https://github.com/enumag))
+
+## [v4.2.1](https://github.com/prooph/common/tree/v4.2.1) (2017-12-04)
 [Full Changelog](https://github.com/prooph/common/compare/v4.2.0...v4.2.1)
 
 **Implemented enhancements:**
