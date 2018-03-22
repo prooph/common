@@ -1,8 +1,8 @@
 <?php
 /**
  * This file is part of the prooph/common.
- * (c) 2014-2017 prooph software GmbH <contact@prooph.de>
- * (c) 2015-2017 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2014-2018 prooph software GmbH <contact@prooph.de>
+ * (c) 2015-2018 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -111,11 +111,11 @@ abstract class DomainMessage implements Message
 
     public function withMetadata(array $metadata): Message
     {
-        $messageData = $this->toArray();
+        $message = clone $this;
 
-        $messageData['metadata'] = $metadata;
+        $message->metadata = $metadata;
 
-        return static::fromArray($messageData);
+        return $message;
     }
 
     /**
@@ -127,10 +127,10 @@ abstract class DomainMessage implements Message
     {
         Assertion::notEmpty($key, 'Invalid key');
 
-        $messageData = $this->toArray();
+        $message = clone $this;
 
-        $messageData['metadata'][$key] = $value;
+        $message->metadata[$key] = $value;
 
-        return static::fromArray($messageData);
+        return $message;
     }
 }
