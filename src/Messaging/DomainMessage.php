@@ -15,6 +15,7 @@ namespace Prooph\Common\Messaging;
 use Assert\Assertion;
 use DateTimeImmutable;
 use DateTimeZone;
+use http\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
@@ -23,10 +24,7 @@ use Ramsey\Uuid\UuidInterface;
  */
 abstract class DomainMessage implements Message
 {
-    /**
-     * @var string
-     */
-    protected $messageName;
+    private const DateTimeFormat = 'Y-m-d\TH:i:s.uP';
 
     /**
      * @var UuidInterface
@@ -49,15 +47,25 @@ abstract class DomainMessage implements Message
     {
         MessageDataAssertion::assert($messageData);
 
-        $messageRef = new \ReflectionClass(get_called_class());
+        $messageRef = new \ReflectionClass(\get_called_class());
 
         /** @var $message DomainMessage */
         $message = $messageRef->newInstanceWithoutConstructor();
 
         $message->uuid = Uuid::fromString($messageData['uuid']);
-        $message->messageName = $messageData['message_name'];
         $message->metadata = $messageData['metadata'];
-        $message->createdAt = $messageData['created_at'];
+        $message->createdAt = DateTimeImmutable::createFromFormat(
+            self::DateTimeFormat,
+            $messageData['created_at'],
+            new DateTimeZone('UTC')
+        );
+
+        if (! $message->createdAt instanceof DateTimeImmutable) {
+            throw new InvalidArgumentException(
+                'Invalid string passed for created_at, expected format is: ' . self::DateTimeFormat
+            );
+        }
+
         $message->setPayload($messageData['payload']);
 
         return $message;
@@ -67,10 +75,6 @@ abstract class DomainMessage implements Message
     {
         if ($this->uuid === null) {
             $this->uuid = Uuid::uuid4();
-        }
-
-        if ($this->messageName === null) {
-            $this->messageName = get_class($this);
         }
 
         if ($this->createdAt === null) {
@@ -96,17 +100,12 @@ abstract class DomainMessage implements Message
     public function toArray(): array
     {
         return [
-            'message_name' => $this->messageName,
+            'message_name' => $this->messageName(),
             'uuid' => $this->uuid->toString(),
             'payload' => $this->payload(),
             'metadata' => $this->metadata,
-            'created_at' => $this->createdAt(),
+            'created_at' => $this->createdAt()->format('Y-m-d\TH:i:s.uP'),
         ];
-    }
-
-    public function messageName(): string
-    {
-        return $this->messageName;
     }
 
     public function withMetadata(array $metadata): Message

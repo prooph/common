@@ -21,28 +21,19 @@ use Ramsey\Uuid\UuidInterface;
 
 class CommandTest extends TestCase
 {
-    /**
-     * @var Command
-     */
+    /** @var Command */
     private $command;
-
-    /**
-     * @var \DateTimeImmutable
-     */
+    /** @var string */
     private $createdAt;
-
-    /**
-     * @var UuidInterface
-     */
+    /** @var UuidInterface */
     private $uuid;
 
     protected function setUp()
     {
         $this->uuid = Uuid::uuid4();
-        $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
+        $this->createdAt = (new \DateTimeImmutable('now', new \DateTimeZone('UTC')))->format('Y-m-d\TH:i:s.uP');
 
         $this->command = DoSomething::fromArray([
-            'message_name' => 'TestCommand',
             'uuid' => $this->uuid->toString(),
             'created_at' => $this->createdAt,
             'payload' => ['command' => 'payload'],
@@ -55,7 +46,7 @@ class CommandTest extends TestCase
      */
     public function it_has_a_name(): void
     {
-        $this->assertEquals('TestCommand', $this->command->messageName());
+        $this->assertEquals('do-something', $this->command->messageName());
     }
 
     /**
@@ -71,7 +62,7 @@ class CommandTest extends TestCase
      */
     public function it_has_created_at_information(): void
     {
-        $this->assertEquals($this->createdAt->format(\DateTime::ISO8601), $this->command->createdAt()->format(\DateTime::ISO8601));
+        $this->assertEquals($this->createdAt, $this->command->createdAt()->format('Y-m-d\TH:i:s.uP'));
     }
 
     /**
@@ -133,7 +124,7 @@ class CommandTest extends TestCase
     {
         $command = new DoSomething(['command' => 'payload']);
 
-        $this->assertEquals(DoSomething::class, $command->messageName());
+        $this->assertEquals('do-something', $command->messageName());
         $this->assertInstanceOf(UuidInterface::class, $command->uuid());
         $this->assertEquals((new \DateTimeImmutable())->format('Y-m-d'), $command->createdAt()->format('Y-m-d'));
         $this->assertEquals(['command' => 'payload'], $command->payload());

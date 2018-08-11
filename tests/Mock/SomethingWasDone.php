@@ -19,4 +19,9 @@ use Prooph\Common\Messaging\PayloadTrait;
 final class SomethingWasDone extends DomainEvent implements PayloadConstructable
 {
     use PayloadTrait;
+
+    public function messageName(): string
+    {
+        return 'something-was-done';
+    }
 }

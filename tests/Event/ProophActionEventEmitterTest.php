@@ -252,8 +252,9 @@ class ProophActionEventEmitterTest extends TestCase
 
     /**
      * @test
+     * @doesNotPerformAssertions
      */
-    public function it_dispatches_until_whith_no_listeners_attached(): void
+    public function it_dispatches_until_with_no_listeners_attached(): void
     {
         $actionEventMock = $this->createMock(ActionEvent::class);
 
@@ -264,6 +265,7 @@ class ProophActionEventEmitterTest extends TestCase
 
     /**
      * @test
+     * @doesNotPerformAssertions
      */
     public function it_attaches_to_known_event_names(): void
     {

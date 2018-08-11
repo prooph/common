@@ -25,9 +25,8 @@ class QueryTest extends TestCase
     public function it_has_the_message_type_query(): void
     {
         $query = AskSomething::fromArray([
-            'message_name' => 'TestQuery',
             'uuid' => Uuid::uuid4()->toString(),
-            'created_at' => (new \DateTimeImmutable('now', new \DateTimeZone('UTC'))),
+            'created_at' => (new \DateTimeImmutable('now', new \DateTimeZone('UTC')))->format('Y-m-d\TH:i:s.uP'),
             'payload' => ['query' => 'payload'],
             'metadata' => ['query' => 'metadata'],
         ]);

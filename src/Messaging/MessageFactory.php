@@ -31,5 +31,5 @@ interface MessageFactory
      * metadata = []
      * created_at = new \DateTimeImmutable('now', new \DateTimeZone('UTC')) //We treat all dates as UTC
      */
-    public function createMessageFromArray(string $messageName, array $messageData): Message;
+    public function createMessageFromArray(array $messageData): Message;
 }

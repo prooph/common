@@ -19,4 +19,9 @@ use Prooph\Common\Messaging\Query;
 final class AskSomething extends Query implements PayloadConstructable
 {
     use PayloadTrait;
+
+    public function messageName(): string
+    {
+        return 'ask-something';
+    }
 }

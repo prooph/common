@@ -13,21 +13,24 @@ declare(strict_types=1);
 namespace ProophTest\Common\Messaging;
 
 use PHPUnit\Framework\TestCase;
-use Prooph\Common\Messaging\FQCNMessageFactory;
+use Prooph\Common\Messaging\MappedMessageFactory;
 use ProophTest\Common\Mock\DoSomething;
 use ProophTest\Common\Mock\InvalidMessage;
 use Ramsey\Uuid\Uuid;
 
-class FQCNMessageFactoryTest extends TestCase
+class MappedMessageFactoryTest extends TestCase
 {
     /**
-     * @var FQCNMessageFactory
+     * @var MappedMessageFactory
      */
     private $messageFactory;
 
     protected function setUp()
     {
-        $this->messageFactory = new FQCNMessageFactory();
+        $this->messageFactory = new MappedMessageFactory([
+            'do-something' => DoSomething::class,
+            'invalid' => InvalidMessage::class,
+        ]);
     }
 
     /**
@@ -38,14 +41,15 @@ class FQCNMessageFactoryTest extends TestCase
         $uuid = Uuid::uuid4();
         $createdAt = new \DateTimeImmutable();
 
-        $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
+        $command = $this->messageFactory->createMessageFromArray([
+            'message_name' => 'do-something',
             'uuid' => $uuid->toString(),
             'payload' => ['command' => 'payload'],
             'metadata' => ['command' => 'metadata'],
-            'created_at' => $createdAt,
+            'created_at' => $createdAt->format('Y-m-d\TH:i:s.uP'),
         ]);
 
-        $this->assertEquals(DoSomething::class, $command->messageName());
+        $this->assertEquals('do-something', $command->messageName());
         $this->assertEquals($uuid->toString(), $command->uuid()->toString());
         $this->assertEquals($createdAt, $command->createdAt());
         $this->assertEquals(['command' => 'payload'], $command->payload());
@@ -57,12 +61,12 @@ class FQCNMessageFactoryTest extends TestCase
      */
     public function it_creates_a_new_message_with_defaults_from_array_and_fqcn(): void
     {
-        $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
-            'payload' => ['command' => 'payload'],
+        $command = $this->messageFactory->createMessageFromArray([
+            'message_name' => 'do-something',
         ]);
 
-        $this->assertEquals(DoSomething::class, $command->messageName());
-        $this->assertEquals(['command' => 'payload'], $command->payload());
+        $this->assertEquals('do-something', $command->messageName());
+        $this->assertEquals([], $command->payload());
         $this->assertEquals([], $command->metadata());
     }
 
@@ -71,9 +75,11 @@ class FQCNMessageFactoryTest extends TestCase
      */
     public function it_throws_exception_when_message_class_cannot_be_found(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
-        $this->messageFactory->createMessageFromArray('NotExistingClass', []);
+        $this->messageFactory->createMessageFromArray([
+            'message_name' => 'unknown',
+        ]);
     }
 
     /**
@@ -83,6 +89,8 @@ class FQCNMessageFactoryTest extends TestCase
     {
         $this->expectException(\UnexpectedValueException::class);
 
-        $this->messageFactory->createMessageFromArray(InvalidMessage::class, []);
+        $this->messageFactory->createMessageFromArray([
+            'message_name' => 'invalid',
+        ]);
     }
 }

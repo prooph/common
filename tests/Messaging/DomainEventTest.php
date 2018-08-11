@@ -20,28 +20,19 @@ use Ramsey\Uuid\Uuid;
 
 class DomainEventTest extends TestCase
 {
-    /**
-     * @var DomainEvent
-     */
+    /** @var DomainEvent */
     private $domainEvent;
-
-    /**
-     * @var \DateTimeImmutable
-     */
+    /** @var string */
     private $createdAt;
-
-    /**
-     * @var Uuid
-     */
+    /** @var Uuid */
     private $uuid;
 
     protected function setUp()
     {
         $this->uuid = Uuid::uuid4();
-        $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
+        $this->createdAt = (new \DateTimeImmutable('now', new \DateTimeZone('UTC')))->format('Y-m-d\TH:i:s.uP');
 
         $this->domainEvent = SomethingWasDone::fromArray([
-            'message_name' => 'TestDomainEvent',
             'uuid' => $this->uuid->toString(),
             'created_at' => $this->createdAt,
             'payload' => ['event' => 'payload'],
@@ -54,7 +45,7 @@ class DomainEventTest extends TestCase
      */
     public function it_has_a_name(): void
     {
-        $this->assertEquals('TestDomainEvent', $this->domainEvent->messageName());
+        $this->assertEquals('something-was-done', $this->domainEvent->messageName());
     }
 
     /**
@@ -70,7 +61,7 @@ class DomainEventTest extends TestCase
      */
     public function it_has_created_at_information(): void
     {
-        $this->assertEquals($this->createdAt->format(\DateTime::ISO8601), $this->domainEvent->createdAt()->format(\DateTime::ISO8601));
+        $this->assertEquals($this->createdAt, $this->domainEvent->createdAt()->format('Y-m-d\TH:i:s.uP'));
     }
 
     /**

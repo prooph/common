@@ -19,4 +19,9 @@ use Prooph\Common\Messaging\PayloadTrait;
 final class DoSomething extends Command implements PayloadConstructable
 {
     use PayloadTrait;
+
+    public function messageName(): string
+    {
+        return 'do-something';
+    }
 }
