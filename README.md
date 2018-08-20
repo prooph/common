@@ -8,6 +8,12 @@ Common classes shared between prooph components
 
 Due to a bug in PHP 7.1.3 this library is not compatible with that specific php version.
 
+## Important
+
+This library will receive support until December 31, 2019 and will then be deprecated.
+
+For further information see the official announcement here: [https://www.sasaprolic.com/2018/08/the-future-of-prooph-components.html](https://www.sasaprolic.com/2018/08/the-future-of-prooph-components.html)
+
 ## Note about versions
 
 The 4.0 release is only for the newer prooph-components (event-store v7, service-bus v6, and so on). If you are using
