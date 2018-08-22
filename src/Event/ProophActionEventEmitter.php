@@ -88,7 +88,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
      */
     public function attachListener(string $event, callable $listener, int $priority = 1): ListenerHandler
     {
-        if (! empty($this->availableEventNames) && ! in_array($event, $this->availableEventNames, true)) {
+        if (! empty($this->availableEventNames) && ! \in_array($event, $this->availableEventNames, true)) {
             throw new \InvalidArgumentException("Unknown event name given: $event");
         }
 
@@ -135,7 +135,7 @@ class ProophActionEventEmitter implements ActionEventEmitter
     {
         $prioritizedListeners = $this->events[$event->getName()] ?? [];
 
-        krsort($prioritizedListeners, SORT_NUMERIC);
+        \krsort($prioritizedListeners, SORT_NUMERIC);
 
         foreach ($prioritizedListeners as $listenersByPriority) {
             foreach ($listenersByPriority as $listenerHandler) {

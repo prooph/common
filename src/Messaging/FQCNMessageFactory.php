@@ -20,12 +20,12 @@ class FQCNMessageFactory implements MessageFactory
 {
     public function createMessageFromArray(string $messageName, array $messageData): Message
     {
-        if (! class_exists($messageName)) {
+        if (! \class_exists($messageName)) {
             throw new \UnexpectedValueException('Given message name is not a valid class: ' . (string) $messageName);
         }
 
-        if (! is_subclass_of($messageName, DomainMessage::class)) {
-            throw new \UnexpectedValueException(sprintf(
+        if (! \is_subclass_of($messageName, DomainMessage::class)) {
+            throw new \UnexpectedValueException(\sprintf(
                 'Message class %s is not a sub class of %s',
                 $messageName,
                 DomainMessage::class

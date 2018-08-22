@@ -59,7 +59,7 @@ final class MessageDataAssertion
      */
     private static function assertSubPayload($payload): void
     {
-        if (is_array($payload)) {
+        if (\is_array($payload)) {
             foreach ($payload as $subPayload) {
                 self::assertSubPayload($subPayload);
             }
@@ -76,16 +76,16 @@ final class MessageDataAssertion
 
         foreach ($metadata as $key => $value) {
             Assertion::minLength($key, 1, 'A metadata key must be non empty string');
-            Assertion::scalar($value, 'A metadata value must have a scalar type. Got ' . gettype($value) . ' for ' . $key);
+            Assertion::scalar($value, 'A metadata value must have a scalar type. Got ' . \gettype($value) . ' for ' . $key);
         }
     }
 
     public static function assertCreatedAt($createdAt): void
     {
-        Assertion::isInstanceOf($createdAt, DateTimeImmutable::class, sprintf(
+        Assertion::isInstanceOf($createdAt, DateTimeImmutable::class, \sprintf(
             'created_at must be of type %s. Got %s',
             DateTimeImmutable::class,
-            is_object($createdAt) ? get_class($createdAt) : gettype($createdAt)
+            \is_object($createdAt) ? \get_class($createdAt) : \gettype($createdAt)
         ));
     }
 }
