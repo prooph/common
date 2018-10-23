@@ -109,6 +109,9 @@ abstract class DomainMessage implements Message
         return $this->messageName;
     }
 
+    /**
+     * @return static
+     */
     public function withMetadata(array $metadata): Message
     {
         $message = clone $this;
@@ -122,6 +125,8 @@ abstract class DomainMessage implements Message
      * Returns new instance of message with $key => $value added to metadata
      *
      * Given value must have a scalar type.
+     *
+     * @return static
      */
     public function withAddedMetadata(string $key, $value): Message
     {
