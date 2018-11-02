@@ -1,6 +1,7 @@
 <?php
+
 /**
- * This file is part of the prooph/common.
+ * This file is part of prooph/common.
  * (c) 2014-2018 prooph software GmbH <contact@prooph.de>
  * (c) 2015-2018 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
