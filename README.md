@@ -22,7 +22,7 @@ an older version of prooph/event-store or prooph/service bus, stick to 3.x serie
 ## Shared Kernel
 
 Prooph components work with [php-fig](http://www.php-fig.org/) standards and other de facto standards like [Container-Interop](https://github.com/container-interop/container-interop) whenever possible.
-But they also share some prooph software specific classes. These common classes are included in this repository.
+But they also share some prooph specific classes. These common classes are included in this repository.
 
 ## Documentation
 
