@@ -38,7 +38,7 @@ class FQCNMessageFactory implements MessageFactory
         }
 
         if (! isset($messageData['uuid'])) {
-            $messageData['uuid'] = Uuid::uuid4();
+            $messageData['uuid'] = Uuid::uuid4()->toString();
         }
 
         if (! isset($messageData['created_at'])) {
