@@ -1,6 +1,36 @@
-# Change Log
+# Changelog
 
-## [v4.2.2](https://github.com/prooph/common/tree/v4.2.2)
+## [v4.4.0](https://github.com/prooph/common/tree/v4.4.0)
+
+[Full Changelog](https://github.com/prooph/common/compare/v4.3.0..v4.4.0)
+
+**Implemented enhancements:**
+
+- Allow use of ramsey/uuid ^4.0 [\#79](https://github.com/prooph/common/pull/79) ([kochen](https://github.com/kochen))
+
+**Closed issues:**
+
+- Ramsey/uuid v4 is out [\#78](https://github.com/prooph/common/issues/78)
+- Only array and scalar in event objects [\#77](https://github.com/prooph/common/issues/77)
+- Allow objects in message payload  / enforce scalar values only for infrastructure reasons [\#68](https://github.com/prooph/common/issues/68)
+
+**Merged pull requests:**
+
+- Change copyright [\#76](https://github.com/prooph/common/pull/76) ([codeliner](https://github.com/codeliner))
+- Update cs headers [\#75](https://github.com/prooph/common/pull/75) ([basz](https://github.com/basz))
+- Add return annotations [\#74](https://github.com/prooph/common/pull/74) ([enumag](https://github.com/enumag))
+
+## [v4.3.0](https://github.com/prooph/common/tree/v4.3.0) (2018-08-22)
+
+[Full Changelog](https://github.com/prooph/common/compare/v4.2.2...v4.3.0)
+
+**Closed issues:**
+
+- RFC: messageName\(\) method is abstract by default [\#72](https://github.com/prooph/common/issues/72)
+- RFC: Change createdAt format on MessageConverter [\#71](https://github.com/prooph/common/issues/71)
+- RFC: Remove payload from Message [\#70](https://github.com/prooph/common/issues/70)
+
+## [v4.2.2](https://github.com/prooph/common/tree/v4.2.2) (2018-03-22)
 
 [Full Changelog](https://github.com/prooph/common/compare/v4.2.1...v4.2.2)
 
@@ -9,6 +39,7 @@
 - Fix DomainMessage metadata bottleneck [\#69](https://github.com/prooph/common/pull/69) ([enumag](https://github.com/enumag))
 
 ## [v4.2.1](https://github.com/prooph/common/tree/v4.2.1) (2017-12-04)
+
 [Full Changelog](https://github.com/prooph/common/compare/v4.2.0...v4.2.1)
 
 **Implemented enhancements:**
@@ -20,6 +51,7 @@
 - PayloadTrait requires payload to present [\#65](https://github.com/prooph/common/issues/65)
 
 ## [v4.2.0](https://github.com/prooph/common/tree/v4.2.0) (2017-12-02)
+
 [Full Changelog](https://github.com/prooph/common/compare/v4.1.0...v4.2.0)
 
 **Implemented enhancements:**
@@ -27,6 +59,7 @@
 - make payload optional [\#66](https://github.com/prooph/common/pull/66) ([prolic](https://github.com/prolic))
 
 ## [v4.1.0](https://github.com/prooph/common/tree/v4.1.0) (2017-03-30)
+
 [Full Changelog](https://github.com/prooph/common/compare/v4.0.0...v4.1.0)
 
 **Merged pull requests:**
@@ -34,6 +67,7 @@
 - Prepare for 4.0 Release [\#62](https://github.com/prooph/common/pull/62) ([prolic](https://github.com/prolic))
 
 ## [v4.0.0](https://github.com/prooph/common/tree/v4.0.0) (2017-02-10)
+
 [Full Changelog](https://github.com/prooph/common/compare/v4.0.0-beta2...v4.0.0)
 
 **Implemented enhancements:**
@@ -49,9 +83,11 @@
 - Docs [\#59](https://github.com/prooph/common/pull/59) ([prolic](https://github.com/prolic))
 
 ## [v4.0.0-beta2](https://github.com/prooph/common/tree/v4.0.0-beta2) (2017-01-07)
+
 [Full Changelog](https://github.com/prooph/common/compare/v4.0.0-beta1...v4.0.0-beta2)
 
 ## [v4.0.0-beta1](https://github.com/prooph/common/tree/v4.0.0-beta1) (2016-12-12)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.7.1...v4.0.0-beta1)
 
 **Implemented enhancements:**
@@ -67,6 +103,7 @@
 - Upgrade to ramsey/uuid 3.x [\#48](https://github.com/prooph/common/issues/48)
 
 ## [v3.7.1](https://github.com/prooph/common/tree/v3.7.1) (2016-05-14)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.7...v3.7.1)
 
 **Implemented enhancements:**
@@ -74,6 +111,7 @@
 - Update to coveralls ^1.0 [\#53](https://github.com/prooph/common/issues/53)
 
 ## [v3.7](https://github.com/prooph/common/tree/v3.7) (2016-01-30)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.6...v3.7)
 
 **Closed issues:**
@@ -86,6 +124,7 @@
 - move setPayload call to allow the method to use information from metadata array \(develop\) [\#50](https://github.com/prooph/common/pull/50) ([pvgnd](https://github.com/pvgnd))
 
 ## [v3.6](https://github.com/prooph/common/tree/v3.6) (2015-11-08)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.5.5...v3.6)
 
 **Implemented enhancements:**
@@ -97,6 +136,7 @@
 - added abstract method init\(\) to ensure it's available [\#46](https://github.com/prooph/common/pull/46) ([sandrokeil](https://github.com/sandrokeil))
 
 ## [v3.5.5](https://github.com/prooph/common/tree/v3.5.5) (2015-10-02)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.5.4...v3.5.5)
 
 **Fixed bugs:**
@@ -104,6 +144,7 @@
 - allow null in payload [\#43](https://github.com/prooph/common/pull/43) ([prolic](https://github.com/prolic))
 
 ## [v3.5.4](https://github.com/prooph/common/tree/v3.5.4) (2015-09-15)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.5.3...v3.5.4)
 
 **Merged pull requests:**
@@ -111,6 +152,7 @@
 - faster fqcn message factory [\#42](https://github.com/prooph/common/pull/42) ([prolic](https://github.com/prolic))
 
 ## [v3.5.3](https://github.com/prooph/common/tree/v3.5.3) (2015-09-01)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.5.2...v3.5.3)
 
 **Merged pull requests:**
@@ -119,6 +161,7 @@
 - test php7 on travis [\#40](https://github.com/prooph/common/pull/40) ([prolic](https://github.com/prolic))
 
 ## [v3.5.2](https://github.com/prooph/common/tree/v3.5.2) (2015-08-26)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.5.1...v3.5.2)
 
 **Implemented enhancements:**
@@ -126,6 +169,7 @@
 - Add tests [\#39](https://github.com/prooph/common/pull/39) ([prolic](https://github.com/prolic))
 
 ## [v3.5.1](https://github.com/prooph/common/tree/v3.5.1) (2015-08-25)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.5...v3.5.1)
 
 **Closed issues:**
@@ -137,6 +181,7 @@
 - Create DateTime from microseconds [\#38](https://github.com/prooph/common/pull/38) ([codeliner](https://github.com/codeliner))
 
 ## [v3.5](https://github.com/prooph/common/tree/v3.5) (2015-08-25)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.4...v3.5)
 
 **Merged pull requests:**
@@ -144,6 +189,7 @@
 - Force \DateTimeInterface [\#37](https://github.com/prooph/common/pull/37) ([codeliner](https://github.com/codeliner))
 
 ## [v3.4](https://github.com/prooph/common/tree/v3.4) (2015-08-23)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.3.1...v3.4)
 
 **Implemented enhancements:**
@@ -156,9 +202,11 @@
 - Improve interface descriptions [\#35](https://github.com/prooph/common/pull/35) ([codeliner](https://github.com/codeliner))
 
 ## [v3.3.1](https://github.com/prooph/common/tree/v3.3.1) (2015-08-13)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.3...v3.3.1)
 
 ## [v3.3](https://github.com/prooph/common/tree/v3.3) (2015-08-12)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.2.1...v3.3)
 
 **Merged pull requests:**
@@ -166,6 +214,7 @@
 - Add a message interface to reduce coupling [\#32](https://github.com/prooph/common/pull/32) ([codeliner](https://github.com/codeliner))
 
 ## [v3.2.1](https://github.com/prooph/common/tree/v3.2.1) (2015-08-11)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.2...v3.2.1)
 
 **Closed issues:**
@@ -177,6 +226,7 @@
 - Treat all dates as UTC [\#31](https://github.com/prooph/common/pull/31) ([codeliner](https://github.com/codeliner))
 
 ## [v3.2](https://github.com/prooph/common/tree/v3.2) (2015-07-30)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.1...v3.2)
 
 **Merged pull requests:**
@@ -185,6 +235,7 @@
 - Messaging docs [\#28](https://github.com/prooph/common/pull/28) ([codeliner](https://github.com/codeliner))
 
 ## [v3.1](https://github.com/prooph/common/tree/v3.1) (2015-07-26)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.0.1...v3.1)
 
 **Merged pull requests:**
@@ -192,6 +243,7 @@
 - Add message converter [\#27](https://github.com/prooph/common/pull/27) ([codeliner](https://github.com/codeliner))
 
 ## [v3.0.1](https://github.com/prooph/common/tree/v3.0.1) (2015-07-26)
+
 [Full Changelog](https://github.com/prooph/common/compare/v3.0...v3.0.1)
 
 **Merged pull requests:**
@@ -199,6 +251,7 @@
 - Rename name property of domain message to message name [\#26](https://github.com/prooph/common/pull/26) ([codeliner](https://github.com/codeliner))
 
 ## [v3.0](https://github.com/prooph/common/tree/v3.0) (2015-07-25)
+
 [Full Changelog](https://github.com/prooph/common/compare/v2.2...v3.0)
 
 **Closed issues:**
@@ -227,6 +280,7 @@
 - Turn DomainMessage into abstract class [\#16](https://github.com/prooph/common/pull/16) ([codeliner](https://github.com/codeliner))
 
 ## [v2.2](https://github.com/prooph/common/tree/v2.2) (2015-05-22)
+
 [Full Changelog](https://github.com/prooph/common/compare/v2.1...v2.2)
 
 **Closed issues:**
@@ -238,6 +292,7 @@
 - Patch-5: Add message type Query [\#6](https://github.com/prooph/common/pull/6) ([codeliner](https://github.com/codeliner))
 
 ## [v2.1](https://github.com/prooph/common/tree/v2.1) (2015-05-22)
+
 [Full Changelog](https://github.com/prooph/common/compare/v2.0...v2.1)
 
 **Implemented enhancements:**
@@ -249,24 +304,33 @@
 - Patch-3: Add ProophActionEventDispatcher [\#4](https://github.com/prooph/common/pull/4) ([codeliner](https://github.com/codeliner))
 
 ## [v2.0](https://github.com/prooph/common/tree/v2.0) (2015-05-09)
+
 [Full Changelog](https://github.com/prooph/common/compare/v1.5...v2.0)
 
 ## [v1.5](https://github.com/prooph/common/tree/v1.5) (2015-05-01)
+
 [Full Changelog](https://github.com/prooph/common/compare/v1.4...v1.5)
 
 ## [v1.4](https://github.com/prooph/common/tree/v1.4) (2015-04-30)
+
 [Full Changelog](https://github.com/prooph/common/compare/v1.3...v1.4)
 
 ## [v1.3](https://github.com/prooph/common/tree/v1.3) (2015-04-30)
+
 [Full Changelog](https://github.com/prooph/common/compare/v1.2...v1.3)
 
 ## [v1.2](https://github.com/prooph/common/tree/v1.2) (2015-04-30)
+
 [Full Changelog](https://github.com/prooph/common/compare/v1.1...v1.2)
 
 ## [v1.1](https://github.com/prooph/common/tree/v1.1) (2015-03-06)
+
 [Full Changelog](https://github.com/prooph/common/compare/v1.0...v1.1)
 
 ## [v1.0](https://github.com/prooph/common/tree/v1.0) (2015-03-05)
+
+[Full Changelog](https://github.com/prooph/common/compare/6aff163e7c312dde09a7cdf29875459be869e7e3...v1.0)
+
 **Closed issues:**
 
 - Wrap ZF2 Service Manager [\#2](https://github.com/prooph/common/issues/2)
@@ -274,4 +338,4 @@
 
 
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
