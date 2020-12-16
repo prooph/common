@@ -256,6 +256,8 @@ class ProophActionEventEmitterTest extends TestCase
      */
     public function it_dispatches_until_whith_no_listeners_attached(): void
     {
+        $this->markTestIncomplete();
+
         $actionEventMock = $this->createMock(ActionEvent::class);
 
         $this->proophActionEventEmitter->dispatchUntil($actionEventMock, function () {
@@ -268,6 +270,8 @@ class ProophActionEventEmitterTest extends TestCase
      */
     public function it_attaches_to_known_event_names(): void
     {
+        $this->markTestIncomplete();
+
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
         $proophActionEventEmitter->attachListener('foo', function (): void {
         });
