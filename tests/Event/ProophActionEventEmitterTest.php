@@ -27,7 +27,7 @@ class ProophActionEventEmitterTest extends TestCase
      */
     private $proophActionEventEmitter;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->proophActionEventEmitter = new ProophActionEventEmitter();
     }

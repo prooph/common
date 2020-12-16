@@ -37,7 +37,7 @@ class CommandTest extends TestCase
      */
     private $uuid;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->uuid = Uuid::uuid4();
         $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));

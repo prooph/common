@@ -26,7 +26,7 @@ class FQCNMessageFactoryTest extends TestCase
      */
     private $messageFactory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->messageFactory = new FQCNMessageFactory();
     }
