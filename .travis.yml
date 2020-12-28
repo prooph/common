@@ -22,9 +22,11 @@ matrix:
     - php: 8.0
       env:
         - DEPENDENCIES=""
+        - PHP_CS_FIXER_IGNORE_ENV=""
     - php: 8.0
       env:
         - DEPENDENCIES="--prefer-lowest --prefer-stable"
+        - PHP_CS_FIXER_IGNORE_ENV=""
 
 cache:
   directories:
