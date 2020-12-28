@@ -7,6 +7,11 @@ matrix:
       env:
         - DEPENDENCIES=""
         - TEST_COVERAGE=true
+
+    - php: 7.3
+      env:
+          - DEPENDENCIES=""
+          - PHP_CS=true
     - php: 7.3
       env:
         - DEPENDENCIES=""
@@ -22,11 +27,9 @@ matrix:
     - php: 8.0
       env:
         - DEPENDENCIES=""
-        - PHP_CS_FIXER_IGNORE_ENV=""
     - php: 8.0
       env:
         - DEPENDENCIES="--prefer-lowest --prefer-stable"
-        - PHP_CS_FIXER_IGNORE_ENV=""
 
 cache:
   directories:
@@ -41,8 +44,7 @@ before_script:
   - composer update --prefer-dist $DEPENDENCIES
 
 script:
-  - if [[ $TEST_COVERAGE == 'true' ]]; then php -dzend_extension=xdebug.so ./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml; else ./vendor/bin/phpunit; fi
-  - ./vendor/bin/php-cs-fixer fix -v --diff --dry-run
+  - if [[ $TEST_COVERAGE == 'true' ]]; then php -dzend_extension=xdebug.so ./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml; elif [[ $PHP_CS == 'true' ]]; then ./vendor/bin/php-cs-fixer fix -v --diff --dry-run; else ./vendor/bin/phpunit; fi
 
 after_success:
   - if [[ $TEST_COVERAGE == 'true' ]]; then php vendor/bin/coveralls -v; fi
