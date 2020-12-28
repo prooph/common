@@ -6,8 +6,8 @@ matrix:
     - php: 7.3
       env:
         - DEPENDENCIES=""
+        - XDEBUG_MODE="coverage"
         - TEST_COVERAGE=true
-
     - php: 7.3
       env:
           - DEPENDENCIES=""
