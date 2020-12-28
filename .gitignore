@@ -7,3 +7,5 @@
 /docs/html
 nbproject
 composer.lock
+.phpunit.result.cache
+/build
