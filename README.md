@@ -1,6 +1,6 @@
 # prooph/common
 
-[![Build Status](https://travis-ci.org/prooph/common.svg?branch=master)](https://travis-ci.org/prooph/common)
+[![Build Status](https://travis-ci.com/prooph/common.svg?branch=master)](https://travis-ci.com/prooph/common)
 [![Coverage Status](https://coveralls.io/repos/prooph/common/badge.svg?branch=master)](https://coveralls.io/r/prooph/common?branch=master)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/prooph/improoph)
 
