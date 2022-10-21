@@ -2,8 +2,8 @@
 
 /**
  * This file is part of prooph/common.
- * (c) 2014-2021 Alexander Miertsch <kontakt@codeliner.ws>
- * (c) 2015-2021 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2014-2022 Alexander Miertsch <kontakt@codeliner.ws>
+ * (c) 2015-2022 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,33 +13,27 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use DateTimeImmutable;
+use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\DomainEvent;
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\SomethingWasDone;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 class DomainEventTest extends TestCase
 {
-    /**
-     * @var DomainEvent
-     */
-    private $domainEvent;
+    private DomainEvent $domainEvent;
 
-    /**
-     * @var \DateTimeImmutable
-     */
-    private $createdAt;
+    private DateTimeImmutable $createdAt;
 
-    /**
-     * @var Uuid
-     */
-    private $uuid;
+    private UuidInterface $uuid;
 
     protected function setUp(): void
     {
         $this->uuid = Uuid::uuid4();
-        $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
+        $this->createdAt = new DateTimeImmutable('now', new DateTimeZone('UTC'));
 
         $this->domainEvent = SomethingWasDone::fromArray([
             'message_name' => 'TestDomainEvent',

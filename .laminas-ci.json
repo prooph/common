@@ -1,0 +1,5 @@
+{
+    "additional_composer_arguments": [
+        "--prefer-stable"
+    ]
+}
