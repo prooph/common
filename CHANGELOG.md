@@ -1,8 +1,25 @@
 # Changelog
 
-## [v4.4.0](https://github.com/prooph/common/tree/v4.4.0)
+## [v4.5.1](https://github.com/prooph/common/tree/v4.5.1)
 
-[Full Changelog](https://github.com/prooph/common/compare/v4.3.0..v4.4.0)
+[Full Changelog](https://github.com/prooph/common/compare/v4.5.0...v4.5.1)
+
+**Implemented enhancements:**
+
+- add gh ci badge, remove travis file, update readme [\#82](https://github.com/prooph/common/pull/82) ([basz](https://github.com/basz))
+- php74+, github actions, cs [\#81](https://github.com/prooph/common/pull/81) ([basz](https://github.com/basz))
+
+## [v4.5.0](https://github.com/prooph/common/tree/v4.5.0) (2021-01-04)
+
+[Full Changelog](https://github.com/prooph/common/compare/v4.4.0...v4.5.0)
+
+**Merged pull requests:**
+
+- Pr/php8 [\#80](https://github.com/prooph/common/pull/80) ([fritz-gerneth](https://github.com/fritz-gerneth))
+
+## [v4.4.0](https://github.com/prooph/common/tree/v4.4.0) (2020-03-27)
+
+[Full Changelog](https://github.com/prooph/common/compare/v4.3.0...v4.4.0)
 
 **Implemented enhancements:**
 
