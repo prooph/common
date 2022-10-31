@@ -1,12 +1,10 @@
 # prooph/common
 
-[![Build Status](https://travis-ci.com/prooph/common.svg?branch=master)](https://travis-ci.com/prooph/common)
+[![Continuous Integration](https://github.com/prooph/common/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/prooph/common/actions/workflows/continuous-integration.yml)
 [![Coverage Status](https://coveralls.io/repos/prooph/common/badge.svg?branch=master)](https://coveralls.io/r/prooph/common?branch=master)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/prooph/improoph)
 
 Common classes shared between prooph components
-
-Due to a bug in PHP 7.1.3 this library is not compatible with that specific php version.
 
 ## Important
 
@@ -37,7 +35,7 @@ Then browse to http://localhost:8080/
 
 - Minimum requirement is now PHP 7.1
 - Add payload-method to Message interface
-- Removed version-method from Message interface 
+- Removed version-method from Message interface
 - Removed ActionEventListener interface
 - Action Event Emitter can accept a list of available event names
 - Update to ramsey/uuid 3.5.1
