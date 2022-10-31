@@ -8,4 +8,4 @@
 nbproject
 composer.lock
 .phpunit.result.cache
-/build
+.phpcs-cache

@@ -2,8 +2,8 @@
 
 /**
  * This file is part of prooph/common.
- * (c) 2014-2021 Alexander Miertsch <kontakt@codeliner.ws>
- * (c) 2015-2021 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2014-2022 Alexander Miertsch <kontakt@codeliner.ws>
+ * (c) 2015-2022 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\MessageDataAssertion;
 use Prooph\Common\Messaging\NoOpMessageConverter;
@@ -43,7 +44,7 @@ class MessageDataAssertionTest extends TestCase
      */
     public function it_throws_exception_if_message_data_is_invalid($messageData, $errorMessage)
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($errorMessage);
 
         MessageDataAssertion::assert($messageData);

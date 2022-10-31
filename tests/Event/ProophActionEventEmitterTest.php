@@ -2,8 +2,8 @@
 
 /**
  * This file is part of prooph/common.
- * (c) 2014-2021 Alexander Miertsch <kontakt@codeliner.ws>
- * (c) 2015-2021 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2014-2022 Alexander Miertsch <kontakt@codeliner.ws>
+ * (c) 2015-2022 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,10 +22,7 @@ use ProophTest\Common\Mock\ActionListenerAggregateMock;
 
 class ProophActionEventEmitterTest extends TestCase
 {
-    /**
-     * @var ProophActionEventEmitter
-     */
-    private $proophActionEventEmitter;
+    private ProophActionEventEmitter $proophActionEventEmitter;
 
     protected function setUp(): void
     {
@@ -99,10 +96,8 @@ class ProophActionEventEmitterTest extends TestCase
         $this->proophActionEventEmitter->attachListener('test', $listener1);
         $this->proophActionEventEmitter->attachListener('test', $listener2);
 
-        $this->proophActionEventEmitter->dispatchUntil($actionEvent, function (ActionEvent $e) {
-            //We return true directly after first listener was triggered
-            return true;
-        });
+        $this->proophActionEventEmitter->dispatchUntil($actionEvent, fn (ActionEvent $e) => //We return true directly after first listener was triggered
+true);
 
         $this->assertNull($lastEvent);
         $this->assertSame($actionEvent, $listener1->lastEvent);
@@ -256,13 +251,9 @@ class ProophActionEventEmitterTest extends TestCase
      */
     public function it_dispatches_until_whith_no_listeners_attached(): void
     {
-        $this->markTestIncomplete();
-
         $actionEventMock = $this->createMock(ActionEvent::class);
 
-        $this->proophActionEventEmitter->dispatchUntil($actionEventMock, function () {
-            return true;
-        });
+        $this->proophActionEventEmitter->dispatchUntil($actionEventMock, fn () => true);
     }
 
     /**
@@ -270,8 +261,6 @@ class ProophActionEventEmitterTest extends TestCase
      */
     public function it_attaches_to_known_event_names(): void
     {
-        $this->markTestIncomplete();
-
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
         $proophActionEventEmitter->attachListener('foo', function (): void {
         });

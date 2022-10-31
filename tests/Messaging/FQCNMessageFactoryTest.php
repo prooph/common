@@ -2,8 +2,8 @@
 
 /**
  * This file is part of prooph/common.
- * (c) 2014-2021 Alexander Miertsch <kontakt@codeliner.ws>
- * (c) 2015-2021 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2014-2022 Alexander Miertsch <kontakt@codeliner.ws>
+ * (c) 2015-2022 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\FQCNMessageFactory;
 use ProophTest\Common\Mock\DoSomething;
@@ -21,10 +22,7 @@ use Ramsey\Uuid\Uuid;
 
 class FQCNMessageFactoryTest extends TestCase
 {
-    /**
-     * @var FQCNMessageFactory
-     */
-    private $messageFactory;
+    private FQCNMessageFactory $messageFactory;
 
     protected function setUp(): void
     {
@@ -37,7 +35,7 @@ class FQCNMessageFactoryTest extends TestCase
     public function it_creates_a_new_message_from_array_and_fqcn(): void
     {
         $uuid = Uuid::uuid4();
-        $createdAt = new \DateTimeImmutable();
+        $createdAt = new DateTimeImmutable();
 
         $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
             'uuid' => $uuid->toString(),

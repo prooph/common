@@ -2,8 +2,8 @@
 
 /**
  * This file is part of prooph/common.
- * (c) 2014-2021 Alexander Miertsch <kontakt@codeliner.ws>
- * (c) 2015-2021 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2014-2022 Alexander Miertsch <kontakt@codeliner.ws>
+ * (c) 2015-2022 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,6 +18,7 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use ReflectionClass;
 
 /**
  * Base class for commands, domain events and queries. All are messages but differ in their intention.
@@ -50,12 +51,12 @@ abstract class DomainMessage implements Message
     {
         MessageDataAssertion::assert($messageData);
 
-        $messageRef = new \ReflectionClass(\get_called_class());
+        $messageRef = new ReflectionClass(\get_called_class());
 
         /** @var $message DomainMessage */
         $message = $messageRef->newInstanceWithoutConstructor();
 
-        $message->uuid = Uuid::fromString($messageData['uuid']);
+        $message->uuid = Uuid::fromString((string) $messageData['uuid']);
         $message->messageName = $messageData['message_name'];
         $message->metadata = $messageData['metadata'];
         $message->createdAt = $messageData['created_at'];
