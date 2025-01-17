@@ -26,7 +26,7 @@ interface ActionEventEmitter
      *
      * @return ActionEvent that can be triggered by the ActionEventEmitter
      */
-    public function getNewActionEvent(string $name = null, $target = null, $params = null): ActionEvent;
+    public function getNewActionEvent(?string $name = null, $target = null, $params = null): ActionEvent;
 
     public function dispatch(ActionEvent $event): void;
 
