@@ -49,7 +49,7 @@ class MessageDataAssertionTest extends TestCase
         MessageDataAssertion::assert($messageData);
     }
 
-    public function provideMessageDataWithMissingKey()
+    public static function provideMessageDataWithMissingKey()
     {
         $uuid = Uuid::uuid4()->toString();
         $payload = ['foo' => ['bar' => ['baz' => 100]]];
