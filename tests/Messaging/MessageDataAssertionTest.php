@@ -39,7 +39,6 @@ class MessageDataAssertionTest extends TestCase
 
     /**
      * @test
-     * @dataProvider
      * @dataProvider provideMessageDataWithMissingKey
      */
     public function it_throws_exception_if_message_data_is_invalid($messageData, $errorMessage)
