@@ -249,8 +249,10 @@ true);
     /**
      * @test
      */
-    public function it_dispatches_until_whith_no_listeners_attached(): void
+    public function it_dispatches_until_with_no_listeners_attached(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $actionEventMock = $this->createMock(ActionEvent::class);
 
         $this->proophActionEventEmitter->dispatchUntil($actionEventMock, fn () => true);
@@ -261,6 +263,8 @@ true);
      */
     public function it_attaches_to_known_event_names(): void
     {
+        $this->expectNotToPerformAssertions();
+        
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
         $proophActionEventEmitter->attachListener('foo', function (): void {
         });
