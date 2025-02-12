@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace ProophTest\Common\Messaging;
 
 use DateTimeImmutable;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\FQCNMessageFactory;
 use ProophTest\Common\Mock\DoSomething;
@@ -29,9 +30,7 @@ class FQCNMessageFactoryTest extends TestCase
         $this->messageFactory = new FQCNMessageFactory();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_creates_a_new_message_from_array_and_fqcn(): void
     {
         $uuid = Uuid::uuid4();
@@ -51,9 +50,7 @@ class FQCNMessageFactoryTest extends TestCase
         $this->assertEquals(['command' => 'metadata'], $command->metadata());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_creates_a_new_message_with_defaults_from_array_and_fqcn(): void
     {
         $command = $this->messageFactory->createMessageFromArray(DoSomething::class, [
@@ -65,9 +62,7 @@ class FQCNMessageFactoryTest extends TestCase
         $this->assertEquals([], $command->metadata());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_throws_exception_when_message_class_cannot_be_found(): void
     {
         $this->expectException(\UnexpectedValueException::class);
@@ -75,9 +70,7 @@ class FQCNMessageFactoryTest extends TestCase
         $this->messageFactory->createMessageFromArray('NotExistingClass', []);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_throws_exception_when_message_class_is_not_a_sub_class_domain_message(): void
     {
         $this->expectException(\UnexpectedValueException::class);

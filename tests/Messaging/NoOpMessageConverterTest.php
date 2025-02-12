@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace ProophTest\Common\Messaging;
 
 use Assert\InvalidArgumentException;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\DomainMessage;
 use Prooph\Common\Messaging\Message;
@@ -21,9 +23,7 @@ use Prooph\Common\Messaging\NoOpMessageConverter;
 
 class NoOpMessageConverterTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_converts_to_array(): void
     {
         $messageMock = $this->getMockForAbstractClass(DomainMessage::class, [], '', true, true, true, ['toArray']);
@@ -33,9 +33,7 @@ class NoOpMessageConverterTest extends TestCase
         $converter->convertToArray($messageMock);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_throws_exception_when_message_is_not_a_domain_message(): void
     {
         $this->expectException(InvalidArgumentException::class);

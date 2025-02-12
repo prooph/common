@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\AskSomething;
@@ -20,9 +21,7 @@ use Ramsey\Uuid\Uuid;
 
 class QueryTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_has_the_message_type_query(): void
     {
         $query = AskSomething::fromArray([

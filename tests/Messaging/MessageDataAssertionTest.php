@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace ProophTest\Common\Messaging;
 
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\MessageDataAssertion;
 use Prooph\Common\Messaging\NoOpMessageConverter;
@@ -22,9 +24,7 @@ use Ramsey\Uuid\Uuid;
 
 class MessageDataAssertionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_asserts_message_data_returned_by_the_no_op_message_converter(): void
     {
         $testAssertions = new DoSomething(['test' => 'assertions', ['null' => null]]);
@@ -37,10 +37,8 @@ class MessageDataAssertionTest extends TestCase
         $this->assertTrue(true);
     }
 
-    /**
-     * @test
-     * @dataProvider provideMessageDataWithMissingKey
-     */
+    #[Test]
+    #[DataProvider('provideMessageDataWithMissingKey')]
     public function it_throws_exception_if_message_data_is_invalid($messageData, $errorMessage)
     {
         $this->expectException(InvalidArgumentException::class);
