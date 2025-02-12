@@ -243,7 +243,7 @@ true);
     public function it_attaches_to_known_event_names(): void
     {
         $this->expectNotToPerformAssertions();
-        
+
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
         $proophActionEventEmitter->attachListener('foo', function (): void {
         });
