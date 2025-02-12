@@ -222,7 +222,9 @@ true);
     #[Test]
     public function it_returns_false_when_unattached_listener_handler_gets_detached(): void
     {
-        $listener = $this->getMockForAbstractClass(ListenerHandler::class);
+        $listener = $this->getMockBuilder(ListenerHandler::class)
+            ->onlyMethods(['getActionEventListener'])
+            ->getMock();
 
         $this->assertFalse($this->proophActionEventEmitter->detachListener($listener));
     }
