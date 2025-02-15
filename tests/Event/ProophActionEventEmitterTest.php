@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Event;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Event\ActionEvent;
 use Prooph\Common\Event\ListenerHandler;
@@ -29,9 +30,7 @@ class ProophActionEventEmitterTest extends TestCase
         $this->proophActionEventEmitter = new ProophActionEventEmitter();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_attaches_action_event_listeners_and_dispatch_event_to_them(): void
     {
         $lastEvent = null;
@@ -52,9 +51,7 @@ class ProophActionEventEmitterTest extends TestCase
         $this->assertSame($lastEvent, $listener1->lastEvent);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_detaches_a_listener(): void
     {
         $lastEvent = null;
@@ -78,9 +75,7 @@ class ProophActionEventEmitterTest extends TestCase
         $this->assertSame($actionEvent, $lastEvent);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_triggers_listeners_until_callback_returns_true(): void
     {
         $lastEvent = null;
@@ -103,9 +98,7 @@ true);
         $this->assertSame($actionEvent, $listener1->lastEvent);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_stops_dispatching_when_event_propagation_is_stopped(): void
     {
         $lastEvent = null;
@@ -131,9 +124,7 @@ true);
         $this->assertSame($actionEvent, $listener1->lastEvent);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_stops_dispatching_when_event_propagation_is_stopped_2(): void
     {
         $lastEvent = null;
@@ -160,9 +151,7 @@ true);
         $this->assertSame($actionEvent, $listener1->lastEvent);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_triggers_listeners_with_high_priority_first(): void
     {
         $lastEvent = null;
@@ -188,9 +177,7 @@ true);
         $this->assertNull($listener1->lastEvent);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_attaches_a_listener_aggregate(): void
     {
         $listener1 = new ActionEventListenerMock();
@@ -207,9 +194,7 @@ true);
         $this->assertNull($listener1->lastEvent);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_detaches_listener_aggregate(): void
     {
         $listener1 = new ActionEventListenerMock();
@@ -227,48 +212,44 @@ true);
         $this->assertSame($actionEvent, $listener1->lastEvent);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_uses_default_event_name_if_none_given(): void
     {
         $event = $this->proophActionEventEmitter->getNewActionEvent();
         $this->assertEquals('action_event', $event->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_returns_false_when_unattached_listener_handler_gets_detached(): void
     {
-        $listener = $this->getMockForAbstractClass(ListenerHandler::class);
+        $listener = $this->getMockBuilder(ListenerHandler::class)
+            ->onlyMethods(['getActionEventListener'])
+            ->getMock();
 
         $this->assertFalse($this->proophActionEventEmitter->detachListener($listener));
     }
 
-    /**
-     * @test
-     */
-    public function it_dispatches_until_whith_no_listeners_attached(): void
+    #[Test]
+    public function it_dispatches_until_with_no_listeners_attached(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $actionEventMock = $this->createMock(ActionEvent::class);
 
         $this->proophActionEventEmitter->dispatchUntil($actionEventMock, fn () => true);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_attaches_to_known_event_names(): void
     {
+        $this->expectNotToPerformAssertions();
+
         $proophActionEventEmitter = new ProophActionEventEmitter(['foo']);
         $proophActionEventEmitter->attachListener('foo', function (): void {
         });
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_does_not_attach_to_unknown_event_names(): void
     {
         $this->expectException(\InvalidArgumentException::class);
