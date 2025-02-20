@@ -2,8 +2,8 @@
 
 /**
  * This file is part of prooph/common.
- * (c) 2014-2022 Alexander Miertsch <kontakt@codeliner.ws>
- * (c) 2015-2022 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2014-2025 Alexander Miertsch <kontakt@codeliner.ws>
+ * (c) 2015-2025 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,6 +15,7 @@ namespace ProophTest\Common\Messaging;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\DomainEvent;
 use Prooph\Common\Messaging\DomainMessage;
@@ -44,49 +45,37 @@ class DomainEventTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_has_a_name(): void
     {
         $this->assertEquals('TestDomainEvent', $this->domainEvent->messageName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_has_a_uuid(): void
     {
         $this->assertTrue($this->uuid->equals($this->domainEvent->uuid()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_has_created_at_information(): void
     {
         $this->assertEquals($this->createdAt->format(\DateTime::ISO8601), $this->domainEvent->createdAt()->format(\DateTime::ISO8601));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_has_payload(): void
     {
         $this->assertEquals(['event' => 'payload'], $this->domainEvent->payload());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_has_metadata(): void
     {
         $this->assertEquals(['event' => 'metadata'], $this->domainEvent->metadata());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_be_converted_to_array_and_back(): void
     {
         $commandData = $this->domainEvent->toArray();
@@ -96,9 +85,7 @@ class DomainEventTest extends TestCase
         $this->assertEquals($commandData, $commandCopy->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_is_of_type_event(): void
     {
         $this->assertEquals(DomainMessage::TYPE_EVENT, $this->domainEvent->messageType());

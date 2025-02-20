@@ -2,8 +2,8 @@
 
 /**
  * This file is part of prooph/common.
- * (c) 2014-2022 Alexander Miertsch <kontakt@codeliner.ws>
- * (c) 2015-2022 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
+ * (c) 2014-2025 Alexander Miertsch <kontakt@codeliner.ws>
+ * (c) 2015-2025 Sascha-Oliver Prolic <saschaprolic@googlemail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace ProophTest\Common\Messaging;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Prooph\Common\Messaging\DomainMessage;
 use ProophTest\Common\Mock\AskSomething;
@@ -20,9 +21,7 @@ use Ramsey\Uuid\Uuid;
 
 class QueryTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function it_has_the_message_type_query(): void
     {
         $query = AskSomething::fromArray([
